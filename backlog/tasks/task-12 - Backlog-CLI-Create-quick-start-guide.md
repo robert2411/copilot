@@ -1,10 +1,11 @@
 ---
 id: TASK-12
 title: Backlog CLI - Create quick-start guide
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-16 20:58'
-updated_date: '2026-04-16 21:10'
+updated_date: '2026-04-16 21:15'
 labels:
   - documentation
   - guide
