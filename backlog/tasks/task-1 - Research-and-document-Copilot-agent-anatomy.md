@@ -37,3 +37,9 @@ Read the three reference docs (doc-1 Overview, doc-2 Tool Calls, doc-3 Sub-Agent
 - [x] #4 MCP integration pattern documented
 - [x] #5 Summary written to a backlog doc
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Read doc-1, doc-2, doc-3. Synthesised agent anatomy covering frontmatter fields (name/description/color), system prompt best practices, sub-agent declaration pattern, and MCP integration pattern. Wrote findings to doc-4 (backlog/docs). Anatomy checklist in doc-4 §5 drives task-4 verification.
+<!-- SECTION:FINAL_SUMMARY:END -->
