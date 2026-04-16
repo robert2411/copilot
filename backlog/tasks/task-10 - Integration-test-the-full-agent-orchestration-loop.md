@@ -69,3 +69,17 @@ Integration trace complete. All 8 AC paths verified against agent files:
 
 Gap found: Manager missing backlog milestone list command. Fixed.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Traced all 8 orchestration paths through the four agent files against doc-6 spec.
+
+Findings:
+- All paths correctly implemented in agent prompts
+- One gap fixed: added backlog milestone list --plain to Manager Step 1
+- Manager→Analyse→Implementation→QA→Manager loop fully connected
+- Orphan task grouping path verified
+
+All AC verified.
+<!-- SECTION:FINAL_SUMMARY:END -->
