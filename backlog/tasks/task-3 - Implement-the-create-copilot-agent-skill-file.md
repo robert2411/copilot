@@ -41,3 +41,14 @@ Create .claude/agents/create-copilot-agent.md — a full Claude agent file with 
 - [x] #6 Agent file is self-contained and usable without additional context
 - [x] #7 Generated agents follow the anatomy established in task-1
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created .claude/agents/create-copilot-agent.md.
+
+Frontmatter: name=create-copilot-agent, description with trigger examples, color=#7B5EA7.
+System prompt covers: role/scope, 8-point requirements gathering, built-in tool best practices (doc-2), sub-agent delegation patterns (doc-3), MCP tool usage patterns (doc-3), quality checklist, output format, hard constraints.
+Includes AGENTS.md snippet and .mcp.json snippet templates for when sub-agents/MCP are used.
+File is self-contained and immediately usable.
+<!-- SECTION:FINAL_SUMMARY:END -->
