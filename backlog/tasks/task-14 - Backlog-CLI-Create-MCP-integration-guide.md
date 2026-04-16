@@ -4,10 +4,12 @@ title: Backlog CLI - Create MCP integration guide
 status: To Do
 assignee: []
 created_date: '2026-04-16 20:58'
+updated_date: '2026-04-16 21:10'
 labels:
   - documentation
   - integration
   - mcp
+milestone: Backlog CLI Documentation
 dependencies: []
 priority: high
 ---
@@ -25,6 +27,19 @@ Document how to integrate Backlog CLI with AI tools via Model Context Protocol (
 - [ ] #3 Integration patterns for Claude, Copilot, and other AI tools
 - [ ] #4 Configuration guide for --integration-mode settings
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Read doc-7 MCP Server section and doc-3 Sub-Agents-and-MCP-Servers
+2. Create backlog/docs/mcp-integration-guide.md
+3. Document MCP server startup: backlog mcp start, port, --integration-mode setting
+4. Document tool call interface: available MCP tools, input schemas, response formats
+5. Show integration patterns for Claude Desktop (claude_desktop_config.json), Copilot, other MCP clients
+6. Document --integration-mode options: mcp vs cli vs none, when to use each
+7. Include example tool call sequences for common workflows
+8. Commit file to git
+<!-- SECTION:PLAN:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
