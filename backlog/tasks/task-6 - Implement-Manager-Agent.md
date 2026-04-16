@@ -1,14 +1,16 @@
 ---
 id: TASK-6
 title: Implement Manager Agent
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@copilot'
 created_date: '2026-04-16 18:14'
-updated_date: '2026-04-16 18:15'
+updated_date: '2026-04-16 18:22'
 labels:
   - manager
   - orchestration
 milestone: Agent Workflow Orchestration System
+dependencies: []
 documentation:
   - backlog/docs/doc-6 - Agent-Workflow-Orchestration-System.md
 priority: high
