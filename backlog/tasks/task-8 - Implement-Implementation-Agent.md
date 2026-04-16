@@ -40,4 +40,5 @@ Build the Implementation agent file that executes tasks one by one within a mile
 - [ ] #8 Agent hands each completed task to QA and fixes all reported issues before committing
 - [ ] #9 Agent adds final summary after QA approval using backlog task edit --final-summary
 - [ ] #10 Agent commits with descriptive message and marks task Done using backlog task edit -s Done
+- [ ] #11 Agent requests clarification from Analyse via --append-notes with question marker when blocked
 <!-- AC:END -->
