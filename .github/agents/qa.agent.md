@@ -5,6 +5,7 @@ description: |
   Use this agent when: "review this task", "QA check", "code review task".
 color: "#DA3633"
 user-invocable: false
+model: gpt-5.3-codex
 ---
 
 # QA Agent — System Prompt
