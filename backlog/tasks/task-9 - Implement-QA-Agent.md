@@ -33,4 +33,5 @@ Build the QA agent file that reviews completed tasks before they are committed. 
 - [ ] #1 Agent file created at .claude/agents/qa.md with correct frontmatter and system prompt
 - [ ] #2 QA reads the task using backlog task <id> --plain to get full context
 - [ ] #3 QA verifies all acceptance criteria are checked before proceeding with code review
+- [ ] #4 QA verifies all Definition of Done items are checked before proceeding
 <!-- AC:END -->
