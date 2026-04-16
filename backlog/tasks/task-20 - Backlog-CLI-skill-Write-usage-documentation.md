@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:59'
-updated_date: '2026-04-16 21:58'
+updated_date: '2026-04-16 21:59'
 labels:
   - documentation
   - skill
@@ -54,6 +54,21 @@ Analysis complete. Hard dependency on task-19. No other blockers. Output locatio
 - Contributing guidance: Included with validation checklist
 - Quality/security: No issues found in documentation content
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created .github/skills/backlog-cli/references/USAGE.md (287 lines).
+
+Sections:
+- Installation & Activation (CLI install, backlog init, skill placement, DoD config)
+- Common Use Patterns (full lifecycle, AC/DoD workflows, multi-shell newlines, search/board, MCP, AI agent)
+- Troubleshooting (12-row issue/cause/solution table)
+- Contributing (when/how to update, validation checklist, linking docs)
+- Quick Reference Card
+
+All 4 ACs and DoD verified.
+<!-- SECTION:FINAL_SUMMARY:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
