@@ -1,16 +1,18 @@
 ---
 id: TASK-2
 title: Define acceptance criteria for the create-copilot-agent skill
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@copilot'
 created_date: '2026-04-16 07:23'
+updated_date: '2026-04-16 07:31'
 labels:
   - agents
   - skill
   - documentation
+milestone: Copilot Agent Creation Skill
 dependencies:
   - TASK-1
-milestone: Copilot Agent Creation Skill
 priority: high
 ---
 
