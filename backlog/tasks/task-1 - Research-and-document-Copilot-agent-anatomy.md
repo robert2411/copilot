@@ -1,13 +1,16 @@
 ---
 id: TASK-1
 title: Research and document Copilot agent anatomy
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@copilot'
 created_date: '2026-04-16 07:23'
+updated_date: '2026-04-16 07:29'
 labels:
   - agents
   - research
   - documentation
+milestone: Copilot Agent Creation Skill
 dependencies: []
 documentation:
   - >-
@@ -17,7 +20,6 @@ documentation:
   - >-
     backlog/docs/doc-3 -
     GitHub-Copilot-Custom-Agents-Sub-Agents-and-MCP-Servers.md
-milestone: Copilot Agent Creation Skill
 priority: high
 ---
 
