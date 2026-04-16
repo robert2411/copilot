@@ -5,7 +5,9 @@ status: To Do
 assignee: []
 created_date: '2026-04-16 18:14'
 updated_date: '2026-04-16 18:15'
-labels: []
+labels:
+  - manager
+  - orchestration
 dependencies: []
 priority: high
 ---
