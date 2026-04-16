@@ -1,10 +1,11 @@
 ---
 id: TASK-13
 title: Backlog CLI - Create task management tutorial
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-16 20:58'
-updated_date: '2026-04-16 21:10'
+updated_date: '2026-04-16 21:18'
 labels:
   - documentation
   - tutorial
