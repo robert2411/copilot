@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:59'
-updated_date: '2026-04-16 21:49'
+updated_date: '2026-04-16 21:50'
 labels:
   - skill
   - implementation
@@ -29,10 +29,10 @@ Scaffold and implement the complete Backlog CLI skill for GitHub Copilot using m
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Skill directory structure created with proper assets
-- [ ] #2 Comprehensive system prompt written covering CLI usage
-- [ ] #3 Reference materials embedded or linked
-- [ ] #4 Skill SKILL.md file with frontmatter and content completed
+- [x] #1 Skill directory structure created with proper assets
+- [x] #2 Comprehensive system prompt written covering CLI usage
+- [x] #3 Reference materials embedded or linked
+- [x] #4 Skill SKILL.md file with frontmatter and content completed
 <!-- AC:END -->
 
 ## Implementation Plan
