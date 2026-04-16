@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:58'
-updated_date: '2026-04-16 21:13'
+updated_date: '2026-04-16 21:14'
 labels:
   - documentation
   - cli
@@ -44,6 +44,10 @@ Document complete Backlog CLI reference covering all commands, options, workflow
 
 <!-- SECTION:NOTES:BEGIN -->
 Analysis complete. No blockers. Primary source: doc-7. All AC mapped to plan steps.
+
+❌ QA ISSUES:
+- [High] AC #1 not met: guide does not document all top-level CLI commands. Missing sections/examples for `backlog agents`, `backlog cleanup`, `backlog overview`, and `backlog completion` (see `backlog/docs/doc-8 - Backlog-CLI-Comprehensive-Reference-Guide.md` ToC lines 14-35 and end of file lines 532-544).
+- [Low] `backlog --help` output should be re-validated while updating docs to ensure command inventory matches the installed version.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
