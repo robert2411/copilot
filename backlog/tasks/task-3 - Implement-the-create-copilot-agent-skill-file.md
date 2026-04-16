@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:25'
-updated_date: '2026-04-16 08:31'
+updated_date: '2026-04-16 08:35'
 labels:
   - agents
   - skill
@@ -33,11 +33,11 @@ Create .claude/agents/create-copilot-agent.md — a full Claude agent file with 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Agent file has valid frontmatter: name, description with usage examples, color
-- [ ] #2 System prompt instructs the skill to gather: agent purpose, required tools, sub-agents needed, MCP servers
-- [ ] #3 System prompt includes AGENTS.md authoring guidance from doc-1
-- [ ] #4 System prompt includes built-in tool call best practices from doc-2
-- [ ] #5 System prompt includes sub-agent and MCP patterns from doc-3
-- [ ] #6 Agent file is self-contained and usable without additional context
-- [ ] #7 Generated agents follow the anatomy established in task-1
+- [x] #1 Agent file has valid frontmatter: name, description with usage examples, color
+- [x] #2 System prompt instructs the skill to gather: agent purpose, required tools, sub-agents needed, MCP servers
+- [x] #3 System prompt includes AGENTS.md authoring guidance from doc-1
+- [x] #4 System prompt includes built-in tool call best practices from doc-2
+- [x] #5 System prompt includes sub-agent and MCP patterns from doc-3
+- [x] #6 Agent file is self-contained and usable without additional context
+- [x] #7 Generated agents follow the anatomy established in task-1
 <!-- AC:END -->
