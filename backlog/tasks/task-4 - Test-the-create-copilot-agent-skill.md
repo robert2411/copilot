@@ -29,3 +29,16 @@ Manually invoke the create-copilot-agent skill to generate a sample agent (e.g. 
 - [x] #3 Generated agent frontmatter is valid and complete
 - [x] #4 Skill prompt updated with any gaps found during testing
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Generated code-reviewer agent using the create-copilot-agent skill process.
+
+Sample agent: .claude/agents/code-reviewer.md
+Verified against anatomy checklist (doc-4 §5): all 10 items pass.
+- Frontmatter valid (name, description with triggers, color)
+- System prompt: persona, requirements gathering, tool usage (doc-2 best practices), output format (Markdown review report via show_content), hard constraints
+- Self-contained
+No gaps found — create-copilot-agent skill prompt requires no updates.
+<!-- SECTION:FINAL_SUMMARY:END -->
