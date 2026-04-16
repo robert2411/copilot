@@ -1,10 +1,11 @@
 ---
 id: TASK-18
 title: Create Backlog CLI skill file
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-16 20:59'
-updated_date: '2026-04-16 21:48'
+updated_date: '2026-04-16 21:49'
 labels:
   - skill
   - implementation
