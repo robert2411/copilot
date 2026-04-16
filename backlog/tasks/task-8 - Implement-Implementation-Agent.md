@@ -25,7 +25,7 @@ Build the Implementation agent file that executes tasks one by one within a mile
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
 
 ## Acceptance Criteria
