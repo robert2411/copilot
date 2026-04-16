@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """Jira-to-Backlog one-way sync: creates Backlog.md milestones from Jira issues."""
 
+from __future__ import annotations
+
 import argparse
 import logging
 import os
 import re
 import sys
 from pathlib import Path
+from typing import Optional
 
 import requests
 import yaml
@@ -204,6 +207,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
 
 
 
