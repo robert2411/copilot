@@ -1,11 +1,11 @@
 ---
 id: TASK-2
 title: Define acceptance criteria for the create-copilot-agent skill
-status: Done
+status: To Do
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:23'
-updated_date: '2026-04-16 07:32'
+updated_date: '2026-04-16 08:44'
 labels:
   - agents
   - skill
