@@ -1,10 +1,11 @@
 ---
 id: TASK-11
 title: Backlog CLI - Create comprehensive reference guide
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-16 20:58'
-updated_date: '2026-04-16 21:07'
+updated_date: '2026-04-16 21:12'
 labels:
   - documentation
   - cli
