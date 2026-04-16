@@ -1,11 +1,11 @@
 ---
 id: TASK-14
 title: Backlog CLI - Create MCP integration guide
-status: In Progress
+status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:58'
-updated_date: '2026-04-16 21:23'
+updated_date: '2026-04-16 21:24'
 labels:
   - documentation
   - integration
