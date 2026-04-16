@@ -30,4 +30,5 @@ Build the Manager agent file that orchestrates the full workflow. The Manager sc
 - [ ] #3 Manager routes milestone to Analyse agent as the first step of every cycle
 - [ ] #4 Manager reads task notes to detect blocker flags set by Analyse before routing to Implementation
 - [ ] #5 Manager routes to Implementation agent only after Analyse confirms no blockers
+- [ ] #6 Manager handles end-of-milestone decision: more milestones available, orphan tasks exist, or project complete
 <!-- AC:END -->
