@@ -40,6 +40,12 @@ Create final documentation on how to use the Backlog CLI skill, including exampl
    - Multi-shell newline patterns ($\\, printf, PowerShell)\n   - Search and board commands\n   - MCP server usage\n5. Section: Troubleshooting — table of issues/solutions drawn from task-19 findings and doc-12 best practices\n6. Section: Contributing — how to update SKILL.md, what sections to extend, validation checklist from make-skill-template\n7. Review doc for accuracy against skill content; cross-link to backlog/docs/doc-7 through doc-14\n8. git commit
 <!-- SECTION:PLAN:END -->
 
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Analysis complete. Hard dependency on task-19. No other blockers. Output location decision: prefer .github/skills/backlog-cli/references/USAGE.md to keep doc bundled with skill.
+<!-- SECTION:NOTES:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
