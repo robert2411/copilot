@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:58'
-updated_date: '2026-04-16 21:15'
+updated_date: '2026-04-16 21:16'
 labels:
   - documentation
   - guide
@@ -22,9 +22,9 @@ Write an introductory guide for users new to Backlog CLI with common workflows
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Installation and initialization steps documented
-- [ ] #2 5-10 most common workflows with examples provided
-- [ ] #3 Troubleshooting section for common issues
+- [x] #1 Installation and initialization steps documented
+- [x] #2 5-10 most common workflows with examples provided
+- [x] #3 Troubleshooting section for common issues
 <!-- AC:END -->
 
 ## Implementation Plan
