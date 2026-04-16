@@ -1,13 +1,16 @@
 ---
 id: TASK-3
 title: Implement the create-copilot-agent skill file
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@copilot'
 created_date: '2026-04-16 07:25'
+updated_date: '2026-04-16 08:31'
 labels:
   - agents
   - skill
   - implementation
+milestone: Copilot Agent Creation Skill
 dependencies:
   - TASK-1
   - TASK-2
@@ -19,7 +22,6 @@ documentation:
   - >-
     backlog/docs/doc-3 -
     GitHub-Copilot-Custom-Agents-Sub-Agents-and-MCP-Servers.md
-milestone: Copilot Agent Creation Skill
 priority: high
 ---
 
