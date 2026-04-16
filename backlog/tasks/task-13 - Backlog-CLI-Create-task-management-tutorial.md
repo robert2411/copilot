@@ -54,5 +54,5 @@ cd /Users/robertstevens/Projects/copilot-agents && backlog task 13 --plain | hea
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
