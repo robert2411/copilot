@@ -48,3 +48,17 @@ Build the Manager agent file that orchestrates the full workflow. The Manager sc
 5. Proceed to task 7 (Analyse), 8 (Implementation), 9 (QA) sequentially
 6. Commit all agents together
 <!-- SECTION:PLAN:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created .claude/agents/manager.md — the orchestrator agent.
+
+Covers:
+- Milestone scanning via backlog CLI
+- Routing to Analyse agent with full context
+- Blocker detection from task notes
+- Routing to Implementation after clear analysis
+- End-of-milestone decisions (next milestone / orphan grouping / exit)
+- Orphan task → Analyse grouping path
+<!-- SECTION:FINAL_SUMMARY:END -->
