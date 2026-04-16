@@ -1,11 +1,11 @@
 ---
 id: TASK-3
 title: Implement the create-copilot-agent skill file
-status: To Do
+status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:25'
-updated_date: '2026-04-16 16:59'
+updated_date: '2026-04-16 17:03'
 labels:
   - agents
   - skill
