@@ -53,6 +53,12 @@ Scaffold and implement the complete Backlog CLI skill for GitHub Copilot using m
 8. git commit
 <!-- SECTION:PLAN:END -->
 
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Analysis complete. No blockers. Deps (tasks 11-17) are docs already in backlog/docs/ — implementation agent reads those to distil skill content. make-skill-template format confirmed.
+<!-- SECTION:NOTES:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
