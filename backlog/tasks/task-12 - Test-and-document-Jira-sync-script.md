@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 18:51'
-updated_date: '2026-04-16 19:02'
+updated_date: '2026-04-16 19:03'
 labels:
   - jira
   - sync
@@ -56,6 +56,16 @@ Analysis complete. No blockers. Depends on TASK-11 (already declared).
 - 15 tests passing: config loading (5), dedup (3), filename (3), integration with mocked API (4)
 - Created doc-7 usage guide
 - Fixed Python 3.9 compat (added __future__ annotations)
+
+🔍 QA REVIEW FINDINGS:
+- Medium: doc-7 line 11 says "Python 3.10+" but __future__ annotations import was added for 3.9 compat and tests run on 3.9.6. Update doc to say Python 3.9+.
+- Low: test_missing_required_raises (test_sync.py:72) assumes no JIRA_* env vars set. Fragile in CI. Wrap with patch.dict to clear relevant env vars.
+- Info: sys.path.insert hack in test_sync.py:13 — acceptable for script project.
+- Info: pytest not in requirements.txt (doc says install separately, fine).
+- Security: No issues. Token via config/env, HTTPS auth, 30s timeout.
+- Spelling: Clean.
+
+Verdict: Medium issue (doc Python version) should be fixed. Low issue recommended but optional.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
