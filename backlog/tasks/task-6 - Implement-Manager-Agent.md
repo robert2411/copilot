@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 18:14'
-updated_date: '2026-04-16 18:22'
+updated_date: '2026-04-16 18:26'
 labels:
   - manager
   - orchestration
@@ -29,13 +29,13 @@ Build the Manager agent file that orchestrates the full workflow. The Manager sc
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Agent file created at .claude/agents/manager.md with correct frontmatter and system prompt
-- [ ] #2 Manager scans backlog using backlog task list and backlog milestone list --plain
-- [ ] #3 Manager routes milestone to Analyse agent as the first step of every cycle
-- [ ] #4 Manager reads task notes to detect blocker flags set by Analyse before routing to Implementation
-- [ ] #5 Manager routes to Implementation agent only after Analyse confirms no blockers
-- [ ] #6 Manager handles end-of-milestone decision: more milestones available, orphan tasks exist, or project complete
-- [ ] #7 When no milestones but tasks exist, Manager delegates to Analyse agent to group tasks into logical milestones
+- [x] #1 Agent file created at .claude/agents/manager.md with correct frontmatter and system prompt
+- [x] #2 Manager scans backlog using backlog task list and backlog milestone list --plain
+- [x] #3 Manager routes milestone to Analyse agent as the first step of every cycle
+- [x] #4 Manager reads task notes to detect blocker flags set by Analyse before routing to Implementation
+- [x] #5 Manager routes to Implementation agent only after Analyse confirms no blockers
+- [x] #6 Manager handles end-of-milestone decision: more milestones available, orphan tasks exist, or project complete
+- [x] #7 When no milestones but tasks exist, Manager delegates to Analyse agent to group tasks into logical milestones
 <!-- AC:END -->
 
 ## Implementation Plan
