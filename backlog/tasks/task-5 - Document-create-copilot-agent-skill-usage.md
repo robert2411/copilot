@@ -31,6 +31,14 @@ Add a backlog doc that explains how to use the create-copilot-agent skill: when 
 - [] #5 Worked example invocation included
 <!-- AC:END -->
 
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Review task-3 skill output
+2. Write usage guide to doc-5 (when to invoke, inputs, expected output, worked example)
+3. Mark done
+<!-- SECTION:PLAN:END -->
+
 ## Final Summary
 
 <!-- SECTION:FINAL_SUMMARY:BEGIN -->
