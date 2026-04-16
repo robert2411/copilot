@@ -11,6 +11,6 @@ dependencies: []
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 Tests pass
+- [x] #1 Tests pass
 - [ ] #2 Docs updated
 <!-- DOD:END -->
