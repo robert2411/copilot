@@ -1,10 +1,11 @@
 ---
 id: TASK-16
 title: Backlog CLI - Create AI agent integration guide
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-16 20:59'
-updated_date: '2026-04-16 21:11'
+updated_date: '2026-04-16 21:26'
 labels:
   - documentation
   - ai-agents
