@@ -1,16 +1,18 @@
 ---
 id: TASK-5
 title: Document create-copilot-agent skill usage
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@copilot'
 created_date: '2026-04-16 07:25'
+updated_date: '2026-04-16 08:36'
 labels:
   - agents
   - skill
   - documentation
+milestone: Copilot Agent Creation Skill
 dependencies:
   - TASK-3
-milestone: Copilot Agent Creation Skill
 priority: medium
 ---
 
