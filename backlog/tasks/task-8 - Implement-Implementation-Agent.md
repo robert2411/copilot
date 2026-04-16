@@ -31,4 +31,5 @@ Build the Implementation agent file that executes tasks one by one within a mile
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [ ] #1 Agent file created at .claude/agents/implementation.md with correct frontmatter and system prompt
+- [ ] #2 First action per task is: backlog task edit <id> -s 'In Progress' -a @myself
 <!-- AC:END -->
