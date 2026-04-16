@@ -19,7 +19,7 @@ Testing task creation workflow for skill validation
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [x] #1 Can create task
+- [ ] #1 Can create task
 - [ ] #2 Can assign labels
 - [ ] #3 New AC added during test
 <!-- AC:END -->
