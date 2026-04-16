@@ -39,4 +39,5 @@ Build the QA agent file that reviews completed tasks before they are committed. 
 - [ ] #7 QA checks spelling errors in comments, strings, and documentation
 - [ ] #8 QA performs security review: input validation, auth checks, data sanitization, vulnerability scan
 - [ ] #9 QA reports all findings via backlog task edit <id> --append-notes with severity levels
+- [ ] #10 When no issues found, QA approves via --append-notes with QA APPROVED marker
 <!-- AC:END -->
