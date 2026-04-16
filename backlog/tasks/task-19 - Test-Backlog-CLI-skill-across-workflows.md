@@ -1,7 +1,7 @@
 ---
 id: TASK-19
 title: Test Backlog CLI skill across workflows
-status: In Progress
+status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:59'
