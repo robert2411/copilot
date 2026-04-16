@@ -1,11 +1,11 @@
 ---
 id: TASK-4
 title: Test the create-copilot-agent skill
-status: To Do
+status: Done
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:25'
-updated_date: '2026-04-16 08:44'
+updated_date: '2026-04-16 08:56'
 labels:
   - agents
   - skill
