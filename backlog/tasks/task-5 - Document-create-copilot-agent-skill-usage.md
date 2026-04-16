@@ -30,3 +30,11 @@ Add a backlog doc that explains how to use the create-copilot-agent skill: when 
 - [x] #4 Expected output format described
 - [x] #5 Worked example invocation included
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created doc-5: create-copilot-agent Skill — Usage Guide.
+
+Covers: what the skill is, when to use it (5 trigger phrases), required inputs table (7 inputs), expected output (agent file + optional AGENTS.md + .mcp.json snippets + IDE reminder), full worked example (code-reviewer agent), tips (name consistency, one-agent-per-invocation, IDE sub-agent config, anatomy checklist), file locations, see-also links.
+<!-- SECTION:FINAL_SUMMARY:END -->
