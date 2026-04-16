@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:58'
-updated_date: '2026-04-16 21:22'
+updated_date: '2026-04-16 21:23'
 labels:
   - documentation
   - integration
@@ -23,10 +23,10 @@ Document how to integrate Backlog CLI with AI tools via Model Context Protocol (
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 MCP server startup and configuration documented
-- [ ] #2 Tool call interface for task operations explained
-- [ ] #3 Integration patterns for Claude, Copilot, and other AI tools
-- [ ] #4 Configuration guide for --integration-mode settings
+- [x] #1 MCP server startup and configuration documented
+- [x] #2 Tool call interface for task operations explained
+- [x] #3 Integration patterns for Claude, Copilot, and other AI tools
+- [x] #4 Configuration guide for --integration-mode settings
 <!-- AC:END -->
 
 ## Implementation Plan
