@@ -49,6 +49,16 @@ Create guide for AI agents (Claude, Copilot, etc.) on how to use Backlog CLI for
 Analysis complete. No blockers. Sources: doc-7 AI Agent Workflow, AGENTS.md, doc-6.
 <!-- SECTION:NOTES:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created doc-13: Backlog CLI AI Agent Integration Guide.
+
+Covers 10-step AI agent workflow, --plain flag usage with format examples, AC scope boundary principles, phase discipline with plan-before-code enforcement, CLI vs MCP mode comparison, and fully annotated session example from task discovery to Done.
+
+File: backlog/docs/doc-13 - Backlog-CLI-AI-Agent-Integration-Guide.md
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
