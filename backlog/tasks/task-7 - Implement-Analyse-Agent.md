@@ -35,4 +35,5 @@ Build the Analyse agent file responsible for planning and blocker detection. The
 - [ ] #3 Analyse reads backlog/docs/ and backlog/decisions/ for relevant context
 - [ ] #4 Analyse creates implementation plan for each task using backlog task edit <id> --plan
 - [ ] #5 Analyse flags blockers with a clearly marked note: backlog task edit <id> --append-notes with BLOCKER prefix
+- [ ] #6 Analyse reports ready status per task: backlog task edit <id> --append-notes confirming no blockers
 <!-- AC:END -->
