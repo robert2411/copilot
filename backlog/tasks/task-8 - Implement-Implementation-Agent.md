@@ -35,4 +35,5 @@ Build the Implementation agent file that executes tasks one by one within a mile
 - [ ] #3 Agent reads Analyse-provided implementation plan before writing any code
 - [ ] #4 Agent writes unit tests for all implemented code targeting 80%+ coverage per task
 - [ ] #5 Combined test coverage across all milestone tasks meets 80% minimum
+- [ ] #6 Agent checks all AC before handoff: backlog task edit <id> --check-ac for each criterion
 <!-- AC:END -->
