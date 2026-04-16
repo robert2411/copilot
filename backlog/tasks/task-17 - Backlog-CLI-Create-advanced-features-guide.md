@@ -1,7 +1,7 @@
 ---
 id: TASK-17
 title: Backlog CLI - Create advanced features guide
-status: In Progress
+status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:59'
