@@ -1,7 +1,7 @@
 ---
 id: TASK-15
 title: Backlog CLI - Create best practices documentation
-status: In Progress
+status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:59'
