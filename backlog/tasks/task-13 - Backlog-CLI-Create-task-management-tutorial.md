@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:58'
-updated_date: '2026-04-16 21:18'
+updated_date: '2026-04-16 21:19'
 labels:
   - documentation
   - tutorial
@@ -22,10 +22,10 @@ Create detailed tutorial on managing tasks: creation, editing, acceptance criter
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Step-by-step tutorial for creating tasks with all options
-- [ ] #2 Guide for editing and managing task lifecycle fields
-- [ ] #3 Examples of AC and DoD management patterns
-- [ ] #4 Tutorial on dependencies and subtasks
+- [x] #1 Step-by-step tutorial for creating tasks with all options
+- [x] #2 Guide for editing and managing task lifecycle fields
+- [x] #3 Examples of AC and DoD management patterns
+- [x] #4 Tutorial on dependencies and subtasks
 <!-- AC:END -->
 
 ## Implementation Plan
