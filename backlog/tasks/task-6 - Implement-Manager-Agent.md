@@ -24,7 +24,7 @@ Build the Manager agent file that orchestrates the full workflow. The Manager sc
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
 
 ## Acceptance Criteria
