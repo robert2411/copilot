@@ -4,10 +4,22 @@ title: Implement Implementation Agent
 status: To Do
 assignee: []
 created_date: '2026-04-16 18:16'
-labels: []
-dependencies: []
+updated_date: '2026-04-16 18:16'
+labels:
+  - implementation
+  - orchestration
+dependencies:
+  - TASK-7
+documentation:
+  - backlog/docs/doc-6 - Agent-Workflow-Orchestration-System.md
 priority: high
 ---
+
+## Description
+
+<!-- SECTION:DESCRIPTION:BEGIN -->
+Build the Implementation agent file that executes tasks one by one within a milestone. For each task: mark In Progress, read plan from Analyse, implement code with unit tests (min 80% coverage), verify all AC and DoD, hand off to QA, fix issues from QA, add final summary, commit, mark Done. If missing info, request from Analyse. Report milestone completion to Manager.
+<!-- SECTION:DESCRIPTION:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
