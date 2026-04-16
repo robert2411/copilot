@@ -1,11 +1,11 @@
 ---
 id: TASK-5
 title: Document create-copilot-agent skill usage
-status: Done
+status: To Do
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:25'
-updated_date: '2026-04-16 08:38'
+updated_date: '2026-04-16 08:44'
 labels:
   - agents
   - skill
