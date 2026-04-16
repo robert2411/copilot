@@ -24,11 +24,11 @@ Thoroughly test the Backlog skill with real-world scenarios and AI agent interac
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Task creation workflow tested end-to-end
-- [ ] #2 AC and DoD management patterns validated
-- [ ] #3 AI agent workflow tested with MCP
-- [ ] #4 Search and board features verified
-- [ ] #5 Multi-shell input patterns tested
+- [x] #1 Task creation workflow tested end-to-end
+- [x] #2 AC and DoD management patterns validated
+- [x] #3 AI agent workflow tested with MCP
+- [x] #4 Search and board features verified
+- [x] #5 Multi-shell input patterns tested
 <!-- AC:END -->
 
 ## Implementation Plan
