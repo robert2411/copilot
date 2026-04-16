@@ -49,6 +49,16 @@ Document advanced features: search, board export, sequences, milestones, drafts,
 Analysis complete. No blockers. Source: doc-7 sections Search, Board, Sequence, Drafts, Milestones, Config.
 <!-- SECTION:NOTES:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created doc-14: Backlog CLI Advanced Features Guide.
+
+Covers search (fuzzy matching, all filters, practical patterns), board visualization and export (terminal kanban, markdown export, README injection), dependency sequences (topological sort, sprint planning usage), draft workflow (create/list/promote/demote), milestone management (list, assign, archive), and configuration management (get/set/list, key fields table).
+
+File: backlog/docs/doc-14 - Backlog-CLI-Advanced-Features-Guide.md
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
