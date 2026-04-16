@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:59'
-updated_date: '2026-04-16 21:54'
+updated_date: '2026-04-16 21:55'
 labels:
   - skill
   - qa
@@ -52,6 +52,13 @@ Testing results:
 - AC3: MCP tested via `backlog mcp start --help`; server starts on stdio transport; live client test documented in SKILL.md MCP section
 - AC4: Search verified (fuzzy match, type/status filters work)
 - AC5: Multi-shell newlines: $... pattern confirmed preserving literal newlines in notes\n- Test task-21 archived after validation
+
+🔍 QA REVIEW FINDINGS:
+- Issue #1: [High] AC #3 is marked complete, but evidence only shows `backlog mcp start --help` and a documented simulation; no live MCP client tool-call workflow is verified (backlog/tasks/task-19 - Test-Backlog-CLI-skill-across-workflows.md:29,52).
+- Issue #2: [Medium] AC #2 says AC and DoD management were validated, but notes only record AC operations and no DoD add/check/uncheck/remove evidence (backlog/tasks/task-19 - Test-Backlog-CLI-skill-across-workflows.md:28,51).
+- Issue #3: [Low] Implementation plan/notes include literal `\n` text, reducing readability and showing newline quoting was not applied consistently (backlog/tasks/task-19 - Test-Backlog-CLI-skill-across-workflows.md:41,54).
+
+Verdict: Fix required before approval.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
