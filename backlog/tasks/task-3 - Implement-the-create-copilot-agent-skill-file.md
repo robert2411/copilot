@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:25'
-updated_date: '2026-04-16 17:03'
+updated_date: '2026-04-16 17:04'
 labels:
   - agents
   - skill
@@ -41,6 +41,15 @@ Create .github/agents/create-copilot-agent.agent.md — a full Claude agent file
 - [] #6 Agent file is self-contained and usable without additional context
 - [] #7 Generated agents follow the anatomy established in task-1
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Review task-1 anatomy doc and task-2 skill spec
+2. Review reference docs (doc-1, doc-2, doc-3)
+3. Author .github/agents/create-copilot-agent.agent.md
+4. Verify against anatomy checklist
+<!-- SECTION:PLAN:END -->
 
 ## Final Summary
 
