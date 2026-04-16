@@ -1,16 +1,18 @@
 ---
 id: TASK-4
 title: Test the create-copilot-agent skill
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@copilot'
 created_date: '2026-04-16 07:25'
+updated_date: '2026-04-16 08:35'
 labels:
   - agents
   - skill
   - testing
+milestone: Copilot Agent Creation Skill
 dependencies:
   - TASK-3
-milestone: Copilot Agent Creation Skill
 priority: medium
 ---
 
