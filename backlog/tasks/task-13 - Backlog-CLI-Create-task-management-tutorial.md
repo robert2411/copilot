@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:58'
-updated_date: '2026-04-16 21:19'
+updated_date: '2026-04-16 21:20'
 labels:
   - documentation
   - tutorial
@@ -55,6 +55,10 @@ cd /Users/robertstevens/Projects/copilot-agents && backlog task 13 --plain | hea
 - [Medium] Incorrect config key for DoD defaults in tutorial: references `definitionOfDone`, but project config and documented CLI defaults use `definition_of_done` (`backlog/docs/doc-10 - Backlog-CLI-Task-Management-Tutorial.md:247-258`, `backlog/config.yml:5`). This can mislead users configuring DoD defaults.
 
 Verdict: Fix required before approval.
+
+❌ QA ISSUES:
+- [Medium] `backlog/docs/doc-10 - Backlog-CLI-Task-Management-Tutorial.md:247` still says `definitionOfDone` in prose. Config key is `definition_of_done` (matches `backlog/config.yml:5` and YAML example at lines 253-258).
+- Action: Update line 247 prose to `config.yml → definition_of_done` for consistency and to avoid user misconfiguration.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
