@@ -28,8 +28,6 @@ Build the Implementation agent file that executes tasks one by one within a mile
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
 
-
-
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [x] #1 Agent file created at .claude/agents/implementation.md with correct frontmatter and system prompt
@@ -45,3 +43,19 @@ Build the Implementation agent file that executes tasks one by one within a mile
 - [x] #11 Agent requests clarification from Analyse via --append-notes with question marker when blocked
 - [x] #12 After all milestone tasks done, agent reports completion to Manager
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created .claude/agents/implementation.md — developer agent.
+
+Covers:
+- Claims tasks (In Progress + assign)
+- Reads Analyse plans before coding
+- Implements with tests (80%+ coverage target)
+- Checks all AC/DoD before QA handoff
+- Delegates to QA sub-agent, fixes issues
+- Commits with descriptive message, marks Done
+- Requests clarification from Analyse when blocked
+- Reports milestone completion
+<!-- SECTION:FINAL_SUMMARY:END -->
