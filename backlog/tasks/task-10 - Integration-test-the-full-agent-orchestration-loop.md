@@ -35,4 +35,5 @@ Run the full orchestration loop end-to-end to validate all four agents work toge
 - [ ] #3 Manager correctly routes milestone to Implementation after Analyse completes
 - [ ] #4 Implementation marks tasks In Progress, implements with tests, and hands to QA
 - [ ] #5 QA reviews and provides structured feedback or approval via task notes
+- [ ] #6 Implementation fixes QA issues, commits, and marks tasks Done
 <!-- AC:END -->
