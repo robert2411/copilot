@@ -8,6 +8,7 @@ labels:
   - skill
   - qa
   - testing
+milestone: Backlog CLI Skill
 dependencies:
   - TASK-18
 priority: high

@@ -7,6 +7,7 @@ created_date: '2026-04-16 20:59'
 labels:
   - documentation
   - skill
+milestone: Backlog CLI Skill
 dependencies:
   - TASK-19
 priority: medium

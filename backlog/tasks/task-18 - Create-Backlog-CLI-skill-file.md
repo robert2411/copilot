@@ -7,6 +7,7 @@ created_date: '2026-04-16 20:59'
 labels:
   - skill
   - implementation
+milestone: Backlog CLI Skill
 dependencies:
   - TASK-11
   - TASK-12
