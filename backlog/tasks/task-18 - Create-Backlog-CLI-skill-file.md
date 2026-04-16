@@ -61,6 +61,11 @@ Analysis complete. No blockers. Deps (tasks 11-17) are docs already in backlog/d
 
 ❌ QA REJECTED: AC/DoD incomplete.
 - Missing: DoD #1 (All code is committed to git)
+
+🔍 QA REVIEW FINDINGS:
+- Issue #1: Medium Broken local reference link: `./references/USAGE.md` is listed but file does not exist; `references/` directory is empty (`.github/skills/backlog-cli/SKILL.md:334`, `.github/skills/backlog-cli/references/`).
+
+Verdict: Fix required before approval.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
