@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 18:51'
-updated_date: '2026-04-16 18:58'
+updated_date: '2026-04-16 18:59'
 labels:
   - jira
   - sync
@@ -55,6 +55,20 @@ Analysis complete. No blockers.
 - Created scripts/jira_sync/sync.py with config loading, Jira API query, milestone creation, dedup, logging
 - Created config.example.yml
 - Created requirements.txt
+
+🔍 QA REVIEW FINDINGS:
+
+- Issue #1: [Medium] Security — `scripts/jira_sync/config.yml` not in `.gitignore`. Users who copy `config.example.yml` to `config.yml` (as instructed) risk committing Jira credentials. Add `scripts/jira_sync/config.yml` to `.gitignore`. (file: .gitignore)
+
+- Issue #2: [Medium] Filename collision — Two Jira issues with identical summaries produce the same filename. Second call to `create_milestone` silently overwrites the first. Should include jira_key in filename or check for file existence. (file: sync.py, line 127)
+
+- Issue #3: [Medium] CVE — `requests>=2.28.0` has 4 known CVEs (CVE-2023-32681, CVE-2024-35195, CVE-2024-47081, CVE-2026-25645). Bump minimum to `requests>=2.33.0`. (file: requirements.txt, line 1)
+
+- Issue #4: [Low] Env var empty-string handling — Line 42: `if val:` means setting `JIRA_URL=""` silently falls through to YAML value instead of erroring. Acceptable but worth a comment. (file: sync.py, line 42)
+
+- Issue #5: [Low] `requests.Timeout` not caught — `timeout=30` is set but `requests.Timeout` exception is not handled in `main()`. Only `HTTPError` and `ConnectionError` are caught. (file: sync.py, line 194-198)
+
+Verdict: Fix Issues #1, #2, #3, #5 before approval. #4 is optional.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
