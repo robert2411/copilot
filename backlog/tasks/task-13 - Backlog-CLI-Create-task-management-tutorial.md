@@ -41,6 +41,16 @@ Create detailed tutorial on managing tasks: creation, editing, acceptance criter
 9. Commit file to git
 <!-- SECTION:PLAN:END -->
 
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Analysis complete. No blockers. Source: doc-7 sections Crebacklog task edit 13 --plan $'1. Recd /Users/robertstevens/Projects/copilot-agents && backlog task edit 14 --plan $'1. Read doc-7 MCP Server section (backlog mcp start, tool call interface)\n2. Read doc-3 (Sub-Agents-and-MCP-Servers) for AI tool integration context\n3. Create backlog/docs/mcp-integration-guide.md\n4. Document MCP server startup: backlog mcp start, port config, --integration-mode setting\n5. Document tool call interface: list of available MCP tools, input schemas, response formats\n6. Show integration patterns for Claude Desktop (claude_desktop_config.json), Copilot, other MCP clients\n7. Document --integration-mode options: mcp vs cli vs none, when to use each\n8. Include example tool call sequences for common workflows\n9. Commit file to git'
+q
+exit
+cd /Users/robertstevens/Projects/copilot-agents && backlog task 13 --plain | head -5
+'
+<!-- SECTION:NOTES:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
