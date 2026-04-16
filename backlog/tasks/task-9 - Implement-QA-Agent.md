@@ -25,7 +25,7 @@ Build the QA agent file that reviews completed tasks before they are committed. 
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
 
 ## Acceptance Criteria
