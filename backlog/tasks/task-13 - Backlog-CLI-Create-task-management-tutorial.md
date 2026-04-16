@@ -50,6 +50,11 @@ q
 exit
 cd /Users/robertstevens/Projects/copilot-agents && backlog task 13 --plain | head -5
 '
+
+❌ QA ISSUES:
+- [Medium] Incorrect config key for DoD defaults in tutorial: references `definitionOfDone`, but project config and documented CLI defaults use `definition_of_done` (`backlog/docs/doc-10 - Backlog-CLI-Task-Management-Tutorial.md:247-258`, `backlog/config.yml:5`). This can mislead users configuring DoD defaults.
+
+Verdict: Fix required before approval.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
