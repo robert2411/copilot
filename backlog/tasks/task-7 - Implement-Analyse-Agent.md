@@ -1,7 +1,7 @@
 ---
 id: TASK-7
 title: Implement Analyse Agent
-status: In Progress
+status: Done
 assignee:
   - '@copilot'
 created_date: '2026-04-16 18:15'
