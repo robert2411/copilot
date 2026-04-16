@@ -30,6 +30,17 @@ Based on the agent anatomy research from task-1, define the scope, input/output 
 - [] #4 Quality checklist for generated agents defined
 <!-- AC:END -->
 
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Review task-1 anatomy findings
+2. Define skill scope (DOES/DOES NOT)
+3. Define input contract (6 required inputs)
+4. Define output contract (agent file structure)
+5. Write quality checklist
+6. Capture spec in task notes
+<!-- SECTION:PLAN:END -->
+
 ## Implementation Notes
 
 <!-- SECTION:NOTES:BEGIN -->
