@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:59'
-updated_date: '2026-04-16 21:26'
+updated_date: '2026-04-16 21:28'
 labels:
   - documentation
   - ai-agents
@@ -22,11 +22,11 @@ Create guide for AI agents (Claude, Copilot, etc.) on how to use Backlog CLI for
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 AI agent workflow patterns documented with examples
-- [ ] #2 --plain flag usage explained for machine-readable output
-- [ ] #3 AC scope boundary principles explained for agents
-- [ ] #4 Phase discipline enforced (plan before code)
-- [ ] #5 Multi-tool vs CLI mode patterns shown
+- [x] #1 AI agent workflow patterns documented with examples
+- [x] #2 --plain flag usage explained for machine-readable output
+- [x] #3 AC scope boundary principles explained for agents
+- [x] #4 Phase discipline enforced (plan before code)
+- [x] #5 Multi-tool vs CLI mode patterns shown
 <!-- AC:END -->
 
 ## Implementation Plan
