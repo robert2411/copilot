@@ -25,3 +25,10 @@ Build the Analyse agent file responsible for planning and blocker detection. The
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
+
+
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Agent file created at .claude/agents/analyse.md with correct frontmatter and system prompt
+<!-- AC:END -->
