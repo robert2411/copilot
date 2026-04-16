@@ -32,11 +32,11 @@ Build the Analyse agent file responsible for planning and blocker detection. The
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Agent file created at .claude/agents/analyse.md with correct frontmatter and system prompt
-- [ ] #2 Analyse reads all tasks in the milestone using backlog task <id> --plain
-- [ ] #3 Analyse reads backlog/docs/ and backlog/decisions/ for relevant context
-- [ ] #4 Analyse creates implementation plan for each task using backlog task edit <id> --plan
-- [ ] #5 Analyse flags blockers with a clearly marked note: backlog task edit <id> --append-notes with BLOCKER prefix
-- [ ] #6 Analyse reports ready status per task: backlog task edit <id> --append-notes confirming no blockers
-- [ ] #7 When given a list of orphan tasks, Analyse groups them into logically named milestones and creates milestone files
+- [x] #1 Agent file created at .claude/agents/analyse.md with correct frontmatter and system prompt
+- [x] #2 Analyse reads all tasks in the milestone using backlog task <id> --plain
+- [x] #3 Analyse reads backlog/docs/ and backlog/decisions/ for relevant context
+- [x] #4 Analyse creates implementation plan for each task using backlog task edit <id> --plan
+- [x] #5 Analyse flags blockers with a clearly marked note: backlog task edit <id> --append-notes with BLOCKER prefix
+- [x] #6 Analyse reports ready status per task: backlog task edit <id> --append-notes confirming no blockers
+- [x] #7 When given a list of orphan tasks, Analyse groups them into logically named milestones and creates milestone files
 <!-- AC:END -->
