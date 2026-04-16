@@ -1,7 +1,7 @@
 ---
 id: TASK-10
 title: Integration test the full agent orchestration loop
-status: In Progress
+status: Done
 assignee:
   - '@copilot'
 created_date: '2026-04-16 18:17'
