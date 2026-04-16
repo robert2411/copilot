@@ -22,11 +22,11 @@ Document advanced features: search, board export, sequences, milestones, drafts,
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Search functionality and fuzzy matching patterns explained
-- [ ] #2 Board visualization and export options (markdown, README)
-- [ ] #3 Dependency sequences and topological ordering
-- [ ] #4 Draft workflow and promotion patterns
-- [ ] #5 Configuration management (set/get/list)
+- [x] #1 Search functionality and fuzzy matching patterns explained
+- [x] #2 Board visualization and export options (markdown, README)
+- [x] #3 Dependency sequences and topological ordering
+- [x] #4 Draft workflow and promotion patterns
+- [x] #5 Configuration management (set/get/list)
 <!-- AC:END -->
 
 ## Implementation Plan
