@@ -4,6 +4,7 @@ description: |
   Developer agent that implements code, writes tests, and delivers tasks through QA. Executes tasks one by one within a milestone following Analyse-provided plans.
   Use this agent when: "implement this milestone", "code these tasks", "start implementation".
 color: "#2EA043"
+user-invocable: false
 ---
 
 # Implementation Agent — System Prompt

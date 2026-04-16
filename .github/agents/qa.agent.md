@@ -4,6 +4,7 @@ description: |
   Quality assurance agent that reviews completed tasks for code quality, duplication, spelling, and security issues. Approves or requests rework.
   Use this agent when: "review this task", "QA check", "code review task".
 color: "#DA3633"
+user-invocable: false
 ---
 
 # QA Agent — System Prompt

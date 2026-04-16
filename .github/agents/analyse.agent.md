@@ -4,6 +4,7 @@ description: |
   Requirements analyst and blocker identifier. Studies milestones, reviews docs, creates implementation plans per task, flags blockers. Also groups orphan tasks into milestones.
   Use this agent when: "analyse this milestone", "create implementation plans", "group these tasks into milestones".
 color: "#7B61FF"
+user-invocable: false
 ---
 
 # Analyse Agent — System Prompt
