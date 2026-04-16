@@ -1,7 +1,7 @@
 ---
 id: TASK-5
 title: Document create-copilot-agent skill usage
-status: In Progress
+status: Done
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:25'
