@@ -1,11 +1,11 @@
 ---
 id: TASK-1
 title: Research and document Copilot agent anatomy
-status: Done
+status: To Do
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:23'
-updated_date: '2026-04-16 08:56'
+updated_date: '2026-04-16 16:59'
 labels:
   - agents
   - research
@@ -31,11 +31,11 @@ Read the three reference docs (doc-1 Overview, doc-2 Tool Calls, doc-3 Sub-Agent
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [x] #1 All frontmatter fields (name, description, color) documented with purpose and valid values
-- [x] #2 System prompt best practices documented
-- [x] #3 Sub-agent declaration pattern documented
-- [x] #4 MCP integration pattern documented
-- [x] #5 Summary written to a backlog doc
+- [] #1 All frontmatter fields (name, description, color) documented with purpose and valid values
+- [] #2 System prompt best practices documented
+- [] #3 Sub-agent declaration pattern documented
+- [] #4 MCP integration pattern documented
+- [] #5 Summary written to a backlog doc
 <!-- AC:END -->
 
 ## Final Summary
