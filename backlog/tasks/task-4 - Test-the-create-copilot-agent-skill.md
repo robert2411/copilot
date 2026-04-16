@@ -1,11 +1,11 @@
 ---
 id: TASK-4
 title: Test the create-copilot-agent skill
-status: Done
+status: To Do
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:25'
-updated_date: '2026-04-16 08:56'
+updated_date: '2026-04-16 16:59'
 labels:
   - agents
   - skill
@@ -24,10 +24,10 @@ Manually invoke the create-copilot-agent skill to generate a sample agent (e.g. 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [x] #1 Sample agent generated using the skill
-- [x] #2 Generated agent passes the anatomy checklist from task-1
-- [x] #3 Generated agent frontmatter is valid and complete
-- [x] #4 Skill prompt updated with any gaps found during testing
+- [] #1 Sample agent generated using the skill
+- [] #2 Generated agent passes the anatomy checklist from task-1
+- [] #3 Generated agent frontmatter is valid and complete
+- [] #4 Skill prompt updated with any gaps found during testing
 <!-- AC:END -->
 
 ## Final Summary
@@ -35,7 +35,7 @@ Manually invoke the create-copilot-agent skill to generate a sample agent (e.g. 
 <!-- SECTION:FINAL_SUMMARY:BEGIN -->
 Generated code-reviewer agent using the create-copilot-agent skill process.
 
-Sample agent: .claude/agents/code-reviewer.md
+Sample agent: project-manager.md
 Verified against anatomy checklist (doc-4 §5): all 10 items pass.
 - Frontmatter valid (name, description with triggers, color)
 - System prompt: persona, requirements gathering, tool usage (doc-2 best practices), output format (Markdown review report via show_content), hard constraints
