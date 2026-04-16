@@ -1,7 +1,7 @@
 ---
 id: TASK-12
 title: Test and document Jira sync script
-status: In Progress
+status: Done
 assignee:
   - '@copilot'
 created_date: '2026-04-16 18:51'
