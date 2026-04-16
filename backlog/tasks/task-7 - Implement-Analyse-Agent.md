@@ -25,7 +25,7 @@ Build the Analyse agent file responsible for planning and blocker detection. The
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
 
 ## Acceptance Criteria
