@@ -1,9 +1,11 @@
 ---
 id: TASK-21
 title: 'backlog-cli skill: add docs, milestones, and decisions coverage'
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@copilot'
 created_date: '2026-04-16 22:04'
+updated_date: '2026-04-16 22:05'
 labels:
   - skill
   - documentation
