@@ -1,10 +1,11 @@
 ---
 id: TASK-17
 title: Backlog CLI - Create advanced features guide
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-16 20:59'
-updated_date: '2026-04-16 21:11'
+updated_date: '2026-04-16 21:38'
 labels:
   - documentation
   - advanced
