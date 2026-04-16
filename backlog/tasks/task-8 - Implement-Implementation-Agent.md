@@ -25,3 +25,10 @@ Build the Implementation agent file that executes tasks one by one within a mile
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
+
+
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Agent file created at .claude/agents/implementation.md with correct frontmatter and system prompt
+<!-- AC:END -->
