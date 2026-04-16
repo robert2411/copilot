@@ -37,4 +37,5 @@ Build the Implementation agent file that executes tasks one by one within a mile
 - [ ] #5 Combined test coverage across all milestone tasks meets 80% minimum
 - [ ] #6 Agent checks all AC before handoff: backlog task edit <id> --check-ac for each criterion
 - [ ] #7 Agent checks all DoD before handoff: backlog task edit <id> --check-dod for each item
+- [ ] #8 Agent hands each completed task to QA and fixes all reported issues before committing
 <!-- AC:END -->
