@@ -32,16 +32,16 @@ Build the Implementation agent file that executes tasks one by one within a mile
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Agent file created at .claude/agents/implementation.md with correct frontmatter and system prompt
-- [ ] #2 First action per task is: backlog task edit <id> -s 'In Progress' -a @myself
-- [ ] #3 Agent reads Analyse-provided implementation plan before writing any code
-- [ ] #4 Agent writes unit tests for all implemented code targeting 80%+ coverage per task
-- [ ] #5 Combined test coverage across all milestone tasks meets 80% minimum
-- [ ] #6 Agent checks all AC before handoff: backlog task edit <id> --check-ac for each criterion
-- [ ] #7 Agent checks all DoD before handoff: backlog task edit <id> --check-dod for each item
-- [ ] #8 Agent hands each completed task to QA and fixes all reported issues before committing
-- [ ] #9 Agent adds final summary after QA approval using backlog task edit --final-summary
-- [ ] #10 Agent commits with descriptive message and marks task Done using backlog task edit -s Done
-- [ ] #11 Agent requests clarification from Analyse via --append-notes with question marker when blocked
-- [ ] #12 After all milestone tasks done, agent reports completion to Manager
+- [x] #1 Agent file created at .claude/agents/implementation.md with correct frontmatter and system prompt
+- [x] #2 First action per task is: backlog task edit <id> -s 'In Progress' -a @myself
+- [x] #3 Agent reads Analyse-provided implementation plan before writing any code
+- [x] #4 Agent writes unit tests for all implemented code targeting 80%+ coverage per task
+- [x] #5 Combined test coverage across all milestone tasks meets 80% minimum
+- [x] #6 Agent checks all AC before handoff: backlog task edit <id> --check-ac for each criterion
+- [x] #7 Agent checks all DoD before handoff: backlog task edit <id> --check-dod for each item
+- [x] #8 Agent hands each completed task to QA and fixes all reported issues before committing
+- [x] #9 Agent adds final summary after QA approval using backlog task edit --final-summary
+- [x] #10 Agent commits with descriptive message and marks task Done using backlog task edit -s Done
+- [x] #11 Agent requests clarification from Analyse via --append-notes with question marker when blocked
+- [x] #12 After all milestone tasks done, agent reports completion to Manager
 <!-- AC:END -->
