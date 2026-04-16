@@ -1,9 +1,11 @@
 ---
 id: TASK-22
 title: 'backlog-cli skill: remove MCP, board, and browser sections'
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@copilot'
 created_date: '2026-04-16 22:05'
+updated_date: '2026-04-16 22:05'
 labels:
   - skill
   - documentation
