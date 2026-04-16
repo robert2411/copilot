@@ -1,10 +1,11 @@
 ---
 id: TASK-11
 title: Implement Jira-to-Backlog sync script
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@copilot'
 created_date: '2026-04-16 18:51'
-updated_date: '2026-04-16 18:55'
+updated_date: '2026-04-16 18:57'
 labels:
   - jira
   - sync
