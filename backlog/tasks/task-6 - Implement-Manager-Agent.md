@@ -26,4 +26,5 @@ Build the Manager agent file that orchestrates the full workflow. The Manager sc
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [ ] #1 Agent file created at .claude/agents/manager.md with correct frontmatter and system prompt
+- [ ] #2 Manager scans backlog using backlog task list and backlog milestone list --plain
 <!-- AC:END -->
