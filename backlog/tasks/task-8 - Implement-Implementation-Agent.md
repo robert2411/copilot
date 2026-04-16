@@ -34,4 +34,5 @@ Build the Implementation agent file that executes tasks one by one within a mile
 - [ ] #2 First action per task is: backlog task edit <id> -s 'In Progress' -a @myself
 - [ ] #3 Agent reads Analyse-provided implementation plan before writing any code
 - [ ] #4 Agent writes unit tests for all implemented code targeting 80%+ coverage per task
+- [ ] #5 Combined test coverage across all milestone tasks meets 80% minimum
 <!-- AC:END -->
