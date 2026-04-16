@@ -1,6 +1,6 @@
 ---
 name: backlog-cli
-description: 'Comprehensive project management via the Backlog.md CLI tool. Use when asked to manage tasks, create tasks, update task status, manage acceptance criteria (AC), manage definition of done (DoD), search backlog, view kanban board, integrate with MCP, handle multi-shell newline input patterns, implement agent workflows with backlog, or work with task lifecycle (To Do → In Progress → Done). Covers CLI commands, AI agent integration, MCP server setup, and best practices.'
+description: 'Comprehensive project management via the Backlog.md CLI tool. Use when asked to manage tasks, create tasks, update task status, manage acceptance criteria (AC), manage definition of done (DoD), search backlog, manage docs, milestones, and decisions, handle multi-shell newline input patterns, implement agent workflows with backlog, or work with task lifecycle (To Do → In Progress → Done). Covers CLI commands, AI agent integration, and best practices.'
 ---
 
 # Backlog CLI Skill
@@ -12,8 +12,7 @@ Full-featured project management through the `backlog` CLI. Handles entire task 
 - Creating, editing, viewing, or listing tasks
 - Managing acceptance criteria or definition of done
 - Searching for tasks by topic, status, or assignee
-- Viewing the kanban board
-- Setting up or using Backlog as an MCP server
+- Managing docs, milestones, and decisions
 - Implementing AI agent workflows with task tracking
 - Handling multi-shell newline input for descriptions, plans, notes, summaries
 
@@ -152,14 +151,44 @@ Always use `--plain` for AI-readable output.
 
 ---
 
-## Board Visualization
+## Docs, Milestones, and Decisions
+
+### Documents
+
+Store design docs, specs, and reference material alongside tasks.
 
 ```bash
-# Terminal Kanban board
-backlog board
+# Create a document
+backlog doc create "API Design"
 
-# Web UI (opens browser)
-backlog browser
+# List all documents
+backlog doc list --plain
+
+# View a document
+backlog doc view <docId>
+```
+
+### Milestones
+
+Group related tasks into milestones to track larger units of work.
+
+```bash
+# List milestones with completion status
+backlog milestone list --plain
+
+# Archive a completed milestone
+backlog milestone archive "Milestone Name"
+```
+
+Assign a task to a milestone by adding `milestone: <name>` to the task frontmatter — or set it when the milestone file is created in `backlog/milestones/`.
+
+### Decisions
+
+Record architectural decision records (ADRs) in `backlog/decisions/`.
+
+```bash
+# Create a decision record
+backlog decision create "Use PostgreSQL for primary storage"
 ```
 
 ---
@@ -189,50 +218,6 @@ backlog task edit <id> --plan "$(printf '1. Research\n2. Build\n3. Test')"
 ```powershell
 backlog task edit <id> --notes "Line one`nLine two`nLine three"
 ```
-
----
-
-## MCP Integration
-
-Backlog CLI can run as an MCP (Model Context Protocol) server, allowing AI agents to call task operations via tool calls.
-
-### Start MCP Server
-
-```bash
-backlog mcp
-```
-
-### Configure in MCP Client (e.g., Claude Desktop)
-
-```json
-{
-  "mcpServers": {
-    "backlog": {
-      "command": "backlog",
-      "args": ["mcp"],
-      "cwd": "/path/to/your/project"
-    }
-  }
-}
-```
-
-### Available MCP Tools
-
-Once registered, the AI agent can call:
-- `backlog_task_create` — create a task
-- `backlog_task_edit` — edit task metadata, AC, notes, etc.
-- `backlog_task_view` — read a task
-- `backlog_task_list` — list/filter tasks
-- `backlog_search` — fuzzy search
-
-### Agent Workflow via MCP
-
-1. Agent receives task ID from orchestrator
-2. Agent calls `backlog_task_view` to read description + plan
-3. Agent implements code changes
-4. Agent calls `backlog_task_edit` to update status, check ACs, add notes
-5. Agent calls `backlog_task_edit` to add final summary
-6. Agent calls `backlog_task_edit` to set status Done
 
 ---
 
@@ -332,4 +317,8 @@ backlog task edit <id> --plan $'1. Review existing code\n2. Design approach\n3. 
 - [AI Agent Integration Guide](../../../backlog/docs/doc-13%20-%20Backlog-CLI-AI-Agent-Integration-Guide.md)
 - [Advanced Features Guide](../../../backlog/docs/doc-14%20-%20Backlog-CLI-Advanced-Features-Guide.md)
 - [USAGE.md](./references/USAGE.md)
+
+
+
+
 

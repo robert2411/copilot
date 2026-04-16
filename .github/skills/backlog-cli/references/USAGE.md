@@ -134,7 +134,7 @@ backlog task edit <id> --notes "$(printf 'Done A\nDone B\nTODO C')"
 backlog task edit <id> --final-summary "Added X`nUpdated Y`nTests pass"
 ```
 
-### Search and Board
+### Search
 
 ```bash
 # Fuzzy search (searches titles, descriptions, content)
@@ -145,39 +145,23 @@ backlog search "login" --type task --status "In Progress" --plain
 
 # Filter by priority
 backlog search "bug" --priority high --plain
-
-# Kanban board in terminal
-backlog board
-
-# Kanban board in browser
-backlog browser
 ```
 
-### MCP Server Usage
+### Docs, Milestones, and Decisions
 
 ```bash
-# Start MCP server (stdio transport)
-backlog mcp start
+# Documents
+backlog doc create "API Design Spec"
+backlog doc list --plain
+backlog doc view <docId>
 
-# Or use the shorthand
-backlog mcp
+# Milestones
+backlog milestone list --plain
+backlog milestone archive "Sprint 1"
+
+# Decisions
+backlog decision create "Use PostgreSQL for primary storage"
 ```
-
-**Claude Desktop config** (`~/Library/Application Support/Claude/claude_desktop_config.json`):
-
-```json
-{
-  "mcpServers": {
-    "backlog": {
-      "command": "backlog",
-      "args": ["mcp", "start"],
-      "cwd": "/absolute/path/to/your/project"
-    }
-  }
-}
-```
-
-After restart, Claude can call `backlog_task_create`, `backlog_task_edit`, `backlog_task_view`, `backlog_task_list`, and `backlog_search` as MCP tools.
 
 ### AI Agent Workflow
 
@@ -208,9 +192,7 @@ backlog task edit <id> -s Done
 | Task not found by ID | Wrong ID or archived | `backlog task list --plain` to list active tasks |
 | AC index out of range | Stale index reference | `backlog task <id> --plain` to see current AC indices |
 | `\n` appearing as literal text | Wrong quote style | Use `$'...'` in bash/zsh or `printf` |
-| Skill not auto-activating | Keywords not matching | Mention "backlog", "task", "kanban", "AC", or "DoD" explicitly |
-| MCP tools not available | Server not configured | Add `backlog mcp start` to MCP client config with correct `cwd` |
-| MCP wrong project | `cwd` misconfigured | Ensure `cwd` in MCP config points to folder with `backlog/config.yml` |
+| Skill not auto-activating | Keywords not matching | Mention "backlog", "task", "AC", or "DoD" explicitly |
 | Metadata out of sync | Direct file edit | Re-edit via CLI: `backlog task edit <id> -s <current-status>` |
 | Board shows empty columns | All tasks in same status | Check `backlog task list --plain` for actual statuses |
 | Search returns no results | Term too specific | Use shorter keywords; backlog uses fuzzy matching |
@@ -282,9 +264,14 @@ backlog task edit <id> --append-notes $'...'     # Log progress
 backlog task edit <id> --final-summary $'...'    # PR summary
 backlog task edit <id> -s Done                   # Complete
 backlog search "keyword" --plain                 # Search
-backlog board                                    # Kanban
-backlog mcp start                                # MCP server
+backlog milestone list --plain                   # Milestones
+backlog doc list --plain                         # Docs
+backlog decision create "Title"                  # Decision
 ```
+
+
+
+
 
 
 
