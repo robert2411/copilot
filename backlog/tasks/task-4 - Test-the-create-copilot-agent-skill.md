@@ -1,7 +1,7 @@
 ---
 id: TASK-4
 title: Test the create-copilot-agent skill
-status: In Progress
+status: Done
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:25'
