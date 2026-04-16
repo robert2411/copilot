@@ -1,10 +1,11 @@
 ---
 id: TASK-12
 title: Test and document Jira sync script
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@copilot'
 created_date: '2026-04-16 18:51'
-updated_date: '2026-04-16 18:55'
+updated_date: '2026-04-16 19:00'
 labels:
   - jira
   - sync
