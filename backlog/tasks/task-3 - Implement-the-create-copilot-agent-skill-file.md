@@ -1,11 +1,11 @@
 ---
 id: TASK-3
 title: Implement the create-copilot-agent skill file
-status: Done
+status: To Do
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:25'
-updated_date: '2026-04-16 08:56'
+updated_date: '2026-04-16 16:59'
 labels:
   - agents
   - skill
@@ -28,24 +28,24 @@ priority: high
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Create .claude/agents/create-copilot-agent.md — a full Claude agent file with valid frontmatter and a system prompt that guides an AI to author new Copilot custom agent files. Use doc-1, doc-2, and doc-3 as the source of truth.
+Create .github/agents/create-copilot-agent.agent.md — a full Claude agent file with valid frontmatter and a system prompt that guides an AI to author new Copilot custom agent files. Use doc-1, doc-2, and doc-3 as the source of truth.
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [x] #1 Agent file has valid frontmatter: name, description with usage examples, color
-- [x] #2 System prompt instructs the skill to gather: agent purpose, required tools, sub-agents needed, MCP servers
-- [x] #3 System prompt includes AGENTS.md authoring guidance from doc-1
-- [x] #4 System prompt includes built-in tool call best practices from doc-2
-- [x] #5 System prompt includes sub-agent and MCP patterns from doc-3
-- [x] #6 Agent file is self-contained and usable without additional context
-- [x] #7 Generated agents follow the anatomy established in task-1
+- [] #1 Agent file has valid frontmatter: name, description with usage examples, color
+- [] #2 System prompt instructs the skill to gather: agent purpose, required tools, sub-agents needed, MCP servers
+- [] #3 System prompt includes AGENTS.md authoring guidance from doc-1
+- [] #4 System prompt includes built-in tool call best practices from doc-2
+- [] #5 System prompt includes sub-agent and MCP patterns from doc-3
+- [] #6 Agent file is self-contained and usable without additional context
+- [] #7 Generated agents follow the anatomy established in task-1
 <!-- AC:END -->
 
 ## Final Summary
 
 <!-- SECTION:FINAL_SUMMARY:BEGIN -->
-Created .claude/agents/create-copilot-agent.md.
+Created .github/agents/create-copilot-agent.agent.md.
 
 Frontmatter: name=create-copilot-agent, description with trigger examples, color=#7B5EA7.
 System prompt covers: role/scope, 8-point requirements gathering, built-in tool best practices (doc-2), sub-agent delegation patterns (doc-3), MCP tool usage patterns (doc-3), quality checklist, output format, hard constraints.
