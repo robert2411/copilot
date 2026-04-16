@@ -1,10 +1,11 @@
 ---
 id: TASK-19
 title: Test Backlog CLI skill across workflows
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-16 20:59'
-updated_date: '2026-04-16 21:49'
+updated_date: '2026-04-16 21:53'
 labels:
   - skill
   - qa
