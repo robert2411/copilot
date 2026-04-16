@@ -47,6 +47,12 @@ Write tests and usage docs for the Jira-to-Backlog sync script. Verify idempoten
 4. Register doc via backlog CLI if needed
 <!-- SECTION:PLAN:END -->
 
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Analysis complete. No blockers. Depends on TASK-11 (already declared).
+<!-- SECTION:NOTES:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
