@@ -1,11 +1,11 @@
 ---
 id: TASK-5
 title: Document create-copilot-agent skill usage
-status: Done
+status: To Do
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:25'
-updated_date: '2026-04-16 08:56'
+updated_date: '2026-04-16 16:59'
 labels:
   - agents
   - skill
@@ -24,11 +24,11 @@ Add a backlog doc that explains how to use the create-copilot-agent skill: when 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [x] #1 Usage guide created in backlog docs
-- [x] #2 When-to-use guidance included
-- [x] #3 Required inputs described with examples
-- [x] #4 Expected output format described
-- [x] #5 Worked example invocation included
+- [] #1 Usage guide created in backlog docs
+- [] #2 When-to-use guidance included
+- [] #3 Required inputs described with examples
+- [] #4 Expected output format described
+- [] #5 Worked example invocation included
 <!-- AC:END -->
 
 ## Final Summary
