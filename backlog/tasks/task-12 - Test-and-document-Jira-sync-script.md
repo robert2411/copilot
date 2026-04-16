@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 18:51'
-updated_date: '2026-04-16 19:00'
+updated_date: '2026-04-16 19:02'
 labels:
   - jira
   - sync
@@ -24,9 +24,9 @@ Write tests and usage docs for the Jira-to-Backlog sync script. Verify idempoten
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Unit tests for config loading and milestone dedup logic
-- [ ] #2 Integration test with mocked Jira API responses
-- [ ] #3 README or doc in backlog/docs describing setup and usage
+- [x] #1 Unit tests for config loading and milestone dedup logic
+- [x] #2 Integration test with mocked Jira API responses
+- [x] #3 README or doc in backlog/docs describing setup and usage
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -52,9 +52,13 @@ Write tests and usage docs for the Jira-to-Backlog sync script. Verify idempoten
 
 <!-- SECTION:NOTES:BEGIN -->
 Analysis complete. No blockers. Depends on TASK-11 (already declared).
+
+- 15 tests passing: config loading (5), dedup (3), filename (3), integration with mocked API (4)
+- Created doc-7 usage guide
+- Fixed Python 3.9 compat (added __future__ annotations)
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
