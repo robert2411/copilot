@@ -48,6 +48,16 @@ Document best practices, patterns, and anti-patterns for using Backlog CLI effec
 Analysis complete. No blockers. Sources: doc-7 Golden Rules + AI Workflow, AGENTS.md phase discipline.
 <!-- SECTION:NOTES:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created doc-12: Backlog CLI Best Practices.
+
+Covers phase discipline (create/start/during/complete), AC writing principles with good/bad examples, multi-task patterns (dependency ordering, board triage, search, milestones), anti-patterns (direct editing, skipping plan, premature Done, note overwriting), and Git integration/branching strategy.
+
+File: backlog/docs/doc-12 - Backlog-CLI-Best-Practices.md
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
