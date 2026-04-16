@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:25'
-updated_date: '2026-04-16 17:04'
+updated_date: '2026-04-16 17:05'
 labels:
   - agents
   - skill
@@ -29,6 +29,16 @@ Manually invoke the create-copilot-agent skill to generate a sample agent (e.g. 
 - [] #3 Generated agent frontmatter is valid and complete
 - [] #4 Skill prompt updated with any gaps found during testing
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Invoke create-copilot-agent skill process for a sample agent
+2. Choose project-manager as sample (uses backlog CLI)
+3. Generate .github/agents/project-manager.agent.md
+4. Verify against anatomy checklist (doc-4 §5)
+5. Report results
+<!-- SECTION:PLAN:END -->
 
 ## Final Summary
 
