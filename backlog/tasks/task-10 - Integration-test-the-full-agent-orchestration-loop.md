@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 18:17'
-updated_date: '2026-04-16 18:28'
+updated_date: '2026-04-16 18:29'
 labels:
   - integration
   - orchestration
@@ -53,3 +53,19 @@ Run the full orchestration loop end-to-end to validate all four agents work toge
 8. Trace AC#8: No-milestones-but-tasks → Analyse grouping
 9. Document gaps against doc-6, fix if needed
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Integration trace complete. All 8 AC paths verified against agent files:
+- AC1: Manager Step 1+2 — milestone scan + Analyse routing ✅
+- AC2: Analyse Mode 1 — plan creation + no-blocker notes ✅
+- AC3: Manager Step 3+4 — blocker check + Implementation routing ✅
+- AC4: Implementation Steps 1-5 — claim, implement, test, QA handoff ✅
+- AC5: QA Steps 2-3 — structured findings or approval ✅
+- AC6: Implementation Steps 6-7 — fix QA issues, commit, Done ✅
+- AC7: Manager Step 5 — loop/exit decision ✅
+- AC8: Manager Steps 1+6 — orphan tasks → Analyse grouping ✅
+
+Gap found: Manager missing backlog milestone list command. Fixed.
+<!-- SECTION:NOTES:END -->
