@@ -9,6 +9,8 @@ labels:
   - manager
   - orchestration
 dependencies: []
+documentation:
+  - backlog/docs/doc-6 - Agent-Workflow-Orchestration-System.md
 priority: high
 ---
 
