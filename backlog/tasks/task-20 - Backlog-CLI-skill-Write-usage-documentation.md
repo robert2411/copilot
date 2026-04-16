@@ -1,10 +1,11 @@
 ---
 id: TASK-20
 title: Backlog CLI skill - Write usage documentation
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-16 20:59'
-updated_date: '2026-04-16 21:49'
+updated_date: '2026-04-16 21:57'
 labels:
   - documentation
   - skill
