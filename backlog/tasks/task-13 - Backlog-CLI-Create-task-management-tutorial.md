@@ -1,7 +1,7 @@
 ---
 id: TASK-13
 title: Backlog CLI - Create task management tutorial
-status: In Progress
+status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:58'
