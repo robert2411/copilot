@@ -21,6 +21,7 @@ Testing task creation workflow for skill validation
 <!-- AC:BEGIN -->
 - [x] #1 Can create task
 - [ ] #2 Can assign labels
+- [ ] #3 New AC added during test
 <!-- AC:END -->
 
 ## Definition of Done
