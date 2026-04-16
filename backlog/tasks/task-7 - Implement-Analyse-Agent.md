@@ -31,4 +31,5 @@ Build the Analyse agent file responsible for planning and blocker detection. The
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [ ] #1 Agent file created at .claude/agents/analyse.md with correct frontmatter and system prompt
+- [ ] #2 Analyse reads all tasks in the milestone using backlog task <id> --plain
 <!-- AC:END -->
