@@ -1,11 +1,11 @@
 ---
 id: TASK-1
 title: Research and document Copilot agent anatomy
-status: Done
+status: To Do
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:23'
-updated_date: '2026-04-16 07:31'
+updated_date: '2026-04-16 08:44'
 labels:
   - agents
   - research
