@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:23'
-updated_date: '2026-04-16 17:02'
+updated_date: '2026-04-16 17:03'
 labels:
   - agents
   - research
@@ -37,6 +37,15 @@ Read the three reference docs (doc-1 Overview, doc-2 Tool Calls, doc-3 Sub-Agent
 - [] #4 MCP integration pattern documented
 - [] #5 Summary written to a backlog doc
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Read doc-1, doc-2, doc-3
+2. Synthesise frontmatter fields, system prompt best practices, sub-agent pattern, MCP pattern
+3. Write to doc-4
+4. Mark ACs complete
+<!-- SECTION:PLAN:END -->
 
 ## Final Summary
 
