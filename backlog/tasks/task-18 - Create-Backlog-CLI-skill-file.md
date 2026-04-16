@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:59'
-updated_date: '2026-04-16 21:52'
+updated_date: '2026-04-16 21:53'
 labels:
   - skill
   - implementation
@@ -74,6 +74,19 @@ Verdict: Fix required before approval.
 - Reviewed files: `.github/skills/backlog-cli/SKILL.md`, `.github/skills/backlog-cli/references/USAGE.md`.
 - Security/quality/spelling: No issues identified.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created .github/skills/backlog-cli/SKILL.md — comprehensive Copilot skill for Backlog CLI.
+
+Changes:
+- .github/skills/backlog-cli/SKILL.md (335 lines): frontmatter, task lifecycle, AC/DoD management, multi-shell newline patterns, MCP integration, AI agent patterns, troubleshooting, references
+- .github/skills/backlog-cli/references/USAGE.md (stub for task-20)
+
+Validation:
+- name matches folder, description 10-1024 chars, body under 500 lines
+<!-- SECTION:FINAL_SUMMARY:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
