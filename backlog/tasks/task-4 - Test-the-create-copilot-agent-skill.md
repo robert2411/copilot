@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 07:25'
-updated_date: '2026-04-16 08:35'
+updated_date: '2026-04-16 08:36'
 labels:
   - agents
   - skill
@@ -24,8 +24,8 @@ Manually invoke the create-copilot-agent skill to generate a sample agent (e.g. 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Sample agent generated using the skill
-- [ ] #2 Generated agent passes the anatomy checklist from task-1
-- [ ] #3 Generated agent frontmatter is valid and complete
-- [ ] #4 Skill prompt updated with any gaps found during testing
+- [x] #1 Sample agent generated using the skill
+- [x] #2 Generated agent passes the anatomy checklist from task-1
+- [x] #3 Generated agent frontmatter is valid and complete
+- [x] #4 Skill prompt updated with any gaps found during testing
 <!-- AC:END -->
