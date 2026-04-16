@@ -1,7 +1,7 @@
 ---
 id: TASK-11
 title: Implement Jira-to-Backlog sync script
-status: In Progress
+status: Done
 assignee:
   - '@copilot'
 created_date: '2026-04-16 18:51'
