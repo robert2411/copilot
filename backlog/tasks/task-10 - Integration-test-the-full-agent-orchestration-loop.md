@@ -25,7 +25,7 @@ Run the full orchestration loop end-to-end to validate all four agents work toge
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
 
 ## Acceptance Criteria
