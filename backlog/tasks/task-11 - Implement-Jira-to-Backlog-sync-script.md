@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 18:51'
-updated_date: '2026-04-16 18:57'
+updated_date: '2026-04-16 18:58'
 labels:
   - jira
   - sync
@@ -22,12 +22,12 @@ Python script for one-way Jira to Backlog milestone sync. Connects to Jira REST 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Reads config from external YAML or env vars
-- [ ] #2 Queries Jira REST API with configured JQL
-- [ ] #3 Creates milestone per Jira issue with jira_key in frontmatter
-- [ ] #4 Skips if jira_key exists already (idempotent)
-- [ ] #5 Logs created and skipped milestones
-- [ ] #6 requirements.txt with dependencies
+- [x] #1 Reads config from external YAML or env vars
+- [x] #2 Queries Jira REST API with configured JQL
+- [x] #3 Creates milestone per Jira issue with jira_key in frontmatter
+- [x] #4 Skips if jira_key exists already (idempotent)
+- [x] #5 Logs created and skipped milestones
+- [x] #6 requirements.txt with dependencies
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -51,9 +51,13 @@ Python script for one-way Jira to Backlog milestone sync. Connects to Jira REST 
 
 <!-- SECTION:NOTES:BEGIN -->
 Analysis complete. No blockers.
+
+- Created scripts/jira_sync/sync.py with config loading, Jira API query, milestone creation, dedup, logging
+- Created config.example.yml
+- Created requirements.txt
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
