@@ -28,8 +28,6 @@ Build the Analyse agent file responsible for planning and blocker detection. The
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
 
-
-
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [x] #1 Agent file created at .claude/agents/analyse.md with correct frontmatter and system prompt
@@ -40,3 +38,16 @@ Build the Analyse agent file responsible for planning and blocker detection. The
 - [x] #6 Analyse reports ready status per task: backlog task edit <id> --append-notes confirming no blockers
 - [x] #7 When given a list of orphan tasks, Analyse groups them into logically named milestones and creates milestone files
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created .claude/agents/analyse.md — planning and blocker detection agent.
+
+Covers:
+- Reads tasks via backlog CLI, reviews docs/decisions
+- Writes implementation plans per task via --plan
+- Flags blockers with ⚠️ BLOCKER prefix in notes
+- Confirms ready status per task
+- Orphan task grouping into milestones
+<!-- SECTION:FINAL_SUMMARY:END -->
