@@ -1,7 +1,7 @@
 ---
 id: TASK-18
 title: Create Backlog CLI skill file
-status: In Progress
+status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:59'
