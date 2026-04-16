@@ -23,6 +23,14 @@ Testing task creation workflow for skill validation
 - [ ] #2 Can assign labels
 <!-- AC:END -->
 
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Line one
+Line two
+Line three
+<!-- SECTION:NOTES:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
