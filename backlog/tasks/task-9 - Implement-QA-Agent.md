@@ -36,4 +36,5 @@ Build the QA agent file that reviews completed tasks before they are committed. 
 - [ ] #4 QA verifies all Definition of Done items are checked before proceeding
 - [ ] #5 QA checks for code duplication and reports specific file/line locations
 - [ ] #6 QA performs general code quality review: readability, patterns, best practices
+- [ ] #7 QA checks spelling errors in comments, strings, and documentation
 <!-- AC:END -->
