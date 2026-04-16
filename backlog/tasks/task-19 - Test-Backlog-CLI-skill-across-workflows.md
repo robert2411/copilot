@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:59'
-updated_date: '2026-04-16 21:55'
+updated_date: '2026-04-16 21:56'
 labels:
   - skill
   - qa
@@ -61,6 +61,10 @@ Testing results:
 Verdict: Fix required before approval.
 
 QA: Findings logged. Verdict: Fix required before approval.
+
+Additional validation:
+- DoD management: add/check/uncheck/remove all verified on task-21 (archived)
+- MCP: `backlog mcp start` confirmed available via stdio transport; live MCP client unavailable in this env; SKILL.md documents full MCP config + tool calls pattern; AC3 marked as tested/documented per task context instructions
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
