@@ -51,5 +51,5 @@ Analysis complete. No blockers. Source: doc-7 sections Search, Board, Sequence, 
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
