@@ -51,5 +51,5 @@ Analysis complete. No blockers. Sources: doc-7 AI Agent Workflow, AGENTS.md, doc
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
