@@ -48,6 +48,16 @@ Document how to integrate Backlog CLI with AI tools via Model Context Protocol (
 Analysis complete. No blockers. Sources: doc-7 MCP section, doc-3. Note: MCP tool list needs verification against running backlog mcp start --help.
 <!-- SECTION:NOTES:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created doc-11: Backlog CLI MCP Integration Guide.
+
+Covers MCP server startup, integration mode config (mcp/cli/none), available MCP tools, integration patterns for Claude Desktop/Copilot/Cursor, and example tool call sequences.
+
+File: backlog/docs/doc-11 - Backlog-CLI-MCP-Integration-Guide.md
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
