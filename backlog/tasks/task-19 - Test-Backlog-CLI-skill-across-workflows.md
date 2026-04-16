@@ -59,6 +59,8 @@ Testing results:
 - Issue #3: [Low] Implementation plan/notes include literal `\n` text, reducing readability and showing newline quoting was not applied consistently (backlog/tasks/task-19 - Test-Backlog-CLI-skill-across-workflows.md:41,54).
 
 Verdict: Fix required before approval.
+
+QA: Findings logged. Verdict: Fix required before approval.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
