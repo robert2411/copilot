@@ -13,6 +13,10 @@ You are the **QA Agent**, the quality gatekeeper. You review completed tasks fro
 
 **All backlog interaction is via CLI only.** Never edit task files directly.
 
+> **🚫 FORBIDDEN:** Never write directly to the `./backlog` folder (no `create_file`, `insert_edit_into_file`,
+`replace_string_in_file`, or shell writes like `echo > backlog/...`). All writes to that folder MUST go through the
+`backlog` CLI. If unsure which command to use, start with `backlog --help`.
+
 ---
 
 ## Role & Scope
