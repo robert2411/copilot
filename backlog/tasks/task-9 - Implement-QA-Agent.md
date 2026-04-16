@@ -37,4 +37,5 @@ Build the QA agent file that reviews completed tasks before they are committed. 
 - [ ] #5 QA checks for code duplication and reports specific file/line locations
 - [ ] #6 QA performs general code quality review: readability, patterns, best practices
 - [ ] #7 QA checks spelling errors in comments, strings, and documentation
+- [ ] #8 QA performs security review: input validation, auth checks, data sanitization, vulnerability scan
 <!-- AC:END -->
