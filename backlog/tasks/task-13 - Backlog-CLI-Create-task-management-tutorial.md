@@ -52,6 +52,16 @@ cd /Users/robertstevens/Projects/copilot-agents && backlog task 13 --plain | hea
 '
 <!-- SECTION:NOTES:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created doc-10: Backlog CLI Task Management Tutorial.
+
+Covers full task creation with all flags, editing lifecycle fields, status transitions, AC/DoD management with before/after examples, and dependency/subtask patterns.
+
+File: backlog/docs/doc-10 - Backlog-CLI-Task-Management-Tutorial.md
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
