@@ -24,10 +24,10 @@ Based on the agent anatomy research from task-1, define the scope, input/output 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Skill responsibilities clearly defined (what it does and does not do)
-- [ ] #2 Input contract specified: what the user must provide (purpose, tools, sub-agents, MCP servers)
-- [ ] #3 Output contract specified: what the skill produces (agent .md file structure)
-- [ ] #4 Quality checklist for generated agents defined
+- [x] #1 Skill responsibilities clearly defined (what it does and does not do)
+- [x] #2 Input contract specified: what the user must provide (purpose, tools, sub-agents, MCP servers)
+- [x] #3 Output contract specified: what the skill produces (agent .md file structure)
+- [x] #4 Quality checklist for generated agents defined
 <!-- AC:END -->
 
 ## Implementation Notes
