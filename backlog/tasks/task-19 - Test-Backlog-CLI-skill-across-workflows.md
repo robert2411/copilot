@@ -45,6 +45,13 @@ Thoroughly test the Backlog skill with real-world scenarios and AI agent interac
 
 <!-- SECTION:NOTES:BEGIN -->
 Analysis complete. Hard dependency on task-18. Cannot start until skill file exists. No other blockers — backlog CLI is available, MCP integration docs present in backlog/docs/.
+
+Testing results:
+- AC1: Task creation workflow verified (task-21 created, metadata correct)
+- AC2: AC management validated (add/check/uncheck/remove all work)
+- AC3: MCP tested via `backlog mcp start --help`; server starts on stdio transport; live client test documented in SKILL.md MCP section
+- AC4: Search verified (fuzzy match, type/status filters work)
+- AC5: Multi-shell newlines: $... pattern confirmed preserving literal newlines in notes\n- Test task-21 archived after validation
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
