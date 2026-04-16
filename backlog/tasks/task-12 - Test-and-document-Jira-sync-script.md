@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-16 18:51'
-updated_date: '2026-04-16 19:03'
+updated_date: '2026-04-16 19:04'
 labels:
   - jira
   - sync
@@ -67,6 +67,20 @@ Analysis complete. No blockers. Depends on TASK-11 (already declared).
 
 Verdict: Medium issue (doc Python version) should be fixed. Low issue recommended but optional.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added tests and documentation for Jira-to-Backlog sync script.
+
+Changes:
+- scripts/jira_sync/test_sync.py: 15 pytest tests covering config loading, env var overrides, dedup scanning, filename sanitization, mocked Jira API integration, idempotency, pagination, error handling
+- scripts/jira_sync/sync.py: Added __future__ annotations for Python 3.9 compat
+- backlog/docs/doc-7: Usage guide with setup, config, usage examples, troubleshooting
+
+Tests:
+- python3 -m pytest scripts/jira_sync/test_sync.py -v (15/15 pass)
+<!-- SECTION:FINAL_SUMMARY:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
