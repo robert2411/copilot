@@ -74,3 +74,9 @@ A single `.claude/agents/<kebab-name>.md` file containing:
 - [ ] System prompt includes MCP patterns from doc-3 if applicable
 - [ ] File is self-contained — no external references needed to use it
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Defined full skill spec: responsibilities (what skill does/doesn't do), input contract (6 required inputs), output contract (.claude/agents/<name>.md with frontmatter + structured system prompt + AGENTS.md snippet), and quality checklist (10 items). Spec captured in task notes.
+<!-- SECTION:FINAL_SUMMARY:END -->
