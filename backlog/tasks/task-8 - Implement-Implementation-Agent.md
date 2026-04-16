@@ -32,4 +32,5 @@ Build the Implementation agent file that executes tasks one by one within a mile
 <!-- AC:BEGIN -->
 - [ ] #1 Agent file created at .claude/agents/implementation.md with correct frontmatter and system prompt
 - [ ] #2 First action per task is: backlog task edit <id> -s 'In Progress' -a @myself
+- [ ] #3 Agent reads Analyse-provided implementation plan before writing any code
 <!-- AC:END -->
