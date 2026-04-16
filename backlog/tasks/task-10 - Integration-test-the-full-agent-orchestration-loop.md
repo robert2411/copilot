@@ -8,6 +8,7 @@ updated_date: '2026-04-16 18:17'
 labels:
   - integration
   - orchestration
+milestone: Agent Workflow Orchestration System
 dependencies:
   - TASK-9
 documentation:

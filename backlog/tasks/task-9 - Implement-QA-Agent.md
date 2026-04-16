@@ -8,6 +8,7 @@ updated_date: '2026-04-16 18:17'
 labels:
   - qa
   - orchestration
+milestone: Agent Workflow Orchestration System
 dependencies:
   - TASK-8
 documentation:

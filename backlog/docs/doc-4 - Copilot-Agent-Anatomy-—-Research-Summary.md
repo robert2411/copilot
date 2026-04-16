@@ -7,19 +7,88 @@ created_date: '2026-04-16 07:30'
 
 # Copilot Agent Anatomy — Research Summary
 
-Ground truth synthesised from doc-1, doc-2, and doc-3 for all tasks in the Copilot Agent Creation Skill milestone.
+Source docs: doc-1 (Overview), doc-2 (Tool Calls), doc-3 (Sub-Agents & MCP).
 
 ---
 
-## 1. Agent Identity: `AGENTS.md`
+## 1. Frontmatter Fields
 
-Placed at workspace root. Copilot reads it at session start. Three main sections:
+Agent files (`.github/agents/*.agent.md` or `.claude/agents/*.md`) require YAML frontmatter:
 
-### 1.1 Coding Instructions
-Free-form markdown. Project conventions, tech stack, style rules. No special wrapper.
+| Field | Required | Purpose | Valid Values |
+|---|---|---|---|
+| `name` | ✅ | Identifier used in `agentName` param of `run_subagent`; case-sensitive | kebab-case string (e.g. `code-reviewer`) |
+| `description` | ✅ | Shown in agent picker; drives skill routing. Must include "Use this agent when:" trigger phrases | Multi-line string |
+| `color` | ✅ | UI accent colour in the agent picker | Hex string e.g. `"#0078D4"` |
 
-### 1.2 Sub-Agent Declarations
-Wrapped in `<subagent-instructions>` tags. Declares available named sub-agents.
+**Rules:**
+- `name` must match `agentName` in all `run_subagent` calls exactly (case-sensitive)
+- `description` should include 2–3 concrete trigger phrases after "Use this agent when:"
+- `color` is cosmetic only but must be present
+
+---
+
+## 2. System Prompt Best Practices
+
+Structure system prompts with these sections (in order):
+
+```markdown
+# <Agent Name> — System Prompt
+
+You are a <specific role/persona>. <One sentence on primary responsibility>.
+
+---
+
+## Role & Scope
+<What the agent does AND does not do. Explicit scope limits.>
+
+---
+
+## Requirements Gathering
+Before acting, ensure you have:
+<Numbered list of all information the agent needs from the user>
+
+---
+
+## Tool Usage
+
+### Built-in Tool Best Practices
+- Always use absolute file paths with read_file, create_file, insert_edit_into_file, etc.
+- Use replace_string_in_file for unique text swaps; insert_edit_into_file for structural edits.
+- Never run multiple run_in_terminal calls in parallel — wait for each to finish.
+- Pipe pager commands to cat: `git log | cat`.
+- Call get_errors after every file edit to validate changes.
+- For semantic_search: use specific symbol names, not generic words.
+- Do NOT call semantic_search in parallel.
+
+### Sub-Agent Delegation (if applicable)
+<task string must be fully self-contained: file paths, constraints, current state, target state, expected output>
+
+### MCP Tool Usage (if applicable)
+<List MCP tools and when to use each. Use server-prefixed names: server-name.tool_name>
+
+---
+
+## Output
+<Exact description of what the agent produces: file paths, formats, structure>
+
+---
+
+## Constraints
+<Numbered list of hard constraints. Pair each DON'T with a DO alternative.>
+```
+
+Key principles:
+- Open with a clear, specific persona (not "You are a helpful assistant")
+- Explicitly state what the agent does NOT do (scope boundary)
+- List every piece of information required before the agent can act
+- Specify output format precisely — file paths, structure, rendering method
+
+---
+
+## 3. Sub-Agent Declaration Pattern
+
+Sub-agents are declared in `AGENTS.md` via `<subagent-instructions>` block:
 
 ```markdown
 <subagent-instructions>
@@ -28,121 +97,66 @@ when the task matches the agent's description. Do NOT attempt tasks yourself whe
 relevant agent exists.
 
 Available Agents:
-- **Plan**: Researches and outlines multi-step plans
+- **Plan**: Researches and outlines multi-step implementation plans
 - **Review**: Code review — security, performance, correctness
+- **Test**: Generates unit, integration, and e2e test suites
 
 IMPORTANT: The `agentName` parameter MUST be one of the exact agent names listed above.
 Do NOT use any other name.
 </subagent-instructions>
 ```
 
-### 1.3 MCP Guidelines (optional)
-Documents which MCP tools are available and mandatory usage rules. Often wrapped in `<CRITICAL_INSTRUCTION>` tags.
+`run_subagent` call pattern:
+- `agentName`: must match AGENTS.md declaration exactly
+- `task`: fully self-contained — include file paths, language/framework, current state, target state, constraints, expected output format
+- Sub-agent has **no conversation history** — the task string is its entire context
 
----
-
-## 2. Claude Code Agent File: `.claude/agents/*.md`
-
-Custom agents for Claude Code use this format:
-
-### 2.1 Frontmatter Fields
-
-| Field | Purpose | Valid Values |
-|---|---|---|
-| `name` | Agent identifier — must match `agentName` in `run_subagent` calls (case-sensitive) | Any string; kebab-case or Title Case consistent with declaration |
-| `description` | Shown in agent picker; include when-to-use examples so the model knows when to delegate | Free-form string with usage trigger examples |
-| `color` | Visual accent in the UI | Hex colour e.g. `"#7B5EA7"` or named colour |
-
-### 2.2 System Prompt Best Practices
-
-- **Clear persona**: Open with "You are a…" role statement
-- **Explicit output format**: Enumerate exactly what to produce
-- **Constraints listed**: What the agent must NOT do
-- **Worked examples**: Show ideal input → output where ambiguity is likely
-- **Authoritative sources referenced**: Point to docs, files, patterns to follow
-- **Self-contained**: Agent gets no external context beyond system prompt + `task` argument
-- **Structured sections**: Headers help the model parse instructions
-- **Pair negation with alternatives**: Each "don't" paired with a "do"
-
-### 2.3 Sub-Agent Declaration Pattern
-
-Sub-agents are **declared** in `AGENTS.md` via `<subagent-instructions>` block.
-
-Sub-agent **behaviour** is configured in the IDE:
+Sub-agent system prompts are configured **in the IDE**, not in agent files:
 - **JetBrains**: Settings → GitHub Copilot → Customization → Custom Agents
 - **VS Code**: `.vscode/settings.json` → `"github.copilot.agents"` object
 
-Each entry: `name` (matches declaration), `systemPrompt`, optional `model`, optional `tools`.
+---
 
-For Claude Code, sub-agents live in `.claude/agents/<name>.md` — each file is a full agent spec.
+## 4. MCP Integration Pattern
 
-### 2.4 MCP Integration Pattern
-
-`.mcp.json` at workspace root:
+MCP servers are declared in `.mcp.json` at the workspace root:
 
 ```json
 {
   "servers": {
-    "server-name": {
-      "command": "cli-command",
-      "args": ["arg1", "arg2"]
+    "backlog": {
+      "command": "backlog",
+      "args": ["mcp", "start"]
     }
   }
 }
 ```
 
-- Tools prefixed by server name: `server-name.tool_name`
-- Reference MCP tools in `AGENTS.md` to guide the model
-- For remote servers: use `"url"` + `"type": "sse"` instead of `command`/`args`
-- Mandatory usage rules go in `AGENTS.md` MCP Guidelines section
+MCP tools are referenced with server-prefixed names: `backlog.task_create`, `backlog.task_list`.
 
----
+Document MCP tool usage in `AGENTS.md`:
 
-## 3. Instruction & Prompt Files
-
-### `.github/instructions/*.instructions.md`
-```yaml
----
-applyTo: "**/*.ts"
----
-Instructions applied to all .ts files.
+```markdown
+## MCP Tools Available
+This project has a `backlog` MCP server — ALWAYS use it for task management.
+- Before complex work: backlog.task_search
+- To track new work: backlog.task_create
+- Never edit backlog/ files directly
 ```
-Auto-applied by Copilot based on `applyTo` glob. Multiple files can match simultaneously.
-
-### `.github/prompts/*.prompt.md`
-```yaml
----
-mode: agent   # ask | edit | agent
-description: "What this prompt does"
-tools: []     # optional restriction
----
-Prompt body with ${variable} interpolation.
-```
-
----
-
-## 4. System Prompt Injection Order
-
-1. Model built-in instructions
-2. `AGENTS.md`
-3. Matched `.github/instructions/` files (for active file)
-4. Prompt file being executed
-5. Conversation history + tool results
-
-Earlier items take precedence on conflict.
 
 ---
 
 ## 5. Anatomy Checklist (use for task-4 verification)
 
-- [ ] Frontmatter present with `name`, `description`, `color`
-- [ ] `name` is consistent with sub-agent declaration (case-sensitive match)
-- [ ] `description` explains when to invoke with usage examples
-- [ ] System prompt opens with clear role/persona statement
-- [ ] System prompt states what to gather from user
-- [ ] System prompt states expected output format
-- [ ] System prompt includes constraints/scope limits
-- [ ] System prompt references source-of-truth docs/patterns
-- [ ] File is self-contained (no external dependencies)
-- [ ] Sub-agents (if any): declared correctly in `<subagent-instructions>` block
-- [ ] MCP (if any): `.mcp.json` present and tools referenced in `AGENTS.md`
+- [ ] Frontmatter present: `name`, `description`, `color`
+- [ ] `name` is kebab-case and case-consistent with intended `agentName` usage
+- [ ] `description` includes "Use this agent when:" + trigger phrases
+- [ ] System prompt opens with specific role/persona
+- [ ] System prompt has explicit Role & Scope (including what agent does NOT do)
+- [ ] System prompt lists all required information to gather
+- [ ] System prompt specifies exact output format
+- [ ] Built-in tool best practices included (absolute paths, no parallel terminal, get_errors after edits)
+- [ ] Sub-agent patterns included if applicable (self-contained task strings)
+- [ ] MCP patterns included if applicable (server-prefixed tool names)
+- [ ] File is self-contained — usable without additional context
+

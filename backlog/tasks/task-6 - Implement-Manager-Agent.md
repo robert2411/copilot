@@ -8,7 +8,7 @@ updated_date: '2026-04-16 18:15'
 labels:
   - manager
   - orchestration
-dependencies: []
+milestone: Agent Workflow Orchestration System
 documentation:
   - backlog/docs/doc-6 - Agent-Workflow-Orchestration-System.md
 priority: high

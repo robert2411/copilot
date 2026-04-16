@@ -8,6 +8,7 @@ updated_date: '2026-04-16 18:15'
 labels:
   - analyse
   - orchestration
+milestone: Agent Workflow Orchestration System
 dependencies:
   - TASK-6
 documentation:
