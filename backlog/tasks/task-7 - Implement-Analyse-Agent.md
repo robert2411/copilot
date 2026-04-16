@@ -36,4 +36,5 @@ Build the Analyse agent file responsible for planning and blocker detection. The
 - [ ] #4 Analyse creates implementation plan for each task using backlog task edit <id> --plan
 - [ ] #5 Analyse flags blockers with a clearly marked note: backlog task edit <id> --append-notes with BLOCKER prefix
 - [ ] #6 Analyse reports ready status per task: backlog task edit <id> --append-notes confirming no blockers
+- [ ] #7 When given a list of orphan tasks, Analyse groups them into logically named milestones and creates milestone files
 <!-- AC:END -->
