@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-16 20:59'
-updated_date: '2026-04-16 21:24'
+updated_date: '2026-04-16 21:25'
 labels:
   - documentation
   - best-practices
@@ -22,11 +22,11 @@ Document best practices, patterns, and anti-patterns for using Backlog CLI effec
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Phase discipline guide (create → implement → complete)
-- [ ] #2 AC writing best practices and examples
-- [ ] #3 Multi-task workflow patterns documented
-- [ ] #4 Common anti-patterns and how to avoid them
-- [ ] #5 Git integration and branching strategies with Backlog
+- [x] #1 Phase discipline guide (create → implement → complete)
+- [x] #2 AC writing best practices and examples
+- [x] #3 Multi-task workflow patterns documented
+- [x] #4 Common anti-patterns and how to avoid them
+- [x] #5 Git integration and branching strategies with Backlog
 <!-- AC:END -->
 
 ## Implementation Plan
