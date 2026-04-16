@@ -27,8 +27,6 @@ Build the Manager agent file that orchestrates the full workflow. The Manager sc
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
 
-
-
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [ ] #1 Agent file created at .claude/agents/manager.md with correct frontmatter and system prompt
@@ -39,3 +37,14 @@ Build the Manager agent file that orchestrates the full workflow. The Manager sc
 - [ ] #6 Manager handles end-of-milestone decision: more milestones available, orphan tasks exist, or project complete
 - [ ] #7 When no milestones but tasks exist, Manager delegates to Analyse agent to group tasks into logical milestones
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Create .claude/agents/ directory
+2. Write manager.md agent file with frontmatter + full system prompt per doc-6 spec
+3. System prompt covers: scan backlog, route to analyse, check blockers, route to implementation, end-of-milestone decisions, orphan task handling
+4. Verify AC coverage
+5. Proceed to task 7 (Analyse), 8 (Implementation), 9 (QA) sequentially
+6. Commit all agents together
+<!-- SECTION:PLAN:END -->
