@@ -1,0 +1,29 @@
+---
+id: TASK-26
+title: Update implementation agent to escalate blockers to analyse
+status: To Do
+assignee: []
+created_date: '2026-04-18 21:19'
+labels:
+  - agent
+  - implementation
+dependencies: []
+---
+
+## Description
+
+<!-- SECTION:DESCRIPTION:BEGIN -->
+Update the implementation agent to explicitly escalate unexpected situations to analyse (via manager) rather than guessing or skipping. When implementation hits something not covered by the plan, it flags a blocker in task notes and signals manager to route back to analyse for clarification before resuming. Reference: doc-15.
+<!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Implementation agent explicitly flags blockers in task notes when hitting unexpected situations during coding
+- [ ] #2 Implementation agent does NOT guess or skip — it stops and escalates
+- [ ] #3 Agent instructions include an escalation step: signal manager to route back to analyse with blocker description
+<!-- AC:END -->
+
+## Definition of Done
+<!-- DOD:BEGIN -->
+- [ ] #1 All code is committed to git
+<!-- DOD:END -->
