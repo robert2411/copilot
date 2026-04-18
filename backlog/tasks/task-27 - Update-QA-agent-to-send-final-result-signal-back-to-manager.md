@@ -21,10 +21,10 @@ Update the QA agent to emit a clear, machine-detectable final result signal that
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 QA agent emits a clear final approval signal: ✅ QA APPROVED — all tests passing, no regressions
-- [ ] #2 QA agent emits a clear rejection signal: ❌ QA REJECTED — [reason]
-- [ ] #3 Agent instructions clarify QA reports back to manager, not just appends notes
-- [ ] #4 Re-review loop documented: QA rejects → manager → implementation fixes → manager → QA re-verifies
+- [x] #1 QA agent emits a clear final approval signal: ✅ QA APPROVED — all tests passing, no regressions
+- [x] #2 QA agent emits a clear rejection signal: ❌ QA REJECTED — [reason]
+- [x] #3 Agent instructions clarify QA reports back to manager, not just appends notes
+- [x] #4 Re-review loop documented: QA rejects → manager → implementation fixes → manager → QA re-verifies
 <!-- AC:END -->
 
 ## Definition of Done
