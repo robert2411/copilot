@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-18 21:19'
-updated_date: '2026-04-18 21:29'
+updated_date: '2026-04-18 21:30'
 labels:
   - agent
   - analyse
@@ -21,9 +21,9 @@ Update the analyse agent to perform a devil's advocate self-review of its own im
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Analyse agent performs a self-review pass of the implementation plan before signalling ready
-- [ ] #2 Self-review checks for: gaps in AC coverage, unverified assumptions, ambiguous steps, missing error handling
-- [ ] #3 Task notes updated with confirmation of self-review completion before handoff
+- [x] #1 Analyse agent performs a self-review pass of the implementation plan before signalling ready
+- [x] #2 Self-review checks for: gaps in AC coverage, unverified assumptions, ambiguous steps, missing error handling
+- [x] #3 Task notes updated with confirmation of self-review completion before handoff
 <!-- AC:END -->
 
 ## Definition of Done
