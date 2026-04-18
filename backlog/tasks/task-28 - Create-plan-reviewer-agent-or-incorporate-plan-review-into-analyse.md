@@ -28,6 +28,12 @@ Add a plan review step between analyse and implementation. Either create a separ
 - [x] #4 Implementation only starts after plan review approves
 <!-- AC:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created .github/agents/plan-reviewer.agent.md — independent plan audit agent that loops with Analyse via Manager until zero concerns. Updated manager agent: added Step 3b (plan review gate before implementation), added plan-reviewer to sub-agents list.
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
