@@ -1,7 +1,7 @@
 ---
 id: TASK-25
 title: Add self-review pass to analyse agent
-status: In Progress
+status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-18 21:19'
