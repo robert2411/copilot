@@ -1,13 +1,15 @@
 ---
 id: TASK-26
 title: Update implementation agent to escalate blockers to analyse
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-18 21:19'
-milestone: Security Agent & Agent Pipeline Improvements
+updated_date: '2026-04-18 21:30'
 labels:
   - agent
   - implementation
+milestone: Security Agent & Agent Pipeline Improvements
 dependencies: []
 ---
 
