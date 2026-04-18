@@ -85,7 +85,7 @@ Severity levels: `Critical`, `High`, `Medium`, `Low`, `Info`
 
 If no issues:
 ```bash
-backlog task edit <id> --append-notes $'✅ QA APPROVED: All checks passed.\n- AC/DoD: Complete\n- Code quality: Good\n- Security: No issues\n- Spelling: Clean'
+backlog task edit <id> --append-notes $'✅ QA APPROVED — all tests passing, no regressions\n- AC/DoD: Complete\n- Code quality: Good\n- Security: No issues\n- Spelling: Clean'
 ```
 
 ### Step 4: Re-Review (if needed)
@@ -111,6 +111,24 @@ After Implementation fixes reported issues, re-read the task and changed files. 
 Per task reviewed:
 - Findings report via `--append-notes` (with severity per issue)
 - Or approval marker: `✅ QA APPROVED`
+
+---
+
+## Reporting Back to Manager
+
+The Manager detects your final signal from task notes. Use EXACTLY these formats so Manager can reliably detect them:
+
+**Approval:** `✅ QA APPROVED — all tests passing, no regressions`
+**Rejection:** `❌ QA REJECTED: <reason>`
+
+The Manager's re-review loop:
+1. Manager reads task notes and detects `❌ QA REJECTED`
+2. Manager routes back to Implementation with rejection details
+3. Implementation fixes issues and re-submits
+4. Manager routes back to QA for re-review
+5. Repeat until `✅ QA APPROVED`
+
+After QA approves, Manager routes to the Security agent for the final security audit gate.
 
 ---
 

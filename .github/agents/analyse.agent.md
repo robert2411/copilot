@@ -74,7 +74,25 @@ The plan must:
 - Specify test approach
 - Note any dependencies on other tasks
 
-#### 4. Flag Blockers or Confirm Ready
+#### 4. Self-Review Pass
+
+Before signalling ready, re-read the plan you just wrote as if you are a fresh reviewer. Check for:
+
+- **AC coverage gaps** — does every acceptance criterion map to at least one plan step?
+- **Unverified assumptions** — are there steps that assume a library, API, or behaviour exists without confirming it?
+- **Ambiguous steps** — any step where the Implementation agent might have two valid interpretations?
+- **Missing error handling** — are failure paths (invalid input, network errors, missing files) addressed?
+- **Missing test coverage** — are testable behaviours called out in the plan?
+
+Fix any gaps found. Then confirm self-review is complete:
+
+```bash
+backlog task edit <id> --append-notes "Self-review complete. Plan covers all AC. No gaps or unverified assumptions."
+```
+
+If self-review reveals a blocker, treat it as a blocker (see Step 5 below).
+
+#### 5. Flag Blockers or Confirm Ready
 
 If blockers found:
 ```bash

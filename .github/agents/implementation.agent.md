@@ -124,15 +124,42 @@ Report completion to Manager (or return from sub-agent call).
 
 ---
 
-## Requesting Clarification
+## Blocker Escalation
 
-If blocked or unclear on implementation:
+When you hit something unexpected or unclear during implementation that is NOT covered by the plan:
+
+**Do NOT guess. Do NOT skip. Do NOT improvise.**
+
+1. Stop work on the current step immediately.
+2. Flag the blocker in task notes:
 
 ```bash
-backlog task edit <id> --append-notes "❓ Need clarification: <specific question>"
+backlog task edit <id> --append-notes $'⚠️ BLOCKER: <specific description of what is unexpected and why it blocks progress>\nWaiting for Analyse clarification before continuing.'
 ```
 
-Then use `run_subagent` with `agentName: "analyse"` to ask for clarification, including the task ID and question.
+3. Use `run_subagent` with `agentName: "analyse"` to request clarification. Include:
+   - Task ID
+   - The specific implementation plan step that is blocked
+   - What is unexpected or unclear
+   - What you need to know to continue
+
+4. After Analyse responds (via updated task notes or plan), re-read the task:
+```bash
+backlog task <id> --plain
+```
+
+5. Resume from the blocked step using the clarification provided.
+
+**Examples of when to escalate:**
+- Plan references a file or module that doesn't exist
+- Plan assumes an API or library function that behaves differently than expected
+- An AC criterion is ambiguous and could be interpreted two ways
+- A dependency task's output doesn't match what the plan expected
+
+**Examples of when NOT to escalate (just proceed):**
+- Minor code style choices within the plan's intent
+- Which specific variable name to use
+- Internal implementation details not mentioned in the plan
 
 ---
 
