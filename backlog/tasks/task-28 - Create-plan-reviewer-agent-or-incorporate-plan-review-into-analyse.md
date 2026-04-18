@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-18 21:19'
-updated_date: '2026-04-18 21:31'
+updated_date: '2026-04-18 21:32'
 labels:
   - agent
   - analyse
@@ -22,10 +22,10 @@ Add a plan review step between analyse and implementation. Either create a separ
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 A plan review step exists between analyse and implementation in the pipeline
-- [ ] #2 Plan reviewer checks for: gaps in plan, unverified assumptions, ambiguous scope, missing error cases
-- [ ] #3 Manager routes to plan review after analyse completes and before routing to implementation
-- [ ] #4 Implementation only starts after plan review approves
+- [x] #1 A plan review step exists between analyse and implementation in the pipeline
+- [x] #2 Plan reviewer checks for: gaps in plan, unverified assumptions, ambiguous scope, missing error cases
+- [x] #3 Manager routes to plan review after analyse completes and before routing to implementation
+- [x] #4 Implementation only starts after plan review approves
 <!-- AC:END -->
 
 ## Definition of Done
