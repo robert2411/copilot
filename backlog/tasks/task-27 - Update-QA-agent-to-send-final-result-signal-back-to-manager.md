@@ -1,7 +1,7 @@
 ---
 id: TASK-27
 title: Update QA agent to send final result signal back to manager
-status: In Progress
+status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-18 21:19'
