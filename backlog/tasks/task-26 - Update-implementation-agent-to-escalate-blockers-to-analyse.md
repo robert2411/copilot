@@ -1,7 +1,7 @@
 ---
 id: TASK-26
 title: Update implementation agent to escalate blockers to analyse
-status: In Progress
+status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-18 21:19'
