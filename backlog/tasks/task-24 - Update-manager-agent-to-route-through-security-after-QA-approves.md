@@ -29,6 +29,12 @@ Update the manager agent to include a security audit gate in the pipeline. After
 - [x] #5 Manager only marks task Done after security approves (verdict: approved or empty findings)
 <!-- AC:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Updated manager agent: added security sub-agent to available agents list; added Step 4b (route to security after QA) and Step 4c (security fix loop: findings → implementation fix → QA re-verify → security re-audit → repeat); added constraint #6 (don't mark Done without security approval).
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
