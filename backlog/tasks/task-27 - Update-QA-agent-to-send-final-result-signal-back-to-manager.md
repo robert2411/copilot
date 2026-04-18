@@ -27,6 +27,12 @@ Update the QA agent to emit a clear, machine-detectable final result signal that
 - [x] #4 Re-review loop documented: QA rejects → manager → implementation fixes → manager → QA re-verifies
 <!-- AC:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Updated QA approval signal to ✅ QA APPROVED — all tests passing, no regressions. Added 'Reporting Back to Manager' section documenting the re-review loop and post-QA security gate routing.
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
