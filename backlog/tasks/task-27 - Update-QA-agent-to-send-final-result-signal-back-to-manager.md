@@ -1,13 +1,15 @@
 ---
 id: TASK-27
 title: Update QA agent to send final result signal back to manager
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-18 21:19'
-milestone: Security Agent & Agent Pipeline Improvements
+updated_date: '2026-04-18 21:30'
 labels:
   - agent
   - qa
+milestone: Security Agent & Agent Pipeline Improvements
 dependencies: []
 ---
 
