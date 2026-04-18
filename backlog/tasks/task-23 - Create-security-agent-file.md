@@ -33,5 +33,5 @@ Create the security auditor agent (.github/agents/security.agent.md) that acts a
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
