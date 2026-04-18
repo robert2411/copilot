@@ -28,5 +28,5 @@ Update the implementation agent to explicitly escalate unexpected situations to 
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
