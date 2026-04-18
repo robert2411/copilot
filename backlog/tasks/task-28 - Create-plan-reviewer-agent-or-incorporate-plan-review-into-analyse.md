@@ -1,14 +1,16 @@
 ---
 id: TASK-28
 title: Create plan-reviewer agent or incorporate plan review into analyse
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-18 21:19'
-milestone: Security Agent & Agent Pipeline Improvements
+updated_date: '2026-04-18 21:31'
 labels:
   - agent
   - analyse
   - manager
+milestone: Security Agent & Agent Pipeline Improvements
 dependencies: []
 ---
 
