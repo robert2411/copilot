@@ -31,5 +31,5 @@ Update the manager agent to include a security audit gate in the pipeline. After
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
