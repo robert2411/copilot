@@ -29,5 +29,5 @@ Update the QA agent to emit a clear, machine-detectable final result signal that
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
