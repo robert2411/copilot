@@ -4,6 +4,7 @@ title: Create security agent file
 status: To Do
 assignee: []
 created_date: '2026-04-18 21:19'
+milestone: Security Agent & Agent Pipeline Improvements
 labels:
   - agent
   - security
@@ -20,10 +21,12 @@ Create the security auditor agent (.github/agents/security.agent.md) that acts a
 <!-- AC:BEGIN -->
 - [ ] #1 Security agent file created at .github/agents/security.agent.md
 - [ ] #2 Agent audits OWASP Top 10 + path traversal + ReDoS + input validation
-- [ ] #3 Agent emits structured JSON verdict (approved or ranked findings list)
-- [ ] #4 Agent supports re-audit mode scoped to a single finding ID
-- [ ] #5 Agent does NOT write files or run code — static analysis only
-- [ ] #6 Severity ranking (critical/high/medium/low) documented in agent
+- [ ] #3 Agent emits approval signal `✅ SECURITY APPROVED` (distinct from `✅ QA APPROVED`)
+- [ ] #4 Agent emits findings signal `⚠️ SECURITY FINDINGS:` with severity tags [critical/high/medium/low] when
+  vulnerabilities found
+- [ ] #5 Agent supports re-audit mode scoped to a single finding ID
+- [ ] #6 Agent does NOT write files or run code — static analysis only
+- [ ] #7 Severity ranking (critical/high/medium/low) documented in agent
 <!-- AC:END -->
 
 ## Definition of Done

@@ -4,6 +4,7 @@ title: Update manager agent to route through security after QA approves
 status: To Do
 assignee: []
 created_date: '2026-04-18 21:19'
+milestone: Security Agent & Agent Pipeline Improvements
 labels:
   - agent
   - manager
