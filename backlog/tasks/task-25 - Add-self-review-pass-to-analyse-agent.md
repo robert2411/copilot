@@ -26,6 +26,12 @@ Update the analyse agent to perform a devil's advocate self-review of its own im
 - [x] #3 Task notes updated with confirmation of self-review completion before handoff
 <!-- AC:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added Step 4 (Self-Review Pass) to analyse agent. Checks AC coverage, unverified assumptions, ambiguous steps, missing error handling, and test coverage. Confirms via --append-notes before handoff.
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
