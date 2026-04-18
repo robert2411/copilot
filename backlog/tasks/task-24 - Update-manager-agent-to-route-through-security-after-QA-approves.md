@@ -22,11 +22,11 @@ Update the manager agent to include a security audit gate in the pipeline. After
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Manager routes each task to security agent after QA emits ✅ QA APPROVED signal
-- [ ] #2 After security findings, manager routes back to implementation with findings list
-- [ ] #3 After implementation fixes, manager routes back to QA for re-verification
-- [ ] #4 After QA re-approves, manager routes back to security for scoped re-audit
-- [ ] #5 Manager only marks task Done after security approves (verdict: approved or empty findings)
+- [x] #1 Manager routes each task to security agent after QA emits ✅ QA APPROVED signal
+- [x] #2 After security findings, manager routes back to implementation with findings list
+- [x] #3 After implementation fixes, manager routes back to QA for re-verification
+- [x] #4 After QA re-approves, manager routes back to security for scoped re-audit
+- [x] #5 Manager only marks task Done after security approves (verdict: approved or empty findings)
 <!-- AC:END -->
 
 ## Definition of Done
