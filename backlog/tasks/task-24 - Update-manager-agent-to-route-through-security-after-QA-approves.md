@@ -1,14 +1,16 @@
 ---
 id: TASK-24
 title: Update manager agent to route through security after QA approves
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-18 21:19'
-milestone: Security Agent & Agent Pipeline Improvements
+updated_date: '2026-04-18 21:31'
 labels:
   - agent
   - manager
   - security
+milestone: Security Agent & Agent Pipeline Improvements
 dependencies: []
 ---
 
