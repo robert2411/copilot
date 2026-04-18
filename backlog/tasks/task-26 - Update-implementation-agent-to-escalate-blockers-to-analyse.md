@@ -21,9 +21,9 @@ Update the implementation agent to explicitly escalate unexpected situations to 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Implementation agent explicitly flags blockers in task notes when hitting unexpected situations during coding
-- [ ] #2 Implementation agent does NOT guess or skip — it stops and escalates
-- [ ] #3 Agent instructions include an escalation step: signal manager to route back to analyse with blocker description
+- [x] #1 Implementation agent explicitly flags blockers in task notes when hitting unexpected situations during coding
+- [x] #2 Implementation agent does NOT guess or skip — it stops and escalates
+- [x] #3 Agent instructions include an escalation step: signal manager to route back to analyse with blocker description
 <!-- AC:END -->
 
 ## Definition of Done
