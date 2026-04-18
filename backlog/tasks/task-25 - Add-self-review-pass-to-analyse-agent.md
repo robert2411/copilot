@@ -1,13 +1,15 @@
 ---
 id: TASK-25
 title: Add self-review pass to analyse agent
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-18 21:19'
-milestone: Security Agent & Agent Pipeline Improvements
+updated_date: '2026-04-18 21:29'
 labels:
   - agent
   - analyse
+milestone: Security Agent & Agent Pipeline Improvements
 dependencies: []
 ---
 
