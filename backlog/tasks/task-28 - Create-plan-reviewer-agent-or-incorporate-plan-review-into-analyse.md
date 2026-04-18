@@ -30,5 +30,5 @@ Add a plan review step between analyse and implementation. Either create a separ
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
