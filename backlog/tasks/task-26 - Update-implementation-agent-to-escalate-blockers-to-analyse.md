@@ -26,6 +26,12 @@ Update the implementation agent to explicitly escalate unexpected situations to 
 - [x] #3 Agent instructions include an escalation step: signal manager to route back to analyse with blocker description
 <!-- AC:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Replaced passive 'Requesting Clarification' section with explicit 'Blocker Escalation' workflow. Added clear stop/flag/escalate/resume loop. Includes examples of when to and when not to escalate.
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
