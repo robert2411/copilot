@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-19 20:04'
-updated_date: '2026-04-19 20:08'
+updated_date: '2026-04-19 20:09'
 labels:
   - docs
   - backlog-skill
@@ -22,9 +22,9 @@ The skill doc incorrectly implies milestone assignment can be done via CLI flag 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Skill doc updated to remove any reference to --milestone CLI flag
-- [ ] #2 Skill doc documents correct method: add 'milestone: <name>' to task frontmatter directly
-- [ ] #3 Skill doc notes milestone CLI only supports: list and archive commands
+- [x] #1 Skill doc updated to remove any reference to --milestone CLI flag
+- [x] #2 Skill doc documents correct method: add 'milestone: <name>' to task frontmatter directly
+- [x] #3 Skill doc notes milestone CLI only supports: list and archive commands
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -56,5 +56,5 @@ Analysis complete. Plan ready. No blockers.
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
