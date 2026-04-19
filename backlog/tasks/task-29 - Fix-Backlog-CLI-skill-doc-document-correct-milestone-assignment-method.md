@@ -52,6 +52,8 @@ Analysis complete. Plan ready. No blockers.
 - AC mapped: 3
 - Key finding confirmed: line 38 Golden rule contradicts milestone frontmatter approach; plan correctly targets this as the primary fix
 - SKILL.md verified: no --milestone flag present, milestone section already partially correct, frontmatter code block and explicit CLI-only note are the concrete additions needed
+
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
