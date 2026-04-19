@@ -37,6 +37,8 @@ Full-featured project management through the `backlog` CLI. Handles entire task 
 
 **Golden rule:** Never edit task `.md` files directly. All writes go through the CLI.
 
+> **Exception — milestone assignment:** There is no `--milestone` CLI flag for `task create` or `task edit`. To assign a task to a milestone, edit the task's frontmatter directly and add `milestone: <name>`. This is the one supported method.
+
 ---
 
 ## Task Lifecycle Workflow
@@ -180,7 +182,20 @@ backlog milestone list --plain
 backlog milestone archive "Milestone Name"
 ```
 
-Assign a task to a milestone by adding `milestone: <name>` to the task frontmatter — or set it when the milestone file is created in `backlog/milestones/`.
+> **Note:** The `backlog milestone` CLI only supports `list` and `archive` commands. There is no `create` subcommand and no `--milestone` flag on `task create` or `task edit`.
+
+**Assigning a task to a milestone** must be done by editing the task's frontmatter directly:
+
+```yaml
+---
+id: task-42
+title: My Task
+status: To Do
+milestone: Sprint 1
+---
+```
+
+Add or update the `milestone: <name>` field to match the milestone name exactly.
 
 ### Decisions
 
@@ -289,6 +304,7 @@ backlog task edit <id> --plan $'1. Review existing code\n2. Design approach\n3. 
 | Final Summary | `--final-summary "text"` | PR description — added at wrap-up |
 | Dependencies | `--dep task-1` | Task relationships |
 | References | `--ref src/file.ts` | Code or URL references |
+| Milestone | *(frontmatter only)* | Set `milestone: <name>` in task frontmatter — no CLI flag exists |
 
 ---
 
@@ -317,6 +333,9 @@ backlog task edit <id> --plan $'1. Review existing code\n2. Design approach\n3. 
 - [AI Agent Integration Guide](../../../backlog/docs/doc-13%20-%20Backlog-CLI-AI-Agent-Integration-Guide.md)
 - [Advanced Features Guide](../../../backlog/docs/doc-14%20-%20Backlog-CLI-Advanced-Features-Guide.md)
 - [USAGE.md](./references/USAGE.md)
+
+
+
 
 
 
