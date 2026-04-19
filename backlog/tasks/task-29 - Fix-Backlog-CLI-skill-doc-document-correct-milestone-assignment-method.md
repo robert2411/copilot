@@ -39,6 +39,12 @@ The skill doc incorrectly implies milestone assignment can be done via CLI flag 
 8. Commit changes to git (Definition of Done)
 <!-- SECTION:PLAN:END -->
 
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Self-review complete. Plan covers all AC. No gaps or unverified assumptions. Key finding: SKILL.md has no --milestone flag in examples, but line 38 'Golden rule' contradicts the correct milestone frontmatter approach — this is the primary fix needed. Milestone section and CLI command list are already mostly correct but need clarity and a frontmatter code example.
+<!-- SECTION:NOTES:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
