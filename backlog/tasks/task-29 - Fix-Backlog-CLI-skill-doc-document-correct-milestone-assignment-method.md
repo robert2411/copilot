@@ -54,6 +54,17 @@ Analysis complete. Plan ready. No blockers.
 - SKILL.md verified: no --milestone flag present, milestone section already partially correct, frontmatter code block and explicit CLI-only note are the concrete additions needed
 
 All AC/DoD checked. Ready for QA.
+
+❌ QA REJECTED: Documentation inconsistency remains in milestone assignment guidance.
+🔍 QA REVIEW FINDINGS:
+- Issue #1: Medium The Golden rule still says "Never edit task .md files directly. All writes go through the CLI." with no milestone exception (./.github/skills/backlog-cli/SKILL.md:38). This directly conflicts with the Milestones section requiring frontmatter edits (lines 185-196).
+
+Acceptance Criteria check:
+- AC #1: Pass — no incorrect claim that a --milestone flag exists.
+- AC #2: Partial — frontmatter method and YAML example exist, but conflicting Golden rule guidance makes this ambiguous/inaccurate.
+- AC #3: Pass — correctly states milestone CLI supports list and archive only.
+
+Verdict: Fix required before approval.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
