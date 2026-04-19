@@ -67,6 +67,11 @@ Acceptance Criteria check:
 Verdict: Fix required before approval.
 
 ✅ QA APPROVED — all tests passing, no regressions
+
+✅ SECURITY APPROVED — static audit complete, zero vulnerabilities identified
+- Files reviewed: .github/skills/backlog-cli/SKILL.md
+- Checks performed: OWASP Top 10, path traversal, ReDoS, input validation
+- Notes: Documentation-only change; no credentials, no executable code, no unsafe patterns, no misleading security guidance found
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
