@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-19 20:04'
-updated_date: '2026-04-19 20:10'
+updated_date: '2026-04-19 20:11'
 labels:
   - docs
   - backlog-skill
@@ -68,6 +68,20 @@ Verdict: Fix required before approval.
 
 ✅ QA APPROVED — all tests passing, no regressions
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Updated SKILL.md to fix incorrect milestone assignment documentation.
+
+Changes:
+- .github/skills/backlog-cli/SKILL.md
+
+Details:
+- Added exception note to Golden rule clarifying milestone assignment requires frontmatter edit (no --milestone CLI flag exists)
+- Rewrote Milestones section: added explicit note that backlog milestone CLI supports only list and archive, added YAML frontmatter code block example
+- Added Milestone row to Task Content Reference table noting frontmatter-only assignment
+<!-- SECTION:FINAL_SUMMARY:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
