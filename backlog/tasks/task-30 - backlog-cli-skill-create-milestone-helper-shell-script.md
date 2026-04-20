@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 20:52'
+updated_date: '2026-04-20 20:53'
 labels:
   - backlog-cli
   - skills
@@ -135,6 +135,13 @@ Fixed QA issues:
 - Issue #1 (High): Replaced grep+sed approach with unified awk that only modifies milestone: within the frontmatter block (between --- delimiters). Body lines with milestone: are completely untouched.
 - Issue #2 (Medium): Changed duplicate detection from *<slug>* to milestone-* - <slug>.md exact pattern. Sprint 1 and Sprint 10 now have different slugs and no false positive.
 All 6 shunit2 tests still pass. Committed as b0a5732. Ready for re-QA.
+
+✅ QA APPROVED — all tests passing, no regressions
+- AC/DoD: Complete
+- Verification: usage path checked, 6/6 shunit2 tests pass
+- Prior Issue #1 (frontmatter scoping): Verified fixed via awk logic bounded by first frontmatter delimiters in .github/skills/backlog-cli/scripts/milestone-helper.sh
+- Prior Issue #2 (exact slug match): Verified fixed via find pattern "milestone-* - <slug>.md" (no substring wildcard)
+- Code quality/security/spelling: No additional issues found
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
