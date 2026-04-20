@@ -4,7 +4,7 @@ title: 'backlog-cli skill: remove direct-edit exception from Golden Rule'
 status: To Do
 assignee: []
 created_date: '2026-04-20 21:07'
-updated_date: '2026-04-20 21:09'
+updated_date: '2026-04-20 21:11'
 labels:
   - backlog-cli
   - skills
@@ -81,6 +81,10 @@ Self-review complete. Plan covers all 4 ACs:
 - AC#3 → Step 3 (add link to milestone-helper.sh near Golden Rule).
 - AC#4 → Steps 4–5 (remove Option 1 direct-edit block from Milestones section; update Task Reference table row).
 Error paths: Step 6 grep scan catches any missed direct-edit instructions. No unverified assumptions — SKILL.md reviewed in full; both the Exception callout (line 40) and the Option 1 frontmatter section (lines 188-202) and the table row (line 354) are confirmed present and targeted. Analysis complete. No blockers.
+
+🔍 PLAN REVIEW CONCERNS
+- Concern #1 (AC#2 — wording contradiction): Plan Step 3 proposes keeping "All writes go through the CLI." immediately followed by "Two supported methods exist: (1) backlog CLI commands, (2) milestone-helper.sh script." milestone-helper.sh patches frontmatter directly — it is not the CLI. Keeping the "All writes go through the CLI" sentence while endorsing a non-CLI script as an equal method creates a self-contradiction on adjacent lines. The phrase needs updating, e.g. "All writes go through the CLI or approved helper scripts." Plan must specify the corrected phrasing.
+- Concern #2 (AC#4 — grep verification ambiguous): After all changes, grep -n "frontmatter" will still return lines 206 and 217 (script-behaviour descriptions: "by patching task frontmatter" and "sets milestone: in the task's frontmatter"). Plan Step 6 says "confirm no remaining instructions to edit directly" but does not tell the implementer that these residual matches are acceptable. Without this clarification the implementer may over-remove valid documentation or treat the grep as a failing check. Plan must explicitly note that post-edit frontmatter references inside the milestone-helper.sh description block are expected and acceptable.\n\nVerdict: Plan needs revision before implementation.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
