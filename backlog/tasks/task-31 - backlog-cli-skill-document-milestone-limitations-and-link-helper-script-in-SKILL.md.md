@@ -100,6 +100,12 @@ Analysis complete. Plan revised to address Plan Reviewer concerns. No blockers.
 - Added milestone-helper.sh to References section with relative path ./scripts/milestone-helper.sh
 - Confirmed scripts/ folder exists at .github/skills/backlog-cli/scripts/
 All AC/DoD checked. Ready for QA.
+
+❌ QA REJECTED: AC/DoD incomplete.
+- Missing: DoD #1 (All code is committed to git)
+
+AC status: 5/5 checked.
+Verdict: Fix required before approval.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
