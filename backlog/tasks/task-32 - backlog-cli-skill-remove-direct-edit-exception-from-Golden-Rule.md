@@ -93,6 +93,25 @@ All AC/DoD checked. Ready for QA.
 - No direct-edit instructions remain; frontmatter mentions are descriptive only
 <!-- SECTION:NOTES:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Removed the direct-edit exception from SKILL.md to align with milestone-helper.sh being the approved non-CLI method.
+
+Changes:
+- Removed > **Exception — milestone assignment:** blockquote under Golden Rule
+- Updated Golden Rule sentence to reference both backlog CLI and milestone-helper.sh (with link)
+- Removed "Option 1: Edit frontmatter directly" block (heading, YAML example, surrounding text)
+- Renamed "Option 2: Using the milestone-helper.sh script" → "Using the milestone-helper.sh script"
+- Updated intro sentence for Milestones section from "Two options..." to single-method framing
+- Updated Task Content Reference table Milestone row to reference milestone-helper.sh assign-task command
+
+Tests:
+- Verified via grep: no Option 1/Option 2 references remain
+- Verified via grep: no imperative direct-edit instructions remain
+- Only acceptable residual frontmatter references in script-behaviour descriptions (lines 189, 200)
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
