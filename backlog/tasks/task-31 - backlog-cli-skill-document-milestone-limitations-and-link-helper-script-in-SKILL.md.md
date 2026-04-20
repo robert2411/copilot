@@ -106,6 +106,13 @@ All AC/DoD checked. Ready for QA.
 
 AC status: 5/5 checked.
 Verdict: Fix required before approval.
+
+✅ QA APPROVED — all tests passing, no regressions
+- AC/DoD: Complete
+- Code quality: Good
+- Security: No issues
+- Spelling: Clean
+- Verified: .github/skills/backlog-cli/SKILL.md includes Option 1 + Option 2, scripts path/reference, and shunit2 testing note
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
