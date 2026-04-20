@@ -7,7 +7,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 21:03'
+updated_date: '2026-04-20 21:04'
 labels:
   - backlog-cli
   - skills
@@ -114,6 +114,20 @@ Verdict: Fix required before approval.
 - Spelling: Clean
 - Verified: .github/skills/backlog-cli/SKILL.md includes Option 1 + Option 2, scripts path/reference, and shunit2 testing note
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Updated .github/skills/backlog-cli/SKILL.md to document milestone-helper.sh.
+
+Changes:
+- Milestones section: added "Option 1: Edit frontmatter directly" (existing content preserved) and "Option 2: Using the milestone-helper.sh script" with create-milestone and assign-task example invocations
+- Added Scripts subsection listing milestone-helper.sh with subcommand descriptions
+- Added Testing note: shunit2 dependency (brew/apt-get), test location tests/skills/backlog-cli/, run command bash tests/skills/backlog-cli/test-milestone-helper.sh
+- References section: added [milestone-helper.sh](./scripts/milestone-helper.sh) entry
+
+All 5 ACs and DoD satisfied. QA approved.
+<!-- SECTION:FINAL_SUMMARY:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
