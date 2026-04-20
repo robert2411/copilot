@@ -61,6 +61,21 @@ The backlog CLI has no milestone create command and no --milestone flag for task
 9. Add a comment block at the top of the test file documenting: how to install shunit2 (brew install shunit2 / apt-get install shunit2) and how to run the tests (bash tests/skills/backlog-cli/test-milestone-helper.sh)
 <!-- SECTION:PLAN:END -->
 
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Self-review complete. Plan covers all 8 ACs:
+- AC1 (create milestone file with correct frontmatter) → steps 3a–3e
+- AC2 (assign task by patching frontmatter) → steps 4a–4e
+- AC3 (script at correct path) → steps 1–2
+- AC4 (executable + inline comments) → steps 2 and 6
+- AC5 (edge cases: duplicate, missing file, invalid ID) → steps 3d, 4b, 4c
+- AC6 (shunit2 tests for all scenarios) → steps 8a–8f
+- AC7 (tests in tests/skills/backlog-cli/ at repo root) → steps 7–8
+- AC8 (shunit2 install + run instructions in test file) → step 9
+No unverified assumptions. sed/awk available on macOS and Linux. shunit2 is a well-known testing framework. Error paths explicitly covered. Analysis complete. Plan ready. No blockers.
+<!-- SECTION:NOTES:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
