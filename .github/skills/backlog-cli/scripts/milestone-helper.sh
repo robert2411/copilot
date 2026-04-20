@@ -91,9 +91,10 @@ cmd_create_milestone() {
   local slug
   slug="$(slugify "$title")"
 
-  # Duplicate check — find any existing milestone file whose name contains the slug
+  # Duplicate check — find an existing milestone file with exactly this slug.
+  # Pattern: milestone-N - <slug>.md  (exact slug, no substring match).
   local existing
-  existing="$(find "$MILESTONES_DIR" -maxdepth 1 -name "*${slug}*" 2>/dev/null | head -1)"
+  existing="$(find "$MILESTONES_DIR" -maxdepth 1 -name "milestone-* - ${slug}.md" 2>/dev/null | head -1)"
   if [[ -n "$existing" ]]; then
     echo "Error: Milestone '${title}' already exists (slug: ${slug})." >&2
     exit 1
@@ -165,27 +166,35 @@ cmd_assign_task() {
     exit 1
   fi
 
-  # Check whether a milestone: key already exists in the frontmatter
-  if grep -q '^milestone:' "$task_file"; then
-    # Replace existing milestone field (BSD sed requires empty-string backup suffix on macOS)
-    sed -i "" "s|^milestone:.*|milestone: ${milestone_title}|" "$task_file"
-  else
-    # Insert milestone: field before the closing --- of the frontmatter block using awk
-    awk -v milestone="milestone: ${milestone_title}" '
-      BEGIN { in_front=0; done=0 }
-      /^---/ {
-        if (!in_front) {
-          in_front=1
-          print
-          next
-        } else if (!done) {
+  # Use awk to check/modify milestone: ONLY within the frontmatter block.
+  # The frontmatter block is bounded by the first pair of --- delimiters.
+  # This prevents accidentally modifying a "milestone:" line in the task body.
+  awk -v milestone="milestone: ${milestone_title}" '
+    BEGIN { in_front=0; front_done=0; found=0 }
+
+    /^---/ {
+      if (!in_front) {
+        in_front=1
+        print
+        next
+      } else if (!front_done) {
+        if (!found) {
           print milestone
-          done=1
         }
+        front_done=1
+        print
+        next
       }
-      { print }
-    ' "$task_file" > "${task_file}.tmp" && mv "${task_file}.tmp" "$task_file"
-  fi
+    }
+
+    in_front && !front_done && /^milestone:/ {
+      print milestone
+      found=1
+      next
+    }
+
+    { print }
+  ' "$task_file" > "${task_file}.tmp" && mv "${task_file}.tmp" "$task_file"
 
   echo "Assigned task ${task_num} to milestone '${milestone_title}'."
 }
