@@ -35,9 +35,7 @@ Full-featured project management through the `backlog` CLI. Handles entire task 
 | **Labels** | Free-form tags for filtering |
 | **Milestone** | Grouping of related tasks |
 
-**Golden rule:** Never edit task `.md` files directly. All writes go through the CLI.
-
-> **Exception — milestone assignment:** There is no `--milestone` CLI flag for `task create` or `task edit`. To assign a task to a milestone, edit the task's frontmatter directly and add `milestone: <name>`. This is the one supported method.
+**Golden rule:** Never edit task or milestone `.md` files directly. All writes go through the CLI or the approved [`milestone-helper.sh`](.github/skills/backlog-cli/scripts/milestone-helper.sh) script.
 
 ---
 
@@ -184,24 +182,9 @@ backlog milestone archive "Milestone Name"
 
 > **Note:** The `backlog milestone` CLI only supports `list` and `archive` commands. There is no `create` subcommand and no `--milestone` flag on `task create` or `task edit`.
 
-Two options are available for creating milestones and assigning tasks to them:
+Use the `milestone-helper.sh` script to create milestones and assign tasks to them:
 
-#### Option 1: Edit frontmatter directly
-
-**Assigning a task to a milestone** must be done by editing the task's frontmatter directly:
-
-```yaml
----
-id: task-42
-title: My Task
-status: To Do
-milestone: Sprint 1
----
-```
-
-Add or update the `milestone: <name>` field to match the milestone name exactly.
-
-#### Option 2: Using the milestone-helper.sh script
+#### Using the milestone-helper.sh script
 
 The `milestone-helper.sh` script (located in `.github/skills/backlog-cli/scripts/`) automates both milestone creation (by updating `backlog/config.yml`) and task-to-milestone assignment (by patching task frontmatter).
 
@@ -351,7 +334,7 @@ backlog task edit <id> --plan $'1. Review existing code\n2. Design approach\n3. 
 | Final Summary | `--final-summary "text"` | PR description — added at wrap-up |
 | Dependencies | `--dep task-1` | Task relationships |
 | References | `--ref src/file.ts` | Code or URL references |
-| Milestone | *(frontmatter only)* | Set `milestone: <name>` in task frontmatter — no CLI flag exists |
+| Milestone | *(milestone-helper.sh)* | Use `bash .github/skills/backlog-cli/scripts/milestone-helper.sh assign-task <id> "<name>"` — no CLI flag exists |
 
 ---
 
