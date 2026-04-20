@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 20:47'
+updated_date: '2026-04-20 20:48'
 labels:
   - backlog-cli
   - skills
@@ -22,7 +22,7 @@ The backlog CLI has no milestone create command and no --milestone flag for task
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Script supports creating a new milestone file in backlog/milestones/ with correct frontmatter (id, title, description, status, created_date)
+- [x] #1 Script supports creating a new milestone file in backlog/milestones/ with correct frontmatter (id, title, description, status, created_date)
 - [ ] #2 Script supports assigning an existing task to a milestone by patching the task file's frontmatter milestone field
 - [ ] #3 Script is placed at .github/skills/backlog-cli/scripts/milestone-helper.sh
 - [ ] #4 Script is executable and includes usage instructions as inline comments
