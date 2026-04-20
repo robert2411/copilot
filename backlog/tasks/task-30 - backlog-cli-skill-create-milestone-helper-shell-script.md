@@ -144,6 +144,27 @@ All 6 shunit2 tests still pass. Committed as b0a5732. Ready for re-QA.
 - Code quality/security/spelling: No additional issues found
 <!-- SECTION:NOTES:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added milestone-helper.sh bash script and shunit2 test suite for the backlog-cli skill.
+
+Changes:
+- .github/skills/backlog-cli/scripts/milestone-helper.sh (new, chmod +x)
+  - create-milestone subcommand: derives slug, auto-increments ID, exact-slug duplicate check, writes YAML frontmatter
+  - assign-task subcommand: awk-based frontmatter-scoped milestone field insert/replace, TASK-N format normalisation, missing file and invalid ID guards
+  - BACKLOG_DIR env var throughout (no hardcoded paths)
+  - Comment-block header + usage() function
+- tests/skills/backlog-cli/test-milestone-helper.sh (new)
+  - 6 shunit2 tests: create, duplicate, assign-insert, assign-replace, missing file, invalid ID
+  - setUp/tearDown with isolated temp BACKLOG_DIR
+  - install + run instructions in header comment
+
+Tests:
+- All 6 shunit2 tests pass (OK)
+- Smoke-tested all edge cases manually
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
