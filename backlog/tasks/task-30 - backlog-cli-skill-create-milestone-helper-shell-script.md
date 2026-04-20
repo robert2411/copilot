@@ -110,6 +110,15 @@ Analysis complete. Plan revised to address Plan Reviewer concerns. No blockers.
 - AC mapped: 8/8
 - All 4 previous concerns resolved: BACKLOG_DIR wiring (step 3), sed -i "" portability (step 5e), slug-based duplicate detection (step 4d), comment-block header + usage() function (steps 2c-2d)
 - No new concerns introduced by revision
+
+- Created .github/skills/backlog-cli/scripts/milestone-helper.sh
+- Created tests/skills/backlog-cli/test-milestone-helper.sh
+- Script uses BACKLOG_DIR env var for full test isolation
+- All 6 shunit2 tests pass (OK)
+- Smoke tests: create-milestone, duplicate check, assign-task insert, assign-task replace, missing file, invalid ID all verified
+- Script is chmod +x
+- All 8 ACs checked off
+Ready for QA.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
