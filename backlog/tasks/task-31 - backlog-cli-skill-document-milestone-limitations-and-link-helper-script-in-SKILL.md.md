@@ -6,7 +6,7 @@ title: >-
 status: To Do
 assignee: []
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 20:41'
+updated_date: '2026-04-20 20:43'
 labels:
   - backlog-cli
   - skills
@@ -36,25 +36,34 @@ SKILL.md currently notes milestone CLI limitations inline but does not reference
 
 <!-- SECTION:PLAN:BEGIN -->
 0. Prerequisite: TASK-30 must be complete — milestone-helper.sh must exist at .github/skills/backlog-cli/scripts/milestone-helper.sh before this task begins.
-1. Open .github/skills/backlog-cli/SKILL.md and locate the Milestones section (around line 173).
-2. Update the Milestones section narrative to:
-   a. State that two operations cannot be done via the CLI natively: creating milestones and assigning tasks to them.
-   b. Introduce milestone-helper.sh as the supported workaround for both operations.
-   c. Show example invocations:
+1. Open .github/skills/backlog-cli/SKILL.md and identify the two locations containing existing direct-edit workaround content:
+   a. Line ~40: the Exception callout after the Golden Rule ("Exception — milestone assignment: ... edit the task's frontmatter directly...").
+   b. Lines ~187-198: the Milestones section frontmatter snippet and surrounding prose ("Assigning a task to a milestone must be done by editing the task's frontmatter directly").
+2. Preserve ALL existing direct-edit workaround content exactly as written. Do NOT remove or replace it. This is the officially supported method and must remain clearly documented. The new script-based approach is an additional option, not a replacement.
+3. Update the Milestones section (around line 173) to ADD a new "Option 2: Using the helper script" block AFTER the existing direct-edit documentation:
+   a. Keep the existing frontmatter snippet and prose (step 1b content) intact above the new block.
+   b. Add a clearly labelled subsection: "Option 2: Using the milestone-helper.sh script" with a brief intro explaining that the helper script automates both milestone creation and task assignment.
+   c. Show example invocations under Option 2:
       - bash .github/skills/backlog-cli/scripts/milestone-helper.sh create-milestone "Sprint 1" "First sprint"
       - bash .github/skills/backlog-cli/scripts/milestone-helper.sh assign-task 42 "Sprint 1"
-3. Add a `scripts/` subsection under Milestones (or a dedicated Scripts section) that:
-   a. Lists .github/skills/backlog-cli/scripts/ as the location for helper scripts bundled with this skill.
-   b. Links to milestone-helper.sh with a brief one-line description of each subcommand.
-4. Update (or add) the References / Resources section at the bottom of SKILL.md to include:
-   - `scripts/milestone-helper.sh` — shell script for milestone creation and task assignment
-5. Add a Testing subsection (or note in the scripts section) that:
+   d. Label the existing direct-edit block as "Option 1: Edit frontmatter directly" so both options are parallel and clearly distinguished.
+4. Add a Scripts subsection (within or immediately after the Milestones section) that:
+   a. Names .github/skills/backlog-cli/scripts/ as the location for helper scripts bundled with this skill.
+   b. Lists milestone-helper.sh with a one-line description of each subcommand (create-milestone, assign-task).
+5. Update the References section at the bottom of SKILL.md to add:
+   - [milestone-helper.sh](./scripts/milestone-helper.sh) — shell script for milestone creation and task-to-milestone assignment
+   The path must be exactly ./scripts/milestone-helper.sh (relative to SKILL.md location). Do not use an absolute path or a path relative to the repo root.
+6. Add a Testing note in the Scripts subsection (or as a callout block) that:
    a. States test files live in tests/skills/backlog-cli/ at the repo root.
-   b. Documents how to run them: `bash tests/skills/backlog-cli/test-milestone-helper.sh`
-   c. Notes the shunit2 dependency and installation command.
-6. Confirm the scripts/ folder exists (.github/skills/backlog-cli/scripts/) — it will be created by TASK-30; if somehow absent, create it with a .gitkeep so the reference in SKILL.md is not broken.
-7. Review entire SKILL.md diff for consistency: ensure all references to milestone-helper.sh use the correct relative path, all example commands are syntactically valid, and no existing documented behaviour is accidentally removed.
-8. Commit changes (SKILL.md update only; scripts/ folder created by TASK-30).
+   b. Shows the run command: bash tests/skills/backlog-cli/test-milestone-helper.sh
+   c. Notes the shunit2 dependency: brew install shunit2 (macOS) or apt-get install shunit2 (Debian/Ubuntu).
+7. Confirm the scripts/ folder exists (.github/skills/backlog-cli/scripts/) — created by TASK-30; if absent, create it with a .gitkeep so the SKILL.md reference is not a broken link.
+8. Final review: re-read the entire modified SKILL.md diff and verify:
+   a. Both Option 1 (direct-edit) and Option 2 (helper script) are present and clearly labelled.
+   b. All references to milestone-helper.sh use the relative path ./scripts/milestone-helper.sh.
+   c. All example commands are syntactically valid.
+   d. No existing documented behaviour has been removed.
+9. Commit changes (SKILL.md update only; scripts/ folder and milestone-helper.sh committed by TASK-30).
 <!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
