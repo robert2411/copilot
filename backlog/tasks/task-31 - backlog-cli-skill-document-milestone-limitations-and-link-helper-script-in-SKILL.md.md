@@ -3,7 +3,7 @@ id: TASK-31
 title: >-
   backlog-cli skill: document milestone limitations and link helper script in
   SKILL.md
-status: In Progress
+status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-20 20:22'
