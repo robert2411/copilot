@@ -66,6 +66,14 @@ Analysis complete. No blockers. Implementation already committed — task closur
 - All changes already committed (commit 79a6838); no new code changes required
 
 All AC/DoD checked. Ready for QA.
+
+✅ QA APPROVED — all tests passing, no regressions
+- AC/DoD: Complete
+- AC1 verified: No incorrect `--milestone` usage; lines 40, 185, 307 correctly state no CLI flag exists
+- AC2 verified: Correct method documented via task frontmatter `milestone: <name>` (lines 40, 187-198, 307)
+- AC3 verified: Milestone CLI scope correctly documented as `list` and `archive` only (line 185)
+- Documentation quality: Clear, accurate, and complete for milestone assignment guidance
+- Security/Spelling: No issues found in reviewed document
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
