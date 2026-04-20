@@ -1,10 +1,11 @@
 ---
 id: TASK-32
 title: 'backlog-cli skill: remove direct-edit exception from Golden Rule'
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-20 21:07'
-updated_date: '2026-04-20 21:14'
+updated_date: '2026-04-20 21:15'
 labels:
   - backlog-cli
   - skills
