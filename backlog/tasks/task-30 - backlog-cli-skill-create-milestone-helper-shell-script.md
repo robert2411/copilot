@@ -157,6 +157,12 @@ All 6 shunit2 tests still pass. Committed as b0a5732. Ready for re-QA.
 - Checks: OWASP Top 10, path traversal, ReDoS, input validation, file permissions, BACKLOG_DIR injection
 
 SEC-001 fixed: replaced awk -v with ENVIRON to prevent backslash-escape injection. Added test_assign_task_backslash_n_in_title regression test. All 7 shunit2 tests pass.
+
+QA REVIEW: ✅ QA APPROVED — all tests passing, no regressions
+- Verified SEC-001 fix in assign-task: no `awk -v milestone=` usage; uses `ENVIRON["MILESTONE_VAR"]` instead.
+- Regression test `test_assign_task_backslash_n_in_title` correctly checks single `milestone:` line and absence of `injected:` field.
+- Test run: 7/7 passed (OK) via `bash tests/skills/backlog-cli/test-milestone-helper.sh`.
+- No additional regressions found in reviewed scope.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
