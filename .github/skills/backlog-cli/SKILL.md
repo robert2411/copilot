@@ -207,26 +207,6 @@ Helper scripts bundled with this skill live in `.github/skills/backlog-cli/scrip
 |--------|-------------|
 | `milestone-helper.sh` | Creates milestones and assigns tasks to milestones via two subcommands: `create-milestone` and `assign-task` |
 
-#### Testing
-
-Test files live in `tests/skills/backlog-cli/` at the repo root.
-
-**Dependency:** [shunit2](https://github.com/kward/shunit2) must be installed.
-
-```bash
-# macOS
-brew install shunit2
-
-# Debian/Ubuntu
-apt-get install shunit2
-```
-
-Run the milestone-helper tests:
-
-```bash
-bash tests/skills/backlog-cli/test-milestone-helper.sh
-```
-
 ### Decisions
 
 Record architectural decision records (ADRs) in `backlog/decisions/`.
