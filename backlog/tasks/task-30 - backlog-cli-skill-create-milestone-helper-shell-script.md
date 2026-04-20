@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 20:49'
+updated_date: '2026-04-20 20:51'
 labels:
   - backlog-cli
   - skills
@@ -122,6 +122,14 @@ Ready for QA.
 
 ❌ QA REJECTED: AC/DoD incomplete.
 - Missing: DoD #1 (All code is committed to git)
+
+❌ QA REJECTED: correctness issues remain after re-review.
+
+🔍 QA REVIEW FINDINGS:
+- Issue #1: [High] assign-task does not scope milestone detection/replacement to YAML frontmatter. It greps/replaces any ^milestone: line in the whole file, so a body line can be replaced while frontmatter remains unchanged (reproducible). (file: .github/skills/backlog-cli/scripts/milestone-helper.sh:169-172)
+- Issue #2: [Medium] duplicate milestone detection uses wildcard *<slug>* matching, causing false positives (e.g., "Sprint 1" is rejected if "Sprint 10" exists). Should match exact normalized slug/file, not substring contains. (file: .github/skills/backlog-cli/scripts/milestone-helper.sh:96)
+
+Verdict: Fix required before approval.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
