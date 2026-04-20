@@ -72,6 +72,15 @@ Plan revised to address Plan Reviewer concerns. No blockers.
   #1 (Golden Rule contradiction): Step 3 supplies the exact replacement sentence; contradiction eliminated.
   #2 (grep ambiguity): Step 6 explicitly names acceptable residual frontmatter matches (lines 206, 217) and problem patterns that must be absent; two additional grep checks added.
 - No new concerns found.
+
+- Removed Exception callout blockquote from line ~40 (AC#1)
+- Updated Golden Rule to reference both CLI and milestone-helper.sh (AC#2 + AC#3)
+- Removed "Option 1: Edit frontmatter directly" block from Milestones section (AC#4)
+- Renamed "Option 2: Using the milestone-helper.sh script" → "Using the milestone-helper.sh script" (AC#4)
+- Updated intro sentence for milestones section to remove "Two options" framing (AC#4)
+- Updated Task Content Reference table Milestone row to reference milestone-helper.sh instead of frontmatter (AC#4)
+- Grep checks: no Option 1/2 remaining, no imperative direct-edit instructions, only acceptable descriptor-level frontmatter references remain
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
