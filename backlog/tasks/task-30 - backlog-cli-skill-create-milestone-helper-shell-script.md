@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 20:51'
+updated_date: '2026-04-20 20:52'
 labels:
   - backlog-cli
   - skills
@@ -130,6 +130,11 @@ Ready for QA.
 - Issue #2: [Medium] duplicate milestone detection uses wildcard *<slug>* matching, causing false positives (e.g., "Sprint 1" is rejected if "Sprint 10" exists). Should match exact normalized slug/file, not substring contains. (file: .github/skills/backlog-cli/scripts/milestone-helper.sh:96)
 
 Verdict: Fix required before approval.
+
+Fixed QA issues:
+- Issue #1 (High): Replaced grep+sed approach with unified awk that only modifies milestone: within the frontmatter block (between --- delimiters). Body lines with milestone: are completely untouched.
+- Issue #2 (Medium): Changed duplicate detection from *<slug>* to milestone-* - <slug>.md exact pattern. Sprint 1 and Sprint 10 now have different slugs and no false positive.
+All 6 shunit2 tests still pass. Committed as b0a5732. Ready for re-QA.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
