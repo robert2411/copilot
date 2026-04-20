@@ -22,9 +22,9 @@ The skill doc incorrectly implies milestone assignment can be done via CLI flag 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Skill doc updated to remove any reference to --milestone CLI flag
-- [ ] #2 Skill doc documents correct method: add 'milestone: <name>' to task frontmatter directly
-- [ ] #3 Skill doc notes milestone CLI only supports: list and archive commands
+- [x] #1 Skill doc updated to remove any reference to --milestone CLI flag
+- [x] #2 Skill doc documents correct method: add 'milestone: <name>' to task frontmatter directly
+- [x] #3 Skill doc notes milestone CLI only supports: list and archive commands
 <!-- AC:END -->
 
 ## Implementation Plan
