@@ -29,7 +29,7 @@ The backlog CLI has no milestone create command and no --milestone flag for task
 - [x] #5 Script handles edge cases: duplicate milestone names, missing task file, invalid task ID
 - [x] #6 Tests written using shunit2 covering: create milestone, assign task, duplicate milestone, missing task file, invalid task ID
 - [x] #7 Tests live in tests/skills/backlog-cli/ at repo root — NOT inside the skill dir
-- [ ] #8 README or inline comment in test file documents how to install shunit2 and run tests
+- [x] #8 README or inline comment in test file documents how to install shunit2 and run tests
 <!-- AC:END -->
 
 ## Implementation Plan
