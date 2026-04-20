@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 20:48'
+updated_date: '2026-04-20 20:49'
 labels:
   - backlog-cli
   - skills
@@ -119,6 +119,9 @@ Analysis complete. Plan revised to address Plan Reviewer concerns. No blockers.
 - Script is chmod +x
 - All 8 ACs checked off
 Ready for QA.
+
+❌ QA REJECTED: AC/DoD incomplete.
+- Missing: DoD #1 (All code is committed to git)
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
