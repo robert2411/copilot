@@ -24,7 +24,7 @@ The backlog CLI has no milestone create command and no --milestone flag for task
 <!-- AC:BEGIN -->
 - [x] #1 Script supports creating a new milestone file in backlog/milestones/ with correct frontmatter (id, title, description, status, created_date)
 - [x] #2 Script supports assigning an existing task to a milestone by patching the task file's frontmatter milestone field
-- [ ] #3 Script is placed at .github/skills/backlog-cli/scripts/milestone-helper.sh
+- [x] #3 Script is placed at .github/skills/backlog-cli/scripts/milestone-helper.sh
 - [ ] #4 Script is executable and includes usage instructions as inline comments
 - [ ] #5 Script handles edge cases: duplicate milestone names, missing task file, invalid task ID
 - [ ] #6 Tests written using shunit2 covering: create milestone, assign task, duplicate milestone, missing task file, invalid task ID
