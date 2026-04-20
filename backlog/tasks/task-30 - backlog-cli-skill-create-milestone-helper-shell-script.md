@@ -1,10 +1,11 @@
 ---
 id: TASK-30
 title: 'backlog-cli skill: create milestone helper shell script'
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 20:46'
+updated_date: '2026-04-20 20:47'
 labels:
   - backlog-cli
   - skills
