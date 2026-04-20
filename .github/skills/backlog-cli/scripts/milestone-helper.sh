@@ -169,8 +169,15 @@ cmd_assign_task() {
   # Use awk to check/modify milestone: ONLY within the frontmatter block.
   # The frontmatter block is bounded by the first pair of --- delimiters.
   # This prevents accidentally modifying a "milestone:" line in the task body.
-  awk -v milestone="milestone: ${milestone_title}" '
-    BEGIN { in_front=0; front_done=0; found=0 }
+  #
+  # SEC-001 fix: use ENVIRON instead of awk -v to pass milestone_title.
+  # awk's -v flag interprets backslash escape sequences (\n, \t, \\, …) at
+  # parse time, so a title like "Sprint 1\ninjected: evil" would inject an
+  # extra YAML field into the frontmatter.  ENVIRON passes the value as raw
+  # bytes with no escape processing, eliminating that attack surface.
+  MILESTONE_VAR="milestone: ${milestone_title}" \
+  awk '
+    BEGIN { milestone = ENVIRON["MILESTONE_VAR"]; in_front=0; front_done=0; found=0 }
 
     /^---/ {
       if (!in_front) {

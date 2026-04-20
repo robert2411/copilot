@@ -134,6 +134,37 @@ test_assign_task_missing_file() {
 }
 
 # ---------------------------------------------------------------------------
+# test_assign_task_backslash_n_in_title (SEC-001 regression)
+# ---------------------------------------------------------------------------
+# A milestone title containing a literal backslash-n sequence must NOT inject
+# a second YAML field.  With awk -v this would expand \n to a newline, turning
+# "Sprint 1\ninjected: evil" into two lines in the frontmatter.  The ENVIRON
+# fix passes the value as raw bytes so the literal characters \ and n reach
+# the output unchanged.
+test_assign_task_backslash_n_in_title() {
+  cat > "$TEST_DIR/tasks/task-9 - sec-task.md" <<'TASK'
+---
+id: TASK-9
+title: "SEC Task"
+status: To Do
+---
+Task body here.
+TASK
+
+  bash "$SCRIPT_UNDER_TEST" assign-task 9 'Sprint 1\ninjected: evil'
+
+  local file="$TEST_DIR/tasks/task-9 - sec-task.md"
+
+  # Exactly one milestone: line must exist in the file
+  local count
+  count="$(grep -c '^milestone:' "$file")"
+  assertEquals "Only one milestone field should exist" 1 "$count"
+
+  # No injected: field should appear
+  assertFalse "Injected field must not exist" "grep -q '^injected:' '$file'"
+}
+
+# ---------------------------------------------------------------------------
 # test_assign_task_invalid_id
 # ---------------------------------------------------------------------------
 test_assign_task_invalid_id() {
