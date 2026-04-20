@@ -4,7 +4,7 @@ title: 'backlog-cli skill: remove direct-edit exception from Golden Rule'
 status: To Do
 assignee: []
 created_date: '2026-04-20 21:07'
-updated_date: '2026-04-20 21:11'
+updated_date: '2026-04-20 21:13'
 labels:
   - backlog-cli
   - skills
@@ -38,38 +38,14 @@ SKILL.md currently has an Exception callout under the Golden Rule (around line 4
    - Delete that entire paragraph (the `> **Exception...` block).
 
 3. **Update the Golden Rule sentence to reference the two supported methods (AC#2 & AC#3):**
-   - Current text (line 38): `**Golden rule:** Never edit task `.md` files directly. All writes go through the CLI.`
-   - Replace with:
-     ```
-     **Golden rule:** Never edit task or milestone `.md` files directly. All writes go through the CLI.
-     Two supported methods exist for milestone operations: (1) `backlog` CLI commands, (2) the [`milestone-helper.sh`](.github/skills/backlog-cli/scripts/milestone-helper.sh) script.
-     ```
-   - This satisfies AC#2 (two methods stated) and AC#3 (link to milestone-helper.sh present).
+   - Current text (line 38): `**Golden rule:** Never edit task \`.md\` files directly. All writes go through the CLI.`
+   - Replace with the following exact sentence (removes the contradiction — milestone-helper.sh patches frontmatter directly so it is not "the CLI"):
+     `**Golden rule:** Never edit task or milestone \`.md\` files directly. All writes go through the CLI or the approved [\`milestone-helper.sh\`](.github/skills/backlog-cli/scripts/milestone-helper.sh) script.`
+   - This satisfies AC#2 (two methods: backlog CLI commands and milestone-helper.sh) and AC#3 (link to milestone-helper.sh present near the Golden Rule).
 
 4. **Remove "Option 1: Edit frontmatter directly" from the Milestones section (AC#4):**
-   - Locate lines ~188-202 under `### Milestones` > `#### Option 1: Edit frontmatter directly`.
-   - Delete that entire block (heading, explanation paragraph, yaml code block, and the note below it).
-   - Rename `#### Option 2: Using the milestone-helper.sh script` to just `#### Using milestone-helper.sh` (remove the "Option 2" prefix).
-   - Also remove the introductory sentence "Two options are available..." and replace with "Use the `milestone-helper.sh` script to create milestones and assign tasks:".
-
-5. **Update the Task Content Reference table (AC#4):**
-   - Locate the Milestone row (line ~354): `| Milestone | *(frontmatter only)* | Set \`milestone: <name>\` in task frontmatter — no CLI flag exists |`
-   - Replace with: `| Milestone | *(milestone-helper.sh)* | Use \`milestone-helper.sh assign-task <id> "<name>"\` — no CLI flag exists |`
-
-6. **Verify AC#4 — scan for remaining direct-edit instructions:**
-   - Run: `grep -n "frontmatter" .github/skills/backlog-cli/SKILL.md`
-   - Run: `grep -n "edit.*directly\|directly.*edit" .github/skills/backlog-cli/SKILL.md`
-   - Confirm no remaining instructions to edit task or milestone files directly.
-
-7. **Commit the changes:**
-   - `git add .github/skills/backlog-cli/SKILL.md`
-   - `git commit -m "docs(skill): remove direct-edit exception from Golden Rule in SKILL.md"`
-
-8. **Verify all ACs:**
-   - AC#1: Confirm `> **Exception — milestone assignment:**` blockquote is gone.
-   - AC#2: Confirm Golden Rule now mentions backlog CLI + milestone-helper.sh as the only two methods.
-   - AC#3: Confirm a reference/link to `.github/skills/backlog-cli/scripts/milestone-helper.sh` appears near the Golden Rule.
-   - AC#4: Confirm `grep -n "frontmatter\|edit.*directly" SKILL.md` returns no lines instructing direct file edits.
+   - Locate lines ~189-202 under `### Milestones` > `#### Option 1: Edit frontmatter directly`.
+   - Delete that entire block: the heading, the introductory sentence "**Assigning a task to a milestone** must be done by editing the task's frontmatter directly:", the yaml code block, and the "Add or update..." note below it.\n   - Rename `#### Option 2: Using the milestone-helper.sh script` → `#### Using the milestone-helper.sh script` (drop the "Option 2" prefix).\n   - Replace the introductory sentence "Two options are available for creating milestones and assigning tasks to them:" with "Use the `milestone-helper.sh` script to create milestones and assign tasks to them:".\n\n5. **Update the Task Content Reference table (AC#4):**\n   - Locate the Milestone row (line ~354): `| Milestone | *(frontmatter only)* | Set \`milestone: <name>\` in task frontmatter — no CLI flag exists |`\n   - Replace with: `| Milestone | *(milestone-helper.sh)* | Use \`bash .github/skills/backlog-cli/scripts/milestone-helper.sh assign-task <id> "<name>"\` — no CLI flag exists |`\n\n6. **Verify AC#4 — scan for remaining direct-edit instructions:**\n   - Run: `grep -n "frontmatter" .github/skills/backlog-cli/SKILL.md`\n     Expected/acceptable residual matches (do NOT remove these):\n       • A match containing "by patching task frontmatter" — this is inside the milestone-helper.sh description block (the `create-milestone`/`assign-task` explanation) and describes what the script does internally. It is not an instruction to the reader.\n       • A match containing "sets \`milestone:\` in the task's frontmatter" — also inside the milestone-helper.sh description block, describing the `assign-task` subcommand behaviour. Also acceptable.\n     Patterns that confirm a problem (must be absent):\n       • Any line containing an imperative instruction such as "edit the task's frontmatter directly", "edit.*frontmatter.*directly", or "must be done by editing the.*frontmatter".\n   - Run: `grep -n "edit.*directly\\|directly.*edit" .github/skills/backlog-cli/SKILL.md`\n     This must return zero results after the edit.\n   - Run: `grep -n "Option 1\\|Option 2" .github/skills/backlog-cli/SKILL.md`\n     This must return zero results after the edit.\n\n7. **Commit the changes:**\n   - `git add .github/skills/backlog-cli/SKILL.md`\n   - `git commit -m "docs(skill): remove direct-edit exception from Golden Rule in SKILL.md"`\n\n8. **Verify all ACs:**\n   - AC#1: Confirm `> **Exception — milestone assignment:**` blockquote is gone.\n   - AC#2: Confirm Golden Rule now reads "All writes go through the CLI or the approved milestone-helper.sh script." — no mention of direct editing, no contradiction.\n   - AC#3: Confirm a link to `.github/skills/backlog-cli/scripts/milestone-helper.sh` appears in the Golden Rule line itself.\n   - AC#4: Confirm grep checks from Step 6 pass: no imperative direct-edit instructions remain; only acceptable descriptor-level frontmatter references remain inside the milestone-helper.sh description block.
 <!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
