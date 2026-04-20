@@ -4,7 +4,7 @@ title: 'backlog-cli skill: create milestone helper shell script'
 status: To Do
 assignee: []
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 20:38'
+updated_date: '2026-04-20 20:41'
 labels:
   - backlog-cli
   - skills
@@ -74,6 +74,18 @@ Self-review complete. Plan covers all 8 ACs:
 - AC7 (tests in tests/skills/backlog-cli/ at repo root) → steps 7–8
 - AC8 (shunit2 install + run instructions in test file) → step 9
 No unverified assumptions. sed/awk available on macOS and Linux. shunit2 is a well-known testing framework. Error paths explicitly covered. Analysis complete. Plan ready. No blockers.
+
+🔍 PLAN REVIEW CONCERNS
+
+- Concern #1 (HIGH): BACKLOG_DIR not wired into script steps. Test step 8a sets BACKLOG_DIR to a temp dir but implementation steps 1-6 hardcode backlog/milestones/ and backlog/tasks/ paths with no mention of reading BACKLOG_DIR inside the script itself. If paths resolve from CWD, tests will either fail or corrupt the real backlog. Plan must explicitly state the script reads a BACKLOG_DIR env var (defaulting to ./backlog) and uses it for all path resolution.
+
+- Concern #2 (MEDIUM): sed -i macOS portability not addressed. On macOS BSD sed, in-place editing requires an empty string suffix: sed -i "". On Linux GNU sed it is sed -i. Step 4e says "use sed/awk" but is silent on this difference. Since the project runs on macOS, a naive sed -i will error. Plan must specify the portability strategy (e.g., detect OS, always pass the empty-string arg, or use perl -i -pe as a cross-platform alternative).
+
+- Concern #3 (MEDIUM): Duplicate milestone detection method is ambiguous. Step 3d says exit 1 if a milestone with the same title already exists, but does not specify the comparison method: slug match on filename, grep on the title: frontmatter field, or exact string match. These yield different results for titles like "Sprint 1" vs "sprint-1". Plan must specify the exact comparison strategy.
+
+- Concern #4 (LOW): AC4 requires "usage instructions as inline comments." The plan implements a usage() function that prints at runtime, which is different from inline # comment documentation embedded in the script body. Plan should explicitly call out adding comment-block usage documentation at the top of the script to satisfy the AC as written.
+
+Verdict: Plan needs revision before implementation.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
