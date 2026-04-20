@@ -61,6 +61,8 @@ Error paths: Step 6 grep scan catches any missed direct-edit instructions. No un
 🔍 PLAN REVIEW CONCERNS
 - Concern #1 (AC#2 — wording contradiction): Plan Step 3 proposes keeping "All writes go through the CLI." immediately followed by "Two supported methods exist: (1) backlog CLI commands, (2) milestone-helper.sh script." milestone-helper.sh patches frontmatter directly — it is not the CLI. Keeping the "All writes go through the CLI" sentence while endorsing a non-CLI script as an equal method creates a self-contradiction on adjacent lines. The phrase needs updating, e.g. "All writes go through the CLI or approved helper scripts." Plan must specify the corrected phrasing.
 - Concern #2 (AC#4 — grep verification ambiguous): After all changes, grep -n "frontmatter" will still return lines 206 and 217 (script-behaviour descriptions: "by patching task frontmatter" and "sets milestone: in the task's frontmatter"). Plan Step 6 says "confirm no remaining instructions to edit directly" but does not tell the implementer that these residual matches are acceptable. Without this clarification the implementer may over-remove valid documentation or treat the grep as a failing check. Plan must explicitly note that post-edit frontmatter references inside the milestone-helper.sh description block are expected and acceptable.\n\nVerdict: Plan needs revision before implementation.
+
+Plan revised to address Plan Reviewer concerns. No blockers.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
