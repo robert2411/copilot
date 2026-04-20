@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 20:59'
+updated_date: '2026-04-20 21:00'
 labels:
   - backlog-cli
   - skills
@@ -163,6 +163,8 @@ QA REVIEW: ✅ QA APPROVED — all tests passing, no regressions
 - Regression test `test_assign_task_backslash_n_in_title` correctly checks single `milestone:` line and absence of `injected:` field.
 - Test run: 7/7 passed (OK) via `bash tests/skills/backlog-cli/test-milestone-helper.sh`.
 - No additional regressions found in reviewed scope.
+
+✅ SECURITY RE-AUDIT: SEC-001 resolved — ENVIRON["MILESTONE_VAR"] confirmed at line 180; no awk -v milestone= pattern found; MILESTONE_VAR scoped inline to awk invocation (line 178, not exported globally); regression test test_assign_task_backslash_n_in_title present and correctly asserts single milestone: line + absence of injected: field
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
