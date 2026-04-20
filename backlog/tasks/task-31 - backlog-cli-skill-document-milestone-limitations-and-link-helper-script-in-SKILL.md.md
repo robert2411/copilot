@@ -6,7 +6,7 @@ title: >-
 status: To Do
 assignee: []
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 20:38'
+updated_date: '2026-04-20 20:41'
 labels:
   - backlog-cli
   - skills
@@ -67,6 +67,14 @@ Self-review complete. Plan covers all 5 ACs:
 - AC4 (References section includes milestone-helper.sh link) → step 4
 - AC5 (SKILL.md notes test location and how to run with shunit2) → step 5
 Dependency on TASK-30 explicitly noted in plan step 0. No content to write until milestone-helper.sh exists (confirmed by TASK-30 dependency in task frontmatter). No other blockers. Analysis complete. Plan ready. No blockers.
+
+🔍 PLAN REVIEW CONCERNS
+
+- Concern #1 (MEDIUM): Existing workaround text not explicitly addressed. SKILL.md already contains a direct-edit workaround in two places: an Exception callout after the Golden Rule (around line 40) and the frontmatter snippet example under Milestones (lines 187-198). The plan says to "update the Milestones section narrative" but never says whether to replace, remove, or keep the existing content. If both the old direct-edit instructions and the new script references coexist, readers will see two conflicting guidance paths. The plan must explicitly state which existing text to remove or replace.
+
+- Concern #2 (LOW): Reference link path format not specified. Step 4 adds a milestone-helper.sh entry to the References section but does not specify the relative path to use. Existing references use paths like ../../../backlog/docs/.... The correct relative path from SKILL.md to the script is ./scripts/milestone-helper.sh. Without specifying this, Implementation may produce a broken link. Plan should state the exact link format: [milestone-helper.sh](./scripts/milestone-helper.sh).
+
+Verdict: Plan needs revision before implementation.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
