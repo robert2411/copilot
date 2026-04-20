@@ -1,8 +1,9 @@
 ---
 id: TASK-29
 title: 'Fix Backlog CLI skill doc: document correct milestone assignment method'
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-19 20:04'
 updated_date: '2026-04-20 20:29'
 labels:
