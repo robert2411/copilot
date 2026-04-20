@@ -93,6 +93,13 @@ Analysis complete. Plan revised to address Plan Reviewer concerns. No blockers.
 - AC mapped: 5/5
 - All 2 previous concerns resolved: existing workaround text preserved as Option 1 with Option 2 added in parallel (steps 1-3), exact relative link path specified as ./scripts/milestone-helper.sh (step 5)
 - No new concerns introduced by revision
+
+- Updated Milestones section with Option 1 (direct frontmatter) and Option 2 (milestone-helper.sh)
+- Added Scripts subsection with table listing milestone-helper.sh
+- Added Testing note with shunit2 dependency, test location, and run command
+- Added milestone-helper.sh to References section with relative path ./scripts/milestone-helper.sh
+- Confirmed scripts/ folder exists at .github/skills/backlog-cli/scripts/
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
