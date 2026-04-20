@@ -6,6 +6,7 @@ title: >-
 status: To Do
 assignee: []
 created_date: '2026-04-20 20:22'
+updated_date: '2026-04-20 20:25'
 labels:
   - backlog-cli
   - skills
@@ -27,6 +28,7 @@ SKILL.md currently notes milestone CLI limitations inline but does not reference
 - [ ] #2 SKILL.md explains the two operations the script covers: create milestone and assign task to milestone
 - [ ] #3 A scripts/ folder exists at .github/skills/backlog-cli/scripts/ and is referenced from the SKILL.md resources/links section
 - [ ] #4 References section at bottom of SKILL.md includes milestone-helper.sh link
+- [ ] #5 SKILL.md notes test location (tests/skills/backlog-cli/) and how to run them with shunit2
 <!-- AC:END -->
 
 ## Definition of Done
