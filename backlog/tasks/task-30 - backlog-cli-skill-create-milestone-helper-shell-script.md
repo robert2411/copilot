@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 20:57'
+updated_date: '2026-04-20 20:59'
 labels:
   - backlog-cli
   - skills
@@ -155,6 +155,8 @@ All 6 shunit2 tests still pass. Committed as b0a5732. Ready for re-QA.
 - Heredoc writes: variable expansion only, not command execution
 - Test file: mktemp -d isolation, tearDown cleans up, no artifacts outside temp dir
 - Checks: OWASP Top 10, path traversal, ReDoS, input validation, file permissions, BACKLOG_DIR injection
+
+SEC-001 fixed: replaced awk -v with ENVIRON to prevent backslash-escape injection. Added test_assign_task_backslash_n_in_title regression test. All 7 shunit2 tests pass.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
