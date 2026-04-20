@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-20 21:07'
-updated_date: '2026-04-20 21:15'
+updated_date: '2026-04-20 21:16'
 labels:
   - backlog-cli
   - skills
@@ -23,10 +23,10 @@ SKILL.md currently has an Exception callout under the Golden Rule (around line 4
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Exception callout under the Golden Rule is removed from SKILL.md
-- [ ] #2 Golden Rule section states only two supported methods: backlog CLI commands and milestone-helper.sh
-- [ ] #3 Reference or link to .github/skills/backlog-cli/scripts/milestone-helper.sh is present near the Golden Rule section
-- [ ] #4 No other location in SKILL.md instructs the reader to edit task or milestone files directly
+- [x] #1 Exception callout under the Golden Rule is removed from SKILL.md
+- [x] #2 Golden Rule section states only two supported methods: backlog CLI commands and milestone-helper.sh
+- [x] #3 Reference or link to .github/skills/backlog-cli/scripts/milestone-helper.sh is present near the Golden Rule section
+- [x] #4 No other location in SKILL.md instructs the reader to edit task or milestone files directly
 <!-- AC:END -->
 
 ## Implementation Plan
