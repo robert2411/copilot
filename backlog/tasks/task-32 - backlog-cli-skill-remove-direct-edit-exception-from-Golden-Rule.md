@@ -72,6 +72,17 @@ SKILL.md currently has an Exception callout under the Golden Rule (around line 4
    - AC#4: Confirm `grep -n "frontmatter\|edit.*directly" SKILL.md` returns no lines instructing direct file edits.
 <!-- SECTION:PLAN:END -->
 
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Self-review complete. Plan covers all 4 ACs:
+- AC#1 → Step 2 (remove Exception callout).
+- AC#2 → Step 3 (update Golden Rule text with two methods).
+- AC#3 → Step 3 (add link to milestone-helper.sh near Golden Rule).
+- AC#4 → Steps 4–5 (remove Option 1 direct-edit block from Milestones section; update Task Reference table row).
+Error paths: Step 6 grep scan catches any missed direct-edit instructions. No unverified assumptions — SKILL.md reviewed in full; both the Exception callout (line 40) and the Option 1 frontmatter section (lines 188-202) and the table row (line 354) are confirmed present and targeted. Analysis complete. No blockers.
+<!-- SECTION:NOTES:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
