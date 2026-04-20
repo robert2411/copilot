@@ -4,7 +4,7 @@ title: 'backlog-cli skill: remove direct-edit exception from Golden Rule'
 status: To Do
 assignee: []
 created_date: '2026-04-20 21:07'
-updated_date: '2026-04-20 21:13'
+updated_date: '2026-04-20 21:14'
 labels:
   - backlog-cli
   - skills
@@ -63,6 +63,14 @@ Error paths: Step 6 grep scan catches any missed direct-edit instructions. No un
 - Concern #2 (AC#4 — grep verification ambiguous): After all changes, grep -n "frontmatter" will still return lines 206 and 217 (script-behaviour descriptions: "by patching task frontmatter" and "sets milestone: in the task's frontmatter"). Plan Step 6 says "confirm no remaining instructions to edit directly" but does not tell the implementer that these residual matches are acceptable. Without this clarification the implementer may over-remove valid documentation or treat the grep as a failing check. Plan must explicitly note that post-edit frontmatter references inside the milestone-helper.sh description block are expected and acceptable.\n\nVerdict: Plan needs revision before implementation.
 
 Plan revised to address Plan Reviewer concerns. No blockers.
+
+✅ PLAN APPROVED — plan is complete, all AC covered, no ambiguity
+- Steps verified: 8
+- AC mapped: 4/4
+- Previous concerns resolved:
+  #1 (Golden Rule contradiction): Step 3 supplies the exact replacement sentence; contradiction eliminated.
+  #2 (grep ambiguity): Step 6 explicitly names acceptable residual frontmatter matches (lines 206, 217) and problem patterns that must be absent; two additional grep checks added.
+- No new concerns found.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
