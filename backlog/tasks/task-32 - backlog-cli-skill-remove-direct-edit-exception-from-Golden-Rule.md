@@ -81,6 +81,9 @@ Plan revised to address Plan Reviewer concerns. No blockers.
 - Updated Task Content Reference table Milestone row to reference milestone-helper.sh instead of frontmatter (AC#4)
 - Grep checks: no Option 1/2 remaining, no imperative direct-edit instructions, only acceptable descriptor-level frontmatter references remain
 All AC/DoD checked. Ready for QA.
+
+❌ QA REJECTED: AC/DoD incomplete.
+- Missing: DoD #1 (All code is committed to git)
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
