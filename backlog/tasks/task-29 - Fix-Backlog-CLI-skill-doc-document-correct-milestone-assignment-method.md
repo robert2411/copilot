@@ -76,6 +76,12 @@ All AC/DoD checked. Ready for QA.
 - Security/Spelling: No issues found in reviewed document
 <!-- SECTION:NOTES:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Verified SKILL.md correctly documents milestone assignment via frontmatter only. All 3 ACs confirmed satisfied in commit 79a6838. No --milestone flag references remain; correct frontmatter method documented; milestone CLI scoped to list/archive only.
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
