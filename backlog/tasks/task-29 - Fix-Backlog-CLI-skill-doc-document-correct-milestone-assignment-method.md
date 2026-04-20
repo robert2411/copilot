@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-19 20:04'
-updated_date: '2026-04-20 20:29'
+updated_date: '2026-04-20 20:30'
 labels:
   - docs
   - backlog-skill
@@ -64,6 +64,8 @@ Analysis complete. No blockers. Implementation already committed — task closur
 - AC #2 confirmed: lines 40, 187-198 & 307 document milestone: <name> frontmatter method with YAML example
 - AC #3 confirmed: line 185 explicitly scopes milestone CLI to list and archive only
 - All changes already committed (commit 79a6838); no new code changes required
+
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
