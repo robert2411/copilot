@@ -57,6 +57,18 @@ SKILL.md currently notes milestone CLI limitations inline but does not reference
 8. Commit changes (SKILL.md update only; scripts/ folder created by TASK-30).
 <!-- SECTION:PLAN:END -->
 
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Self-review complete. Plan covers all 5 ACs:
+- AC1 (SKILL.md Milestones section references scripts/ and milestone-helper.sh) → steps 2–3
+- AC2 (SKILL.md explains create-milestone and assign-task operations) → step 2c
+- AC3 (scripts/ folder exists and is referenced from resources section) → steps 4 and 6
+- AC4 (References section includes milestone-helper.sh link) → step 4
+- AC5 (SKILL.md notes test location and how to run with shunit2) → step 5
+Dependency on TASK-30 explicitly noted in plan step 0. No content to write until milestone-helper.sh exists (confirmed by TASK-30 dependency in task frontmatter). No other blockers. Analysis complete. Plan ready. No blockers.
+<!-- SECTION:NOTES:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
