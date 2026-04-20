@@ -1,0 +1,217 @@
+#!/usr/bin/env bash
+# =============================================================================
+# milestone-helper.sh — Backlog CLI Milestone Helper
+# =============================================================================
+# PURPOSE:
+#   Automates two operations that the backlog CLI does not natively support:
+#   1. Creating a new milestone file with correct YAML frontmatter.
+#   2. Assigning an existing task to a milestone by patching its frontmatter.
+#
+# USAGE:
+#   milestone-helper.sh create-milestone <title> [description]
+#   milestone-helper.sh assign-task <task-id> <milestone-title>
+#
+# SUBCOMMANDS:
+#   create-milestone  Create a new milestone in $BACKLOG_DIR/milestones/
+#     <title>         Required. The milestone title (quoted if it contains spaces).
+#     [description]   Optional. A short description of the milestone.
+#
+#   assign-task       Patch a task file's frontmatter to set the milestone field.
+#     <task-id>       Required. Numeric ID (e.g. 5) or TASK-N format (e.g. TASK-5).
+#     <milestone-title> Required. The exact title of the milestone to assign.
+#
+# EXAMPLES:
+#   milestone-helper.sh create-milestone "Sprint 1" "First sprint goals"
+#   milestone-helper.sh assign-task 5 "Sprint 1"
+#   milestone-helper.sh assign-task TASK-5 "Sprint 1"
+#
+# ENVIRONMENT VARIABLES:
+#   BACKLOG_DIR   Path to the backlog root directory. Defaults to ./backlog.
+#                 Override this in tests to point at a temporary directory so
+#                 the script never touches the real backlog during test runs.
+#                 Example: BACKLOG_DIR=/tmp/test-backlog ./milestone-helper.sh ...
+# =============================================================================
+
+set -euo pipefail
+
+BACKLOG_DIR="${BACKLOG_DIR:-./backlog}"
+MILESTONES_DIR="$BACKLOG_DIR/milestones"
+TASKS_DIR="$BACKLOG_DIR/tasks"
+
+# -----------------------------------------------------------------------------
+# usage() — Print help text and exit 1
+# -----------------------------------------------------------------------------
+usage() {
+  cat >&2 <<EOF
+Usage:
+  $(basename "$0") create-milestone <title> [description]
+  $(basename "$0") assign-task <task-id> <milestone-title>
+
+Subcommands:
+  create-milestone  Create a new milestone file in \$BACKLOG_DIR/milestones/
+  assign-task       Assign a task to a milestone by patching its frontmatter
+
+Environment Variables:
+  BACKLOG_DIR   Path to backlog root (default: ./backlog)
+
+Examples:
+  $(basename "$0") create-milestone "Sprint 1" "First sprint goals"
+  $(basename "$0") assign-task 5 "Sprint 1"
+  $(basename "$0") assign-task TASK-5 "Sprint 1"
+EOF
+  exit 1
+}
+
+# -----------------------------------------------------------------------------
+# slugify() — Convert a string to a URL-safe slug
+# -----------------------------------------------------------------------------
+slugify() {
+  echo "$1" \
+    | tr '[:upper:]' '[:lower:]' \
+    | sed 's/[^a-z0-9]/-/g' \
+    | sed 's/-\{2,\}/-/g' \
+    | sed 's/^-//;s/-$//'
+}
+
+# -----------------------------------------------------------------------------
+# cmd_create_milestone() — Create a new milestone file
+# -----------------------------------------------------------------------------
+cmd_create_milestone() {
+  local title="${1:-}"
+  local description="${2:-}"
+
+  if [[ -z "$title" ]]; then
+    echo "Error: <title> is required." >&2
+    usage
+  fi
+
+  # Ensure milestones directory exists
+  mkdir -p "$MILESTONES_DIR"
+
+  local slug
+  slug="$(slugify "$title")"
+
+  # Duplicate check — find any existing milestone file whose name contains the slug
+  local existing
+  existing="$(find "$MILESTONES_DIR" -maxdepth 1 -name "*${slug}*" 2>/dev/null | head -1)"
+  if [[ -n "$existing" ]]; then
+    echo "Error: Milestone '${title}' already exists (slug: ${slug})." >&2
+    exit 1
+  fi
+
+  # Determine next ID by scanning for milestone-N - *.md files
+  local max_id=0
+  local id_match
+  while IFS= read -r filepath; do
+    filename="$(basename "$filepath")"
+    # Extract the leading number: milestone-N - ...
+    id_match="$(echo "$filename" | sed -n 's/^milestone-\([0-9]*\) - .*/\1/p')"
+    if [[ -n "$id_match" ]] && (( id_match > max_id )); then
+      max_id="$id_match"
+    fi
+  done < <(find "$MILESTONES_DIR" -maxdepth 1 -name "milestone-*.md" 2>/dev/null)
+
+  local next_id=$(( max_id + 1 ))
+  local created_date
+  created_date="$(date '+%Y-%m-%d')"
+  local outfile="$MILESTONES_DIR/milestone-${next_id} - ${slug}.md"
+
+  cat > "$outfile" <<EOF
+---
+id: milestone-${next_id}
+title: "${title}"
+description: "${description}"
+status: active
+created_date: ${created_date}
+---
+EOF
+
+  echo "Created milestone: $outfile"
+}
+
+# -----------------------------------------------------------------------------
+# cmd_assign_task() — Patch a task file's frontmatter with a milestone field
+# -----------------------------------------------------------------------------
+cmd_assign_task() {
+  local task_id_raw="${1:-}"
+  local milestone_title="${2:-}"
+
+  if [[ -z "$task_id_raw" ]]; then
+    echo "Error: <task-id> is required." >&2
+    usage
+  fi
+
+  if [[ -z "$milestone_title" ]]; then
+    echo "Error: <milestone-title> is required." >&2
+    usage
+  fi
+
+  # Normalise: strip leading TASK- or task- prefix
+  local task_num
+  task_num="$(echo "$task_id_raw" | sed 's/^[Tt][Aa][Ss][Kk]-//')"
+
+  # Validate: must be a non-empty integer
+  if [[ -z "$task_num" ]] || ! [[ "$task_num" =~ ^[0-9]+$ ]]; then
+    echo "Error: Invalid task ID '${task_id_raw}'. Must be a number or TASK-N format." >&2
+    exit 1
+  fi
+
+  # Find the task file
+  local task_file
+  task_file="$(find "$TASKS_DIR" -maxdepth 1 -name "task-${task_num} - *.md" 2>/dev/null | head -1)"
+
+  if [[ -z "$task_file" ]]; then
+    echo "Error: Task file for ID '${task_num}' not found in ${TASKS_DIR}." >&2
+    exit 1
+  fi
+
+  # Check whether a milestone: key already exists in the frontmatter
+  if grep -q '^milestone:' "$task_file"; then
+    # Replace existing milestone field (BSD sed requires empty-string backup suffix on macOS)
+    sed -i "" "s|^milestone:.*|milestone: ${milestone_title}|" "$task_file"
+  else
+    # Insert milestone: field before the closing --- of the frontmatter block using awk
+    awk -v milestone="milestone: ${milestone_title}" '
+      BEGIN { in_front=0; done=0 }
+      /^---/ {
+        if (!in_front) {
+          in_front=1
+          print
+          next
+        } else if (!done) {
+          print milestone
+          done=1
+        }
+      }
+      { print }
+    ' "$task_file" > "${task_file}.tmp" && mv "${task_file}.tmp" "$task_file"
+  fi
+
+  echo "Assigned task ${task_num} to milestone '${milestone_title}'."
+}
+
+# -----------------------------------------------------------------------------
+# Argument dispatch
+# -----------------------------------------------------------------------------
+if [[ $# -eq 0 ]]; then
+  usage
+fi
+
+subcommand="$1"
+shift
+
+case "$subcommand" in
+  create-milestone)
+    cmd_create_milestone "$@"
+    ;;
+  assign-task)
+    cmd_assign_task "$@"
+    ;;
+  -h|--help|help)
+    usage
+    ;;
+  *)
+    echo "Error: Unknown subcommand '${subcommand}'." >&2
+    usage
+    ;;
+esac
