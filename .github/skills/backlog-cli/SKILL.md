@@ -184,6 +184,10 @@ backlog milestone archive "Milestone Name"
 
 > **Note:** The `backlog milestone` CLI only supports `list` and `archive` commands. There is no `create` subcommand and no `--milestone` flag on `task create` or `task edit`.
 
+Two options are available for creating milestones and assigning tasks to them:
+
+#### Option 1: Edit frontmatter directly
+
 **Assigning a task to a milestone** must be done by editing the task's frontmatter directly:
 
 ```yaml
@@ -196,6 +200,49 @@ milestone: Sprint 1
 ```
 
 Add or update the `milestone: <name>` field to match the milestone name exactly.
+
+#### Option 2: Using the milestone-helper.sh script
+
+The `milestone-helper.sh` script (located in `.github/skills/backlog-cli/scripts/`) automates both milestone creation (by updating `backlog/config.yml`) and task-to-milestone assignment (by patching task frontmatter).
+
+```bash
+# Create a new milestone
+bash .github/skills/backlog-cli/scripts/milestone-helper.sh create-milestone "Sprint 1" "First sprint"
+
+# Assign a task to a milestone
+bash .github/skills/backlog-cli/scripts/milestone-helper.sh assign-task 42 "Sprint 1"
+```
+
+- `create-milestone <name> <description>` — adds the milestone to `backlog/config.yml`
+- `assign-task <task-id> <milestone-name>` — sets `milestone:` in the task's frontmatter
+
+### Scripts
+
+Helper scripts bundled with this skill live in `.github/skills/backlog-cli/scripts/`.
+
+| Script | Description |
+|--------|-------------|
+| `milestone-helper.sh` | Creates milestones and assigns tasks to milestones via two subcommands: `create-milestone` and `assign-task` |
+
+#### Testing
+
+Test files live in `tests/skills/backlog-cli/` at the repo root.
+
+**Dependency:** [shunit2](https://github.com/kward/shunit2) must be installed.
+
+```bash
+# macOS
+brew install shunit2
+
+# Debian/Ubuntu
+apt-get install shunit2
+```
+
+Run the milestone-helper tests:
+
+```bash
+bash tests/skills/backlog-cli/test-milestone-helper.sh
+```
 
 ### Decisions
 
@@ -333,6 +380,7 @@ backlog task edit <id> --plan $'1. Review existing code\n2. Design approach\n3. 
 - [AI Agent Integration Guide](../../../backlog/docs/doc-13%20-%20Backlog-CLI-AI-Agent-Integration-Guide.md)
 - [Advanced Features Guide](../../../backlog/docs/doc-14%20-%20Backlog-CLI-Advanced-Features-Guide.md)
 - [USAGE.md](./references/USAGE.md)
+- [milestone-helper.sh](./scripts/milestone-helper.sh) — shell script for milestone creation and task-to-milestone assignment
 
 
 
