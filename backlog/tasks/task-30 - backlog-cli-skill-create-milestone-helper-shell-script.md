@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-20 20:22'
-updated_date: '2026-04-20 20:54'
+updated_date: '2026-04-20 20:57'
 labels:
   - backlog-cli
   - skills
@@ -142,6 +142,19 @@ All 6 shunit2 tests still pass. Committed as b0a5732. Ready for re-QA.
 - Prior Issue #1 (frontmatter scoping): Verified fixed via awk logic bounded by first frontmatter delimiters in .github/skills/backlog-cli/scripts/milestone-helper.sh
 - Prior Issue #2 (exact slug match): Verified fixed via find pattern "milestone-* - <slug>.md" (no substring wildcard)
 - Code quality/security/spelling: No additional issues found
+
+⚠️ SECURITY FINDINGS:
+- SEC-001 [medium] .github/skills/backlog-cli/scripts/milestone-helper.sh:172 — awk -v backslash-escape injection in milestone_title. awk -v var=value interprets \n, \t, \\ etc. at assignment time. Passing a title containing literal \n (e.g. Sprint 1\ninjected: evil) causes print milestone to emit two lines, injecting an arbitrary YAML key-value pair into the task frontmatter. Confirmed reproducible. Fix: use ENVIRON instead — MILESTONE_VAR="milestone: ${milestone_title}" awk 'BEGIN{milestone=ENVIRON["MILESTONE_VAR"]}...' "$task_file"
+
+✅ All other checks passed:
+- Files reviewed: milestone-helper.sh, test-milestone-helper.sh
+- No eval/exec/system() calls
+- slug constrained to [a-z0-9-] before find -name (no path traversal)
+- task_num validated as ^[0-9]+$ before find -name (no injection)
+- BACKLOG_DIR: unvalidated by design for test isolation (acceptable for local dev tool)
+- Heredoc writes: variable expansion only, not command execution
+- Test file: mktemp -d isolation, tearDown cleans up, no artifacts outside temp dir
+- Checks: OWASP Top 10, path traversal, ReDoS, input validation, file permissions, BACKLOG_DIR injection
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
