@@ -7,7 +7,7 @@ status: In Progress
 assignee:
   - '@analyse'
 created_date: '2026-04-23 07:33'
-updated_date: '2026-04-23 07:35'
+updated_date: '2026-04-23 07:36'
 labels:
   - bug
   - backlog
@@ -67,6 +67,11 @@ Self-review complete. Plan covers all AC:
 - AC#3 (test): plan step 7 calls out creating a test milestone and verifying web UI selectability.
 - AC#4 (docs): plan step 6 covers SKILL.md updates.
 No blockers. Analysis complete. Plan ready.
+
+🔍 PLAN REVIEW CONCERNS:
+- Concern #1: The backfill step (plan step 4) lists only 4 milestone files to patch (`milestone-1` through `milestone-4`), but there are actually **5** milestone files containing a `title:` key. The fifth is `backlog/milestones/Backlog-Skill-Doc-Fixes.md`. It must also be updated with `sed -i 's/^title:/name:/' backlog/milestones/Backlog-Skill-Doc-Fixes.md` or it will remain broken/unselectable in the web UI after the fix.
+
+Verdict: Plan needs revision — add the missing milestone file to the backfill step before implementation.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
