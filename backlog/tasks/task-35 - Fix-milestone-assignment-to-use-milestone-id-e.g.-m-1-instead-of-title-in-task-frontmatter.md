@@ -7,7 +7,7 @@ status: In Progress
 assignee:
   - '@manager'
 created_date: '2026-04-23 09:28'
-updated_date: '2026-04-23 09:31'
+updated_date: '2026-04-23 09:32'
 labels: []
 dependencies: []
 ---
@@ -92,6 +92,14 @@ Key decisions confirmed:
 - Test updates are concrete: create milestone fixture manually for deterministic ids, update all three existing assign-task tests, add test_assign_task_milestone_not_found and test_assign_task_by_milestone_id.
 - Edge case: milestone found but id field empty → error 'Milestone found but has no id field'.
 Analysis complete. Plan ready. No blockers.
+
+🔍 PLAN REVIEW CONCERNS:
+
+- Concern #1 (Gap in empty-id handling): The plan's edge-case section states that a milestone file with no `id:` field should emit "Milestone found but has no id field" error. However, the `lookup_milestone_id()` code shown in Step 1 does `echo "$id"; return 0` regardless — if `id` is empty it returns exit code 0 with empty stdout. Step 2's guard ("If no id is returned (exit 1), print error and exit") only checks exit code 1, so it will NOT catch the empty-id case. The result would be `milestone: ` written silently to the task file, which is invalid YAML. The plan must show explicit code in Step 2 to check `if [[ -z "$milestone_id" ]]` after a successful lookup and emit the correct error message then.
+
+- Concern #2 (test_assign_task_backslash_n_in_title behaviour change not fully specified): The plan says to update this test to "assert non-zero exit code instead of checking for injected field". However, the test also currently asserts `assertEquals "Only one milestone field should exist" 1 "$count"` — implying the script currently succeeds (exit 0) and writes one milestone line. After the fix, the script should exit non-zero (no write occurs). The plan should explicitly state that both the count assertion and the injected-field assertion are removed/replaced with a single `assertNotEquals 0 $?` check to avoid leaving a broken test.
+
+Verdict: Plan needs revision before implementation — two concrete gaps to address.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
