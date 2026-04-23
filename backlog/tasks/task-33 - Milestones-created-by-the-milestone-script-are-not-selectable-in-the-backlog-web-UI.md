@@ -51,6 +51,8 @@ No blockers. Analysis complete. Plan ready.
 - Concern #1: The backfill step (plan step 4) lists only 4 milestone files to patch (`milestone-1` through `milestone-4`), but there are actually **5** milestone files containing a `title:` key. The fifth is `backlog/milestones/Backlog-Skill-Doc-Fixes.md`. It must also be updated with `sed -i 's/^title:/name:/' backlog/milestones/Backlog-Skill-Doc-Fixes.md` or it will remain broken/unselectable in the web UI after the fix.
 
 Verdict: Plan needs revision — add the missing milestone file to the backfill step before implementation.
+
+Plan revised to use dynamic grep for backfilling all milestone files with title: key.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
