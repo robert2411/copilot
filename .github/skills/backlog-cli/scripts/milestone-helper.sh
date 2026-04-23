@@ -92,39 +92,38 @@ cmd_create_milestone() {
   slug="$(slugify "$title")"
 
   # Duplicate check — find an existing milestone file with exactly this slug.
-  # Pattern: milestone-N - <slug>.md  (exact slug, no substring match).
+  # Pattern: m-N - <slug>.md  (exact slug, no substring match).
   local existing
-  existing="$(find "$MILESTONES_DIR" -maxdepth 1 -name "milestone-* - ${slug}.md" 2>/dev/null | head -1)"
+  existing="$(find "$MILESTONES_DIR" -maxdepth 1 -name "m-* - ${slug}.md" 2>/dev/null | head -1)"
   if [[ -n "$existing" ]]; then
     echo "Error: Milestone '${title}' already exists (slug: ${slug})." >&2
     exit 1
   fi
 
-  # Determine next ID by scanning for milestone-N - *.md files
+  # Determine next ID by scanning for m-N - *.md files
   local max_id=0
   local id_match
   while IFS= read -r filepath; do
     filename="$(basename "$filepath")"
-    # Extract the leading number: milestone-N - ...
-    id_match="$(echo "$filename" | sed -n 's/^milestone-\([0-9]*\) - .*/\1/p')"
+    # Extract the leading number: m-N - ...
+    id_match="$(echo "$filename" | sed -n 's/^m-\([0-9]*\) - .*/\1/p')"
     if [[ -n "$id_match" ]] && (( id_match > max_id )); then
       max_id="$id_match"
     fi
-  done < <(find "$MILESTONES_DIR" -maxdepth 1 -name "milestone-*.md" 2>/dev/null)
+  done < <(find "$MILESTONES_DIR" -maxdepth 1 -name "m-*.md" 2>/dev/null)
 
   local next_id=$(( max_id + 1 ))
-  local created_date
-  created_date="$(date '+%Y-%m-%d')"
-  local outfile="$MILESTONES_DIR/milestone-${next_id} - ${slug}.md"
+  local outfile="$MILESTONES_DIR/m-${next_id} - ${slug}.md"
 
   cat > "$outfile" <<EOF
 ---
-id: milestone-${next_id}
-name: "${title}"
-description: "${description}"
-status: active
-created_date: ${created_date}
+id: m-${next_id}
+title: "${title}"
 ---
+
+## Description
+
+Milestone: ${title}
 EOF
 
   echo "Created milestone: $outfile"

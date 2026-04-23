@@ -55,15 +55,26 @@ test_create_milestone_creates_file() {
   assertNotNull "Milestone file should exist" "$file"
   assertTrue "File should be non-empty" "[ -s '$file' ]"
 
-  # Check frontmatter fields
-  assertTrue "Should contain id field"          "grep -q '^id:' '$file'"
-  assertTrue "Should contain title field"       "grep -q '^title:' '$file'"
-  assertTrue "Should contain description field" "grep -q '^description:' '$file'"
-  assertTrue "Should contain status field"      "grep -q '^status:' '$file'"
-  assertTrue "Should contain created_date field" "grep -q '^created_date:' '$file'"
-  assertTrue "Status should be active"          "grep -q 'status: active' '$file'"
-  assertTrue "Title should match"               "grep -q 'My Milestone' '$file'"
-  assertTrue "Description should match"         "grep -q 'A description' '$file'"
+  # Check file naming pattern m-N - <slug>.md
+  local basename
+  basename="$(basename "$file")"
+  echo "$basename" | grep -qE '^m-[0-9]+ - .+\.md$'
+  assertTrue "File should use m-N naming pattern" $?
+
+  # Check frontmatter: only id and title (no description, status, created_date)
+  assertTrue "Should contain id field"              "grep -q '^id:' '$file'"
+  assertTrue "Should contain title field"           "grep -q '^title:' '$file'"
+  assertFalse "Should NOT contain description field" "grep -q '^description:' '$file'"
+  assertFalse "Should NOT contain status field"      "grep -q '^status:' '$file'"
+  assertFalse "Should NOT contain created_date field" "grep -q '^created_date:' '$file'"
+
+  # id should use m-N format
+  assertTrue "id should use m-N format"            "grep -q '^id: m-' '$file'"
+
+  # Body should have ## Description section
+  assertTrue "Should contain ## Description section" "grep -q '^## Description' '$file'"
+  assertTrue "Should contain Milestone: <Title>"     "grep -q 'Milestone: My Milestone' '$file'"
+  assertTrue "Title should match"                    "grep -q 'My Milestone' '$file'"
 }
 
 # ---------------------------------------------------------------------------
