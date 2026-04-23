@@ -7,7 +7,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-23 09:28'
-updated_date: '2026-04-23 09:42'
+updated_date: '2026-04-23 09:43'
 labels: []
 dependencies: []
 ---
@@ -228,6 +228,20 @@ All AC/DoD checked. Ready for QA.
 - Security: No obvious issues (unmatched/missing-id paths fail before write)
 - Spelling/Docs: Usage/comments updated for title-or-id input
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added lookup_milestone_id() to milestone-helper.sh and updated cmd_assign_task() to resolve milestone title/id to the actual id field before writing task frontmatter.
+
+Changes:
+- .github/skills/backlog-cli/scripts/milestone-helper.sh: new lookup_milestone_id() function, updated cmd_assign_task() with milestone lookup + empty-id guard, updated usage/comments
+- tests/skills/backlog-cli/test-milestone-helper.sh: all assign-task tests now create milestone fixtures and assert id (m-1) not title; SEC-001 test updated; 3 new tests added
+
+Tests:
+- 10 tests total, all passing
+- Covers: id lookup, title lookup, not-found error, missing-id-field error, SEC-001 injection prevention
+<!-- SECTION:FINAL_SUMMARY:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
