@@ -74,6 +74,20 @@ All AC/DoD checked. Ready for QA.
 - Spelling/docs: Clean; no doc update needed based on current references
 <!-- SECTION:NOTES:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Fixed milestone-helper.sh to use name: instead of title: in YAML frontmatter.
+
+Changes:
+- .github/skills/backlog-cli/scripts/milestone-helper.sh: changed title: to name: in cmd_create_milestone() heredoc
+- backlog/milestones/milestone-1 through milestone-4: backfilled title: → name:
+
+Tests:
+- Verified script generates name: key for new milestones
+- Confirmed no remaining title: keys in any milestone files
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
