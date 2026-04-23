@@ -208,6 +208,18 @@ Plan revised to address plan-reviewer concerns. No blockers.
 - AC mapped: 4
 - Concern #1 (empty-id guard): addressed — explicit [[ -z "$milestone_id" ]] check shown in Step 2 with error + exit 1
 - Concern #2 (SEC-001 test): addressed — both old assertions explicitly removed, replaced by single assertNotEquals 0 $?
+
+- Added lookup_milestone_id() function to milestone-helper.sh
+- Modified cmd_assign_task() to resolve title/id to milestone id before writing frontmatter
+- Added empty-id guard (Concern #1 fix)
+- Updated usage/comments
+- Updated all 3 existing assign-task tests with milestone fixtures
+- Updated SEC-001 test (Concern #2 fix) — now asserts non-zero exit
+- Added test_assign_task_milestone_not_found
+- Added test_assign_task_by_milestone_id
+- Added test_assign_task_milestone_missing_id_field
+- All 10 tests pass
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
