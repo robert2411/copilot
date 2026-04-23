@@ -1,7 +1,7 @@
 ---
 id: TASK-34
 title: Fix milestone-helper.sh to match actual backlog milestone file format
-status: In Progress
+status: Done
 assignee:
   - '@copilot'
 created_date: '2026-04-23 09:13'
