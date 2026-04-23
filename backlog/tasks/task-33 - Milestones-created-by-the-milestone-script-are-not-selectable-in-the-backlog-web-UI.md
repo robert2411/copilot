@@ -3,7 +3,7 @@ id: TASK-33
 title: >-
   Milestones created by the milestone script are not selectable in the backlog
   web UI
-status: In Progress
+status: Done
 assignee:
   - '@myself'
 created_date: '2026-04-23 07:33'
