@@ -200,6 +200,8 @@ Analysis complete. Plan ready. No blockers.
 - Concern #2 (test_assign_task_backslash_n_in_title behaviour change not fully specified): The plan says to update this test to "assert non-zero exit code instead of checking for injected field". However, the test also currently asserts `assertEquals "Only one milestone field should exist" 1 "$count"` — implying the script currently succeeds (exit 0) and writes one milestone line. After the fix, the script should exit non-zero (no write occurs). The plan should explicitly state that both the count assertion and the injected-field assertion are removed/replaced with a single `assertNotEquals 0 $?` check to avoid leaving a broken test.
 
 Verdict: Plan needs revision before implementation — two concrete gaps to address.
+
+Plan revised to address plan-reviewer concerns. No blockers.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
