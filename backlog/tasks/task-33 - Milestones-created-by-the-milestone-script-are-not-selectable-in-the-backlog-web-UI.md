@@ -3,9 +3,11 @@ id: TASK-33
 title: >-
   Milestones created by the milestone script are not selectable in the backlog
   web UI
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@analyse'
 created_date: '2026-04-23 07:33'
+updated_date: '2026-04-23 07:34'
 labels:
   - bug
   - backlog
