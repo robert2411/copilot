@@ -7,7 +7,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-23 07:33'
-updated_date: '2026-04-23 08:56'
+updated_date: '2026-04-23 09:05'
 labels:
   - bug
   - backlog
@@ -64,6 +64,14 @@ Plan revised to use dynamic grep for backfilling all milestone files with title:
 - SKILL.md had no title: references, no update needed
 - Verified: test milestone created with name: key
 All AC/DoD checked. Ready for QA.
+
+✅ QA APPROVED — all tests passing, no regressions
+- AC/DoD: Complete (all items checked)
+- Verification: script now emits `name:` in `cmd_create_milestone()` and no `^title:` remains in `backlog/milestones/`
+- Functional test: created milestone in isolated BACKLOG_DIR and confirmed output contains `name:` only
+- Code quality: Change is minimal, clear, and consistent
+- Security: No issues found (no secrets, unsafe input handling, or auth/data exposure concerns)
+- Spelling/docs: Clean; no doc update needed based on current references
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
