@@ -41,6 +41,22 @@ The milestone-helper.sh script creates milestone files with an incorrect format 
 3. Run tests to verify
 <!-- SECTION:PLAN:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Fixed milestone-helper.sh to match actual backlog milestone file format.
+
+Changes:
+- File naming changed from `milestone-N - <slug>.md` to `m-N - <slug>.md`
+- Frontmatter now contains only `id: m-N` and `title: "<Title>"` (removed description, status, created_date)
+- Added `## Description` section with `Milestone: <Title>` body text
+- ID auto-increment now scans `m-N - *.md` files instead of `milestone-N - *.md`
+- Duplicate check now uses `m-* - ${slug}.md` pattern
+- Updated test-milestone-helper.sh assertions to match new format
+
+Tests: All 7 shunit2 tests pass.
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
