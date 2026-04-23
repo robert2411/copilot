@@ -5,9 +5,9 @@ title: >-
   web UI
 status: In Progress
 assignee:
-  - '@analyse'
+  - '@myself'
 created_date: '2026-04-23 07:33'
-updated_date: '2026-04-23 07:37'
+updated_date: '2026-04-23 07:38'
 labels:
   - bug
   - backlog
