@@ -27,6 +27,20 @@ The milestone-helper.sh script creates milestone files with an incorrect format 
 - [ ] #5 Duplicate check uses the new file naming pattern
 <!-- AC:END -->
 
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Fix cmd_create_milestone in milestone-helper.sh:
+   - Change file naming from milestone-N to m-N
+   - Change id from milestone-N to m-N
+   - Use only id and title in frontmatter
+   - Add ## Description section with "Milestone: <Title>"
+   - Update ID scan to use m-*.md pattern
+   - Update duplicate check to use m-* pattern
+2. Update test-milestone-helper.sh to match new format
+3. Run tests to verify
+<!-- SECTION:PLAN:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
