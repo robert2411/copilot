@@ -5,7 +5,7 @@ title: >-
   task frontmatter
 status: In Progress
 assignee:
-  - '@manager'
+  - '@myself'
 created_date: '2026-04-23 09:28'
 updated_date: '2026-04-23 09:34'
 labels: []
