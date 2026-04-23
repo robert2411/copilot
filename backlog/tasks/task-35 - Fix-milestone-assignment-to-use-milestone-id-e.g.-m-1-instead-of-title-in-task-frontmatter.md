@@ -3,7 +3,7 @@ id: TASK-35
 title: >-
   Fix milestone assignment to use milestone id (e.g. m-1) instead of title in
   task frontmatter
-status: In Progress
+status: Done
 assignee:
   - '@myself'
 created_date: '2026-04-23 09:28'
