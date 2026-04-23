@@ -120,7 +120,7 @@ cmd_create_milestone() {
   cat > "$outfile" <<EOF
 ---
 id: milestone-${next_id}
-title: "${title}"
+name: "${title}"
 description: "${description}"
 status: active
 created_date: ${created_date}

@@ -1,6 +1,6 @@
 ---
 id: milestone-2
-title: Security Agent & Agent Pipeline Improvements
+name: Security Agent & Agent Pipeline Improvements
 description: Add a Security Auditor agent (Role E) and a Plan Reviewer agent (Role B) to the pipeline, plus targeted improvements to existing agents based on the-dev-squad analysis.
 status: active
 created_date: '2026-04-18'

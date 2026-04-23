@@ -1,6 +1,6 @@
 ---
 id: milestone-3
-title: Backlog CLI Milestone Helper
+name: Backlog CLI Milestone Helper
 description: Add milestone-helper.sh script to backlog-cli skill and document it in SKILL.md. Automates milestone creation and task assignment, which have no native CLI support.
 status: active
 created_date: '2026-04-20'
