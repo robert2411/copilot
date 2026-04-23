@@ -58,6 +58,12 @@ Plan revised to use dynamic grep for backfilling all milestone files with title:
 - Steps verified: 5
 - AC mapped: 4
 - Dynamic grep confirmed to cover all 5 milestone files including Backlog-Skill-Doc-Fixes.md
+
+- Fixed milestone-helper.sh: changed title: to name: in cmd_create_milestone() heredoc
+- Backfilled 4 existing milestone-N files from title: to name:
+- SKILL.md had no title: references, no update needed
+- Verified: test milestone created with name: key
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
