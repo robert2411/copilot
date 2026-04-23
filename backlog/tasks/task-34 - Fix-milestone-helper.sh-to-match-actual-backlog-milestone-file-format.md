@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@copilot'
 created_date: '2026-04-23 09:13'
-updated_date: '2026-04-23 09:15'
+updated_date: '2026-04-23 09:17'
 labels:
   - bug
   - milestone-helper
@@ -20,11 +20,11 @@ The milestone-helper.sh script creates milestone files with an incorrect format 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 File is named using pattern 'm-N - <slug>.md' (e.g. m-1 - sprint-1.md)
-- [ ] #2 Frontmatter contains only 'id: m-N' and 'title: "<Title>"'
-- [ ] #3 File body contains a '## Description' section with text 'Milestone: <Title>'
-- [ ] #4 ID auto-increment scans existing 'm-N - *.md' files instead of 'milestone-N - *.md'
-- [ ] #5 Duplicate check uses the new file naming pattern
+- [x] #1 File is named using pattern 'm-N - <slug>.md' (e.g. m-1 - sprint-1.md)
+- [x] #2 Frontmatter contains only 'id: m-N' and 'title: "<Title>"'
+- [x] #3 File body contains a '## Description' section with text 'Milestone: <Title>'
+- [x] #4 ID auto-increment scans existing 'm-N - *.md' files instead of 'milestone-N - *.md'
+- [x] #5 Duplicate check uses the new file naming pattern
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -43,5 +43,5 @@ The milestone-helper.sh script creates milestone files with an incorrect format 
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
