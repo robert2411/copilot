@@ -7,7 +7,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-23 09:28'
-updated_date: '2026-04-23 09:34'
+updated_date: '2026-04-23 09:41'
 labels: []
 dependencies: []
 ---
@@ -20,10 +20,10 @@ Currently, the script assigns milestones to tasks using the milestone title (e.g
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Script assigns milestone using milestone id (e.g. m-1) in task frontmatter
-- [ ] #2 Milestone assignment is consistent between CLI, UI, and scripts
-- [ ] #3 Regression tests for milestone assignment pass
-- [ ] #4 Documentation updated if needed
+- [x] #1 Script assigns milestone using milestone id (e.g. m-1) in task frontmatter
+- [x] #2 Milestone assignment is consistent between CLI, UI, and scripts
+- [x] #3 Regression tests for milestone assignment pass
+- [x] #4 Documentation updated if needed
 <!-- AC:END -->
 
 ## Implementation Plan
