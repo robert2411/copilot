@@ -7,7 +7,7 @@ status: Done
 assignee:
   - '@myself'
 created_date: '2026-04-23 09:28'
-updated_date: '2026-04-23 09:43'
+updated_date: '2026-04-23 09:44'
 labels: []
 dependencies: []
 ---
@@ -227,6 +227,10 @@ All AC/DoD checked. Ready for QA.
 - Code quality: Milestone lookup + empty-id guard implemented correctly
 - Security: No obvious issues (unmatched/missing-id paths fail before write)
 - Spelling/Docs: Usage/comments updated for title-or-id input
+
+❌ QA REJECTED: Unable to complete QA validation because required test dependency is missing (shunit2 not installed), so AC #3 cannot be verified in this environment.
+- Test command run: bash /home/mmmstz013/rstevens/IdeaProjects/copilot/tests/skills/backlog-cli/test-milestone-helper.sh
+- Result: Error: shunit2 not found
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
