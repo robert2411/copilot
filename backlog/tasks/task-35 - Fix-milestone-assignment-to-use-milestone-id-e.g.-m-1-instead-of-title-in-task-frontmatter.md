@@ -3,9 +3,11 @@ id: TASK-35
 title: >-
   Fix milestone assignment to use milestone id (e.g. m-1) instead of title in
   task frontmatter
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@manager'
 created_date: '2026-04-23 09:28'
+updated_date: '2026-04-23 09:29'
 labels: []
 dependencies: []
 ---
