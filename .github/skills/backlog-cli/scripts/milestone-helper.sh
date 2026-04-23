@@ -9,7 +9,7 @@
 #
 # USAGE:
 #   milestone-helper.sh create-milestone <title> [description]
-#   milestone-helper.sh assign-task <task-id> <milestone-title>
+#   milestone-helper.sh assign-task <task-id> <milestone-title-or-id>
 #
 # SUBCOMMANDS:
 #   create-milestone  Create a new milestone in $BACKLOG_DIR/milestones/
@@ -18,12 +18,15 @@
 #
 #   assign-task       Patch a task file's frontmatter to set the milestone field.
 #     <task-id>       Required. Numeric ID (e.g. 5) or TASK-N format (e.g. TASK-5).
-#     <milestone-title> Required. The exact title of the milestone to assign.
+#     <milestone-title-or-id> Required. The title or id of the milestone to assign.
+#                     The script resolves the title/id to the milestone's id field
+#                     and writes that id (e.g. m-1) into the task frontmatter.
 #
 # EXAMPLES:
 #   milestone-helper.sh create-milestone "Sprint 1" "First sprint goals"
 #   milestone-helper.sh assign-task 5 "Sprint 1"
 #   milestone-helper.sh assign-task TASK-5 "Sprint 1"
+#   milestone-helper.sh assign-task 5 m-1
 #
 # ENVIRONMENT VARIABLES:
 #   BACKLOG_DIR   Path to the backlog root directory. Defaults to ./backlog.
@@ -45,11 +48,12 @@ usage() {
   cat >&2 <<EOF
 Usage:
   $(basename "$0") create-milestone <title> [description]
-  $(basename "$0") assign-task <task-id> <milestone-title>
+  $(basename "$0") assign-task <task-id> <milestone-title-or-id>
 
 Subcommands:
   create-milestone  Create a new milestone file in \$BACKLOG_DIR/milestones/
   assign-task       Assign a task to a milestone by patching its frontmatter
+                    (resolves title or id to the milestone's id field)
 
 Environment Variables:
   BACKLOG_DIR   Path to backlog root (default: ./backlog)
@@ -58,6 +62,7 @@ Examples:
   $(basename "$0") create-milestone "Sprint 1" "First sprint goals"
   $(basename "$0") assign-task 5 "Sprint 1"
   $(basename "$0") assign-task TASK-5 "Sprint 1"
+  $(basename "$0") assign-task 5 m-1
 EOF
   exit 1
 }
@@ -130,19 +135,47 @@ EOF
 }
 
 # -----------------------------------------------------------------------------
+# lookup_milestone_id() — Find a milestone's id by title or id string
+# Returns the id via stdout and exit 0 on success; exit 1 if not found.
+# -----------------------------------------------------------------------------
+lookup_milestone_id() {
+  local query="$1"   # may be a title OR an id
+  local file id title name
+  while IFS= read -r file; do
+    id=""
+    title=""
+    name=""
+    # Parse only the YAML frontmatter (between first pair of ---)
+    while IFS= read -r line; do
+      [[ "$line" == "---" ]] && break   # end of frontmatter
+      case "$line" in
+        id:*   ) id="${line#id: }" ;;
+        title:*) title="${line#title: }"; title="${title//\"}" ;;
+        name:* ) name="${line#name: }"; name="${name//\"}" ;;
+      esac
+    done < <(tail -n +2 "$file")   # skip first ---
+    if [[ "$id" == "$query" || "$title" == "$query" || "$name" == "$query" ]]; then
+      echo "$id"
+      return 0
+    fi
+  done < <(find "$MILESTONES_DIR" -maxdepth 1 -name "*.md" 2>/dev/null)
+  return 1
+}
+
+# -----------------------------------------------------------------------------
 # cmd_assign_task() — Patch a task file's frontmatter with a milestone field
 # -----------------------------------------------------------------------------
 cmd_assign_task() {
   local task_id_raw="${1:-}"
-  local milestone_title="${2:-}"
+  local milestone_ref="${2:-}"
 
   if [[ -z "$task_id_raw" ]]; then
     echo "Error: <task-id> is required." >&2
     usage
   fi
 
-  if [[ -z "$milestone_title" ]]; then
-    echo "Error: <milestone-title> is required." >&2
+  if [[ -z "$milestone_ref" ]]; then
+    echo "Error: <milestone-title-or-id> is required." >&2
     usage
   fi
 
@@ -165,6 +198,17 @@ cmd_assign_task() {
     exit 1
   fi
 
+  # Resolve milestone title or id to the milestone's id field
+  local milestone_id
+  milestone_id="$(lookup_milestone_id "$milestone_ref")" || {
+    echo "error: Milestone '${milestone_ref}' not found in ${MILESTONES_DIR}." >&2
+    exit 1
+  }
+  if [[ -z "$milestone_id" ]]; then
+    echo "error: milestone id is empty (milestone file has no id: field)" >&2
+    exit 1
+  fi
+
   # Use awk to check/modify milestone: ONLY within the frontmatter block.
   # The frontmatter block is bounded by the first pair of --- delimiters.
   # This prevents accidentally modifying a "milestone:" line in the task body.
@@ -174,7 +218,7 @@ cmd_assign_task() {
   # parse time, so a title like "Sprint 1\ninjected: evil" would inject an
   # extra YAML field into the frontmatter.  ENVIRON passes the value as raw
   # bytes with no escape processing, eliminating that attack surface.
-  MILESTONE_VAR="milestone: ${milestone_title}" \
+  MILESTONE_VAR="milestone: ${milestone_id}" \
   awk '
     BEGIN { milestone = ENVIRON["MILESTONE_VAR"]; in_front=0; front_done=0; found=0 }
 
@@ -202,7 +246,7 @@ cmd_assign_task() {
     { print }
   ' "$task_file" > "${task_file}.tmp" && mv "${task_file}.tmp" "$task_file"
 
-  echo "Assigned task ${task_num} to milestone '${milestone_title}'."
+  echo "Assigned task ${task_num} to milestone '${milestone_ref}' (id: ${milestone_id})."
 }
 
 # -----------------------------------------------------------------------------
