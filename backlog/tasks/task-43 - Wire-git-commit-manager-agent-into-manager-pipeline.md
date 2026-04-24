@@ -4,7 +4,7 @@ title: Wire git commit manager agent into manager pipeline
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-24 23:03'
+updated_date: '2026-04-24 23:07'
 labels:
   - git
   - agent
@@ -112,4 +112,10 @@ Dependency confirmed: TASK-42 (agent file) and TASK-44 (squash script) must be c
 No gaps found. No ambiguous steps.
 
 Analysis complete. Plan ready. No blockers. Must be implemented after TASK-42 and TASK-44 are complete (declared dependencies satisfied).
+
+🔍 PLAN REVIEW CONCERNS:
+
+- Concern #1 — Ambiguous insertion point for `-s Done` in Step 2: The current manager.agent.md Step 4d contains TWO separate `backlog task edit <id> -s Done` calls — one in the success branch (DOCUMENTATION COMPLETE signal found, line ~139) and one in the fallback branch (signal absent, line ~149). Plan Step 2 instructs inserting the git-commit-manager invocation "BEFORE the line that calls `backlog task edit <id> -s Done`" (singular). This is ambiguous: an implementation agent may insert it only before the success-branch Done call and leave the fallback branch unchanged, producing a code path where a failed documentation signal skips git commit entirely and marks the task Done without committing. The correct structure is: (1) detect documentation signal (success or fallback warning), (2) THEN invoke git-commit-manager, (3) detect commit-complete signal (success or fallback warning), (4) THEN call `-s Done` once. Plan Step 2 must explicitly state that the Step 4d logic is restructured so a SINGLE `-s Done` call follows BOTH the documentation and git-commit signal-detection blocks, replacing the current two-branch each-with-its-own-Done structure.
+
+Verdict: Plan needs revision on this point before implementation.
 <!-- SECTION:NOTES:END -->
