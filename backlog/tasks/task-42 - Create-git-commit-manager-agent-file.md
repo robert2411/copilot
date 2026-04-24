@@ -135,4 +135,10 @@ Plan revised: FORBIDDEN block step added; dry-run moved to post-commit.
 Verdict: Plan needs this one wording fix before implementation. Both previous concerns (#1 FORBIDDEN block and #2 dry-run ordering) are confirmed resolved.
 
 Plan revised: FORBIDDEN carve-out expanded to include backlog CLI commands alongside git commands.
+
+✅ PLAN APPROVED — plan is complete, all AC covered, no ambiguity
+- Steps verified: 8 (Plan Steps 1–7 + AC mapping in Step 8)
+- AC mapped: 8/8
+- FORBIDDEN carve-out confirmed expanded to include backlog CLI commands (backlog task edit) alongside git commands and squash script — previous concern fully resolved
+- No new issues introduced by the change
 <!-- SECTION:NOTES:END -->
