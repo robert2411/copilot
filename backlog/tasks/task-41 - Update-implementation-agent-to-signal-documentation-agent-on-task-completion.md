@@ -24,7 +24,7 @@ Update the implementation agent system prompt so it knows the documentation agen
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
 
 ## Acceptance Criteria
