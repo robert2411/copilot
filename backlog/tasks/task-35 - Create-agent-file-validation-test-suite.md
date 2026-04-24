@@ -115,6 +115,14 @@ All 6 tests still passing. Ready for QA re-review.
 Verdict: Fix required before approval.
 
 Fixed: Added else branch to test_agents_have_description_field to explicitly fail when description: has an empty value (no inline value, not a block scalar). All 6 tests still pass. Ready for QA re-review.
+
+✅ QA APPROVED — all tests passing, no regressions
+- AC/DoD: Complete
+- Code quality: Good
+- Security: No issues
+- Spelling: Clean
+- Re-review focus: `description:` empty-value edge case now correctly fails via explicit else+fail path in tests/agents/test-agents.sh:95-97
+- Verification: `bash tests/agents/test-agents.sh` → Ran 6 tests. OK
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
