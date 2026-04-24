@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:46'
+updated_date: '2026-04-24 22:47'
 labels:
   - documentation
   - agent
@@ -118,6 +118,8 @@ SEC-001 fix: Added Constraint 8 prohibiting non-backlog run_in_terminal commands
 - Verified: Existing content (frontmatter, FORBIDDEN notice, Role & Scope, Workflow, Tool Usage, Output, Constraints 1–7) unchanged
 - Verified: Security gap SEC-001 closed; no remaining prompt-injection path for arbitrary shell command execution via task notes
 - Regression check: No new issues introduced
+
+✅ SECURITY RE-AUDIT: SEC-001 resolved — Constraint 8 confirmed present at line 162 of .github/agents/documentation.agent.md. Explicit prohibition on non-backlog run_in_terminal usage is in place, with prompt-injection guidance included.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
