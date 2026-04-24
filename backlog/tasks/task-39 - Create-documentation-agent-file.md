@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:47'
+updated_date: '2026-04-24 22:59'
 labels:
   - documentation
   - agent
@@ -120,6 +120,12 @@ SEC-001 fix: Added Constraint 8 prohibiting non-backlog run_in_terminal commands
 - Regression check: No new issues introduced
 
 ✅ SECURITY RE-AUDIT: SEC-001 resolved — Constraint 8 confirmed present at line 162 of .github/agents/documentation.agent.md. Explicit prohibition on non-backlog run_in_terminal usage is in place, with prompt-injection guidance included.
+
+✅ DOCUMENTATION COMPLETE
+- Created: backlog/docs/doc-16 - Documentation-Agent-—-Integration-and-Pipeline-Flow.md (new reference doc covering agent overview, pipeline position, workflow steps, FORBIDDEN carve-out pattern, signal formats, and decision guidance)
+- Created: backlog/decisions/decision-1 - Allow-Direct-File-Editing-of-backlog-docs-and-backlog-decisions-in-Documentation-Agent.md (architectural decision record for the FORBIDDEN carve-out — options A/B/C evaluated, Option B accepted)
+- Updated: backlog/docs/doc-15 - Security-Agent-Integration-and-Agent-Pipeline-Improvements.md (pipeline flow updated to include documentation step; role mapping table updated; Role F section added; Implementation Tasks updated with m-2 tasks)
+- Updated: backlog/docs/doc-6 - Agent-Workflow-Orchestration-System.md (added documentation agent to Agents & Responsibilities; updated Implementation Roadmap with Phase 6 and current pipeline order)
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
