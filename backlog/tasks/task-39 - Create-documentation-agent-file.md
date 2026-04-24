@@ -28,4 +28,5 @@ Build the documentation agent that runs after implementation completes. The agen
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [ ] #1 Agent file exists at .github/agents/documentation.agent.md with correct frontmatter
+- [ ] #2 Agent reads completed task details via backlog task <id> --plain
 <!-- AC:END -->
