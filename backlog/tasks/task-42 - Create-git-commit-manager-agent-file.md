@@ -133,4 +133,6 @@ Plan revised: FORBIDDEN block step added; dry-run moved to post-commit.
   This directly contradicts the Tool Usage section (Step 5) which correctly lists "run_in_terminal (for git commands and backlog CLI)". The carve-out must be reworded to say: run_in_terminal is permitted for (a) the listed git commands + squash script, AND (b) backlog CLI commands (backlog task edit, etc.). Remove the word "ONLY" or expand the list to include backlog CLI explicitly.
 
 Verdict: Plan needs this one wording fix before implementation. Both previous concerns (#1 FORBIDDEN block and #2 dry-run ordering) are confirmed resolved.
+
+Plan revised: FORBIDDEN carve-out expanded to include backlog CLI commands alongside git commands.
 <!-- SECTION:NOTES:END -->
