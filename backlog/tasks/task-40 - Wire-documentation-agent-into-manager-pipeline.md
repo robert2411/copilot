@@ -4,7 +4,7 @@ title: Wire documentation agent into manager pipeline
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:24'
+updated_date: '2026-04-24 22:25'
 labels:
   - documentation
   - agent
@@ -73,3 +73,9 @@ Update the manager agent to invoke the documentation agent after implementation 
    > DON'T mark task Done after Security approval alone — DO also route through Documentation and wait for `✅ DOCUMENTATION COMPLETE` signal.
 8. Verify the full pipeline flow reads consistently: Implementation → QA → Security → Documentation → Done across all sections of the file.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Self-review complete. Plan covers all 5 ACs. AC1→Step 4 (run_subagent call in new Step 4d), AC2→Step 4a (task ID + changed files + final summary in subagent task string), AC3→Steps 4b-4c (detect DOCUMENTATION COMPLETE signal then mark Done), AC4→Steps 2-4 (update Step 4b + add Step 4d), AC5→Step 5 (pipeline order documented). Dependency on TASK-39 noted (documentation agent must exist first). Non-blocking fallback for signal absence addressed in Step 4d. No ambiguous steps.
+<!-- SECTION:NOTES:END -->
