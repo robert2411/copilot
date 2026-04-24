@@ -2,7 +2,7 @@ project_name: "Colilot agents"
 default_status: "To Do"
 statuses: ["To Do", "In Progress", "Done"]
 labels: []
-definition_of_done: ["All code is committed to git"]
+definition_of_done: []
 date_format: yyyy-mm-dd
 max_column_width: 20
 default_editor: "nano"

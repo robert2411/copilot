@@ -11,12 +11,15 @@ labels:
   - commits
 dependencies: []
 priority: high
+milestone: m-3
 ---
 
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
 Build the git commit manager agent responsible for guaranteeing clean git history per task. After a task is fully done (Implementation + QA + Security + Documentation approved), this agent: (1) stages ALL unstaged/untracked changes including backlog/, docs, and source files, (2) commits with the canonical message format 'task-<id>: <title>', (3) inspects the recent git log for consecutive commits belonging to the same task-id and squashes them into one — but only consecutive runs; if another task's commit sits between two task-<id> commits they are NOT squashed.
+
+If it makes sense for the context: multiple tasks can be in one commit (if the are of the same milestone)
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Definition of Done

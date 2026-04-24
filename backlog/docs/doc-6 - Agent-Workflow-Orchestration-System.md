@@ -28,6 +28,7 @@ All agents interact with the Backlog system exclusively through **CLI commands**
   - Distribute milestones to Analyse agent
   - Route milestone to Implementation agent when Analyse complete
   - Monitor Implementation agent progress
+  - Route completed tasks through Security then Documentation before marking Done
   - Decide next actions (repeat cycle, create milestone grouping, completion)
   - Track overall project state
 
@@ -54,9 +55,9 @@ All agents interact with the Backlog system exclusively through **CLI commands**
     - Verify Definition of Done reached
     - Hand to QA agent for review
     - Fix issues reported by QA
-    - Commit changes with descriptive message
+    - Commit changes with descriptive message (Done status set by Manager after Documentation)
   - Request clarification from Analyse agent if needed
-  - Report completion to Manager
+  - Report milestone completion to Manager
 
 #### 4. **QA Agent** (Quality Gatekeeper)
 - **Role**: Quality assurance and code review
@@ -70,6 +71,27 @@ All agents interact with the Backlog system exclusively through **CLI commands**
     - Security vulnerabilities
   - Report findings to Implementation agent
   - Approve or flag for rework
+
+#### 5. **Security Agent** (Security Auditor)
+- **Role**: Static security audit gate after QA approval
+- **Responsibilities**:
+  - Receive task from Manager after QA emits `✅ QA APPROVED`
+  - Audit code for OWASP Top 10, path traversal, ReDoS, missing input validation
+  - Emit `✅ SECURITY APPROVED` or `⚠️ SECURITY FINDINGS` via task notes
+  - In findings mode: provide structured finding list (ID, severity, location, fix)
+  - Support scoped re-audit for specific finding IDs after fixes
+
+#### 6. **Documentation Agent** (Knowledge Recorder)
+- **Role**: Persists significant task outcomes to backlog knowledge base
+- **Responsibilities**:
+  - Run after security approves each task (final step before Done)
+  - Read completed task details, implementation notes, and final summary
+  - Scan existing `backlog/docs/` and `backlog/decisions/` for relevant records
+  - Update existing docs/decisions when task outcome is relevant
+  - Create new docs when task produced reusable reference material
+  - Create new decision records for architectural or design choices
+  - Emit `✅ DOCUMENTATION COMPLETE` via task notes
+  - Never modifies source files or task files directly
 
 ---
 
@@ -944,8 +966,14 @@ This document describes the system at maturity. Implementation phases:
 2. **Phase 2**: Add Implementation agent (basic flow)
 3. **Phase 3**: Add QA agent with manual handoff
 4. **Phase 4**: Automated handoff & decision making
-5. **Phase 5**: Advanced features (escalation, re-routing)
-6. **Phase 6**: Reporting & optimization
+5. **Phase 5**: Security agent gate + fix loop (✅ complete)
+6. **Phase 6**: Documentation agent gate (✅ complete — m-2)
+7. **Phase 7**: Reporting & optimization
+
+**Current pipeline order (as of m-2):**
+```
+Implementation → QA → Security → Documentation → Done
+```
 
 Each phase builds on previous, maintaining stable interfaces between agents.
 

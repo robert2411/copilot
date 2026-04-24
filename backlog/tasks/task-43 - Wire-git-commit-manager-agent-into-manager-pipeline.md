@@ -13,6 +13,7 @@ dependencies:
   - TASK-42
   - TASK-44
 priority: high
+milestone: m-3
 ---
 
 ## Description

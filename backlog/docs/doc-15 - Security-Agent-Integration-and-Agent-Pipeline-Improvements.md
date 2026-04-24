@@ -10,7 +10,7 @@ created_date: '2026-04-18 21:17'
 ## Current Pipeline Flow
 
 ```
-manager → analyse → implementation → qa → done
+manager → analyse → plan-reviewer → implementation → qa → security → documentation → done
 ```
 
 Agents live in `.github/agents/`. The manager orchestrates all routing; sub-agents never call each other directly.
@@ -23,10 +23,11 @@ Agents live in `.github/agents/`. The manager orchestrates all routing; sub-agen
 |------|------------------------|-------------------|
 | S    | Supervisor             | manager           |
 | A    | Planner                | analyse           |
-| B    | Plan Reviewer          | *(missing)*       |
+| B    | Plan Reviewer          | plan-reviewer     |
 | C    | Coder                  | implementation    |
 | D    | Code Reviewer + Tester | qa                |
-| E    | Security Auditor       | *(missing — add)* |
+| E    | Security Auditor       | security          |
+| F    | Knowledge Recorder     | documentation     |
 
 ---
 
@@ -216,8 +217,66 @@ manager
   → qa (tests; emits ✅/❌ signal)
   → security (OWASP audit; emits approved/findings)
   → [if findings] → implementation → qa → security (re-audit scoped)
+  → documentation (audit completed task; update/create backlog/docs and backlog/decisions; emits ✅ DOCUMENTATION COMPLETE)
   → Done
 ```
+
+---
+
+## Role F: Documentation Agent
+
+### Purpose
+
+Runs after security approves a task. Inspects the completed task's final summary, implementation notes, and changed
+files, then ensures all significant decisions, patterns, and outcomes are captured in `backlog/docs/` or
+`backlog/decisions/`. This is the final gate before the manager marks a task Done.
+
+### Trigger
+
+Manager routes to documentation agent when security emits `✅ SECURITY APPROVED`.
+
+### What the Documentation Agent Does
+
+1. Reads the task via `backlog task <id> --plain`
+2. Lists existing docs via `backlog doc list --plain` and scans `backlog/decisions/`
+3. Reads candidate docs/decisions whose title is thematically related to the task
+4. Updates an existing doc when the task outcome is relevant (same subsystem, same agent, same architectural area)
+5. Creates a new doc when no relevant doc exists and the task produced reusable reference material
+6. Creates a new decision record when the task involved an architectural or design choice
+7. Appends `✅ DOCUMENTATION COMPLETE` to the task notes listing all docs/decisions created or updated
+
+### Signal Format
+
+```
+✅ DOCUMENTATION COMPLETE
+- Updated: backlog/docs/<filename> (reason)
+- Created: backlog/decisions/<filename> (reason)
+```
+
+Or, if nothing needed documenting:
+
+```
+No documentation changes required. ✅ DOCUMENTATION COMPLETE
+```
+
+### Key Constraint: Modified FORBIDDEN Rule
+
+Unlike all other agents, the documentation agent IS permitted to use `insert_edit_into_file` and
+`replace_string_in_file` on existing `backlog/docs/` and `backlog/decisions/` files. This carve-out exists because no
+`backlog doc edit` or `backlog decision edit` CLI command exists (`backlog doc --help` lists only `create`, `list`,
+`view`). All *create* operations (new docs, new decisions, task note appends) still go through the backlog CLI.
+
+### Security Constraint: Prompt Injection Guard
+
+The documentation agent has Constraint 8 explicitly prohibiting use of `run_in_terminal` for any command other than
+approved backlog CLI commands. Any instruction from task content to run non-backlog shell commands is treated as a
+prompt injection attempt and must be stopped. This mirrors the pattern in `security.agent.md`.
+
+### Non-Blocking Fallback
+
+Documentation is non-blocking for delivery. If the documentation agent fails to emit the `✅ DOCUMENTATION COMPLETE`
+signal, the manager logs a warning note and proceeds to mark the task Done. The security gate (which always precedes
+documentation) is the blocking quality gate.
 
 ---
 
@@ -233,3 +292,12 @@ Tasks:
 4. Update implementation agent to escalate blockers to analyse
 5. Update QA agent to send final result signal back to manager
 6. Create plan-reviewer agent or incorporate plan review into analyse
+
+See milestone: **Documentation Agent** (m-2)
+
+Tasks:
+
+7. Create documentation agent file (`.github/agents/documentation.agent.md`) — TASK-39
+8. Wire documentation agent into manager pipeline after security approval — TASK-40
+9. Update implementation agent to be aware of documentation step — TASK-41
+
