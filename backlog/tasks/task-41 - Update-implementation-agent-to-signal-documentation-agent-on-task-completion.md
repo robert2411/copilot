@@ -4,7 +4,7 @@ title: Update implementation agent to signal documentation agent on task complet
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:26'
+updated_date: '2026-04-24 22:29'
 labels:
   - documentation
   - agent
@@ -64,4 +64,10 @@ Update the implementation agent system prompt so it knows the documentation agen
 Self-review complete. Plan covers all 3 ACs. AC1→Step 6 (Constraint #3 updated: DON'T mark Done yourself), AC2→Step 4 (final-summary block notes it feeds the documentation agent), AC3→Step 5 (Sub-Agent Delegation section lists documentation). Key risk: removing Done-marking from implementation creates a pipeline dependency on Manager correctly marking Done after documentation — addressed by TASK-40 plan. Verified current implementation agent Step 7 is the only location marking -s Done. No ambiguous steps.
 
 Analysis complete. Plan ready. Depends on TASK-39 completing first. Coordinate with TASK-40 — both modify the pipeline handoff at the implementation boundary.
+
+🔍 PLAN REVIEW CONCERNS:
+- Concern #1 (Role & Scope section not updated): The current implementation.agent.md Role & Scope section (line 29) reads "Mark tasks Done, then commit." After TASK-41's changes, Done is no longer set by the implementation agent — it is set by the Manager after Documentation completes. The plan does not include a step to update the Role & Scope description, leaving it stale and misleading. Plan Step 7 (verify consistency) checks for stale CLI references but does not check the Role & Scope prose. A step must be added to update that description to something like "Commit after QA approval; Done status is set by the Manager after the Documentation step."
+- Concern #2 (No dependency on TASK-40 / deployment atomicity risk): TASK-41 removes the implementation agent's Done-marking responsibility. TASK-40 adds Done-marking to the Manager. Both must be deployed together — if TASK-41 is committed without TASK-40, no agent marks tasks Done and the pipeline stalls. TASK-41's dependency list only includes TASK-39; it should also declare a dependency on TASK-40 (or the plan must explicitly note that TASK-41 and TASK-40 must be committed in the same batch and never independently).
+
+Verdict: Plan needs revision before implementation.
 <!-- SECTION:NOTES:END -->
