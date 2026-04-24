@@ -4,7 +4,7 @@ title: Write squash-consecutive-commits shell helper script
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-24 23:03'
+updated_date: '2026-04-24 23:07'
 labels:
   - git
   - agent
@@ -123,4 +123,14 @@ Third risk: rebasing rewrites SHAs — script must re-read git log after each re
 Test approach included in plan (Step 15). No ambiguous steps.
 
 Analysis complete. Plan ready. No blockers. Note portability risk with mapfile/bash 4 flagged in notes — implementation agent must use while-read loop for git log parsing.
+
+🔍 PLAN REVIEW CONCERNS:
+
+- Concern #1 — Step 10b git log range command is incorrect: The plan specifies `git log --reverse --format="%H %s" HEAD~<N>` to build the rebase todo for the window of N commits. However, `git log HEAD~<N>` (without a range) walks the ENTIRE history from HEAD~N backwards — it does not limit output to the last N commits. This means the rebase-todo file would contain hundreds/thousands of unrelated commits, making the rebase command destructive and wrong. The correct command to get only the N commits between HEAD~N and HEAD is `git log --reverse --format="%H %s" HEAD~<N>..HEAD` (note the range operator). The plan must be corrected to use the `HEAD~<N>..HEAD` range everywhere in Step 10b.
+
+- Concern #2 — Step 6 case-sensitivity contradiction: Step 6 describes the regex `^task-([^: ]+):` as "(case-insensitive)" but in bash the `=~` operator performs case-SENSITIVE matching by default. No `shopt -s nocasematch` or lowercase conversion is specified. If case-insensitivity is genuinely required, the plan must specify the mechanism (e.g. `shopt -s nocasematch` before the match, or convert the subject to lowercase first via `${subject,,}`). If the commit format is always lowercase `task-<id>:` (which the canonical format implies), remove the "(case-insensitive)" annotation to avoid confusion for the implementation agent.
+
+- Concern #3 — Step 5 depth limit is ambiguous: Step 5 says "no depth limit — processes all commits" and then "(use -100 as a practical guard)" in the same sentence. These two intentions contradict each other. A repo with thousands of commits would expose a performance and correctness risk if no limit is used (pattern matching on all commit messages). The plan must commit to one explicit decision: either always use `-100` (state the flag explicitly in the git log command), or document why unbounded depth is intentional and acceptable.
+
+Verdict: Plan needs revision on these three points before implementation.
 <!-- SECTION:NOTES:END -->
