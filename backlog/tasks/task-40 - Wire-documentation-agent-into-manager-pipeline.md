@@ -111,4 +111,9 @@ All AC/DoD checked. Ready for QA.
 Verdict: Fix required before approval.
 
 Fixed Step 4c: updated 'Only then mark task Done' to route through Documentation (Step 4d) first. Resolves QA finding.
+
+✅ QA APPROVED — all tests passing, no regressions
+- AC/DoD: Complete
+- Verified updates in .github/agents/manager.agent.md: Step 4b routes SECURITY APPROVED to Step 4d, Step 4d includes documentation run_subagent with task ID + changed files + final summary, Step 5 pipeline order includes Documentation, Step 4d includes non-blocking warning fallback, and Step 4c now routes through Step 4d before Done.
+- Code quality/security/spelling: No issues found in reviewed change.
 <!-- SECTION:NOTES:END -->
