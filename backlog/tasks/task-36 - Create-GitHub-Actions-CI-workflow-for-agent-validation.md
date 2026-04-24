@@ -74,6 +74,12 @@ Analysis complete. Plan ready. No blockers.
 - Steps verified: 4 (directory creation, workflow YAML structure, trigger config, job steps)
 - AC mapped: 4/4
 - Verified: .github/workflows/ does not yet exist (confirmed); shunit2 available in Ubuntu apt repos; actions/checkout@v4 is current stable; exit-code propagation from shunit2 through bash to workflow job is correct; dependency on TASK-35 explicitly documented.
+
+- Created .github/workflows/validate-agents.yml
+- Workflow triggers on push/PR to main
+- Job: validate on ubuntu-latest with checkout, shunit2 install, and test run steps
+
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
