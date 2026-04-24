@@ -4,7 +4,7 @@ title: Create git commit manager agent file
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:19'
-updated_date: '2026-04-24 23:01'
+updated_date: '2026-04-24 23:03'
 labels:
   - git
   - agent
@@ -92,3 +92,27 @@ If it makes sense for the context: multiple tasks can be in one commit (if the a
    - AC#6: non-consecutive not squashed ✅ (script handles this)
    - AC#7 & AC#8: squash examples (script handles this, agent just calls script) ✅
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Self-review complete.
+
+AC coverage:
+- AC#1 → Plan Step 1 (file created at correct path)
+- AC#2 → Workflow Step 3 (git add -A staged all changes including backlog/)
+- AC#3 → Workflow Step 4 (canonical commit format task-<id>: <title>)
+- AC#4 → Workflow Step 5 (squash script parses git log internally)
+- AC#5 → Workflow Step 5 (squash script handles squashing)
+- AC#6 → Workflow Step 5 (squash script respects boundaries)
+- AC#7 & AC#8 → Workflow Step 5 (examples verified by script logic)
+
+Error paths covered:
+- Squash script fails → warning note appended, commit-complete NOT emitted (Step 5)
+- Nothing to commit (clean tree) → skip commit, proceed to squash (Step 4)
+- Squash script runs on clean tree after commit → always clean at that point ✅
+
+Assumption called out: squash script (TASK-44) must exist at the path referenced. This is a dependency — TASK-44 must be implemented first.
+
+No ambiguous steps. No gaps found.
+<!-- SECTION:NOTES:END -->
