@@ -31,4 +31,5 @@ Build the documentation agent that runs after implementation completes. The agen
 - [ ] #2 Agent reads completed task details via backlog task <id> --plain
 - [ ] #3 Agent lists existing docs via backlog doc list --plain and scans backlog/decisions/
 - [ ] #4 Agent updates an existing doc when the content is relevant to a completed task
+- [ ] #5 Agent creates a new backlog doc when no relevant doc exists
 <!-- AC:END -->
