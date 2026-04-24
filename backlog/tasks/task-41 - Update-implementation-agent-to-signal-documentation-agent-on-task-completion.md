@@ -31,4 +31,5 @@ Update the implementation agent system prompt so it knows the documentation agen
 <!-- AC:BEGIN -->
 - [ ] #1 Implementation agent constraints updated to not mark task Done until documentation step is complete
 - [ ] #2 Implementation agent final-summary step notes that summary will be passed to documentation agent
+- [ ] #3 Implementation agent sub-agent delegation section lists documentation agent role
 <!-- AC:END -->
