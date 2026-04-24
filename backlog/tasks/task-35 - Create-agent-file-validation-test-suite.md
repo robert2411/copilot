@@ -4,7 +4,7 @@ title: Create agent file validation test suite
 status: To Do
 assignee: []
 created_date: '2026-04-24 21:48'
-updated_date: '2026-04-24 21:50'
+updated_date: '2026-04-24 21:51'
 labels:
   - testing
   - agents
@@ -52,6 +52,30 @@ Build a shunit2 bash test suite under tests/agents/ that discovers every .github
 12. No setUp/tearDown needed because all tests are read-only operations on static agent source files.
 13. Note: the task description mentions "no raw secrets" but none of the ACs specify it — no secrets-scanning test is required to satisfy the ACs; if added later it should grep body+frontmatter for patterns like AWS key formats or high-entropy strings.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Self-review complete.
+
+AC coverage:
+- AC#1 (all agent files discovered): covered by test_agents_are_discovered + glob loop in every test.
+- AC#2 (required fields: name, description, color, user-invocable): covered by four dedicated test functions (steps 5–8).
+- AC#3 (non-empty prompt body): covered by test_agents_have_non_empty_body (step 9).
+- AC#4 (fail clearly when field missing/empty): each assert uses filename in message; loop continues so ALL failures for ALL files are reported in one run.
+- AC#5 (exit non-zero on any failure): shunit2 handles this by default; no extra code needed.
+- AC#6 (use shunit2 consistent with existing pattern): 4-way fallback sourcing block matches test-milestone-helper.sh exactly.
+
+Verified assumptions:
+- awk is available on all target platforms (macOS and ubuntu-latest) — safe assumption.
+- shunit2 assert functions (assertTrue, assertFalse) accept a message as first arg — confirmed from existing test.
+- Agent files use standard YAML frontmatter delimited by "---" on its own line — confirmed by reading all 7 agent files.
+- description block scalar uses 2-space indentation — confirmed from analyse.agent.md and qa.agent.md samples.
+
+No ambiguous steps, no missing error paths for a read-only test suite. No blockers.
+
+Analysis complete. Plan ready. No blockers.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
