@@ -24,3 +24,10 @@ Update the implementation agent system prompt so it knows the documentation agen
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
+
+
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Implementation agent constraints updated to not mark task Done until documentation step is complete
+<!-- AC:END -->
