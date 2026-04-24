@@ -4,7 +4,7 @@ title: Write squash-consecutive-commits shell helper script
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-24 23:07'
+updated_date: '2026-04-24 23:10'
 labels:
   - git
   - agent
@@ -47,11 +47,13 @@ Write a shell script squash-task-commits.sh (alongside milestone-helper.sh) that
 4. Dirty working tree check (AC#7):
    - Run `git status --porcelain`. If output is non-empty, print error "Working tree is dirty. Commit or stash changes before squashing." to stderr and exit 1.
 5. Read git log (AC#2):
-   - Capture output of: `git log --format="%H|%s"` (no depth limit — processes all commits; use -100 as a practical guard)
+   - Capture output of: `git log --format="%H|%s" -100`
+   - Use `-100` as the practical scan depth limit (not unbounded). This is a deliberate cap: repos with thousands of commits do not need full history scanned; consecutive same-task commits will always be in the recent window.
    - Store as an array of lines, newest-first order (default git log order)
+   - Use `while IFS= read -r line; do ... done < <(git log --format="%H|%s" -100)` for bash 3.2 compatibility (do NOT use mapfile/readarray — macOS ships bash 3.2)
 6. Parse task-id from each commit subject (AC#2):
-   - For each line, extract hash and subject
-   - Apply regex `^task-([^: ]+):` to the subject (case-insensitive) to extract the task-id
+   - For each line, extract hash and subject via IFS='|' splitting
+   - Apply regex `^task-([^: ]+):` to the subject using bash `=~` operator (standard case-sensitive matching — the canonical commit format is always lowercase `task-<id>:`, so case-insensitive matching is not needed and should NOT be used)
    - If no match, task-id = "" (non-task commit)
 7. Identify consecutive runs (AC#2, AC#4):
    - Walk the array from index 0 (newest) to end
@@ -69,7 +71,8 @@ Write a shell script squash-task-commits.sh (alongside milestone-helper.sh) that
     - For each run:
       a. Determine how many commits from HEAD the run covers: compute N = index_of_last_commit_in_run + 1
       b. Build a git-rebase-todo temp file:
-         - List ALL commits from HEAD~N to HEAD (oldest→newest via `git log --reverse --format="%H %s" HEAD~<N>`)
+         - List ALL commits in the rebase window using the correct range: `git log --format="%H %s" --reverse HEAD~<N>..HEAD`
+         - NOTE: Use `HEAD~<N>..HEAD` range (not `HEAD~<N>` alone) to limit output to exactly N commits. `HEAD~<N>` without a range walks ALL history from that point backwards and is incorrect.
          - For commits in the current run: first = `pick <hash> <subject>`, rest = `fixup <hash> <subject>`
          - For commits NOT in the current run within the window: `pick <hash> <subject>`
       c. Export `GIT_SEQUENCE_EDITOR="cp <todo-tempfile>"` and run `git rebase -i HEAD~<N>`
