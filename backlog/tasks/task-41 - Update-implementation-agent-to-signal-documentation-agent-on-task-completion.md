@@ -75,4 +75,6 @@ Analysis complete. Plan ready. Depends on TASK-39 completing first. Coordinate w
 - Concern #2 (No dependency on TASK-40 / deployment atomicity risk): TASK-41 removes the implementation agent's Done-marking responsibility. TASK-40 adds Done-marking to the Manager. Both must be deployed together — if TASK-41 is committed without TASK-40, no agent marks tasks Done and the pipeline stalls. TASK-41's dependency list only includes TASK-39; it should also declare a dependency on TASK-40 (or the plan must explicitly note that TASK-41 and TASK-40 must be committed in the same batch and never independently).
 
 Verdict: Plan needs revision before implementation.
+
+Plan revised: Role & Scope update step added; TASK-40 dependency declared; atomicity note added.
 <!-- SECTION:NOTES:END -->
