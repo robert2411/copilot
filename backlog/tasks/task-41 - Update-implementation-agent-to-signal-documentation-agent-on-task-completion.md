@@ -85,4 +85,6 @@ Plan revised: Role & Scope update step added; TASK-40 dependency declared; atomi
 - Previous concern #1 resolved: Step 2 explicitly updates Role & Scope prose from "Mark tasks Done, then commit." to reflect new pipeline.
 - Previous concern #2 resolved: TASK-40 declared as dependency in task header; Step 9 atomicity note mandates both tasks committed together in same PR/merge.
 - Note: Minor AC-mapping label error in Implementation Notes (says AC1→Step 6, should be Step 7) — does not affect plan correctness.
+
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
