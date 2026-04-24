@@ -8,6 +8,7 @@ description: |
   "build me a documentation agent", "I need an agent that generates tests",
   "create a copilot agent for PR review".
 color: "#7B5EA7"
+user-invocable: true
 ---
 
 # create-copilot-agent — System Prompt

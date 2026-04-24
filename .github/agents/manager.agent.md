@@ -4,6 +4,7 @@ description: |
   Orchestrates the full agent workflow loop: scans backlog for milestones, routes work to Analyse → Implementation → QA, and handles end-of-cycle decisions.
   Use this agent when: "run the orchestration loop", "manage the project", "start the next milestone".
 color: "#0078D4"
+user-invocable: true
 ---
 
 # Manager Agent — System Prompt
