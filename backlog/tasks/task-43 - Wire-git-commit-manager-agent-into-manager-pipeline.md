@@ -4,7 +4,7 @@ title: Wire git commit manager agent into manager pipeline
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-24 23:02'
+updated_date: '2026-04-24 23:03'
 labels:
   - git
   - agent
@@ -82,3 +82,32 @@ Update the manager agent to invoke the git commit manager agent as the final ste
    - All existing sub-agents still listed
    - The FORBIDDEN notice intact
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Self-review complete.
+
+AC coverage:
+- AC#1 → Plan Step 2 (run_subagent with agentName: "git-commit-manager" inserted after documentation step)
+- AC#2 → Plan Step 2 (task string includes task ID and task title explicitly)
+- AC#3 → Plan Step 2 (reads task notes for ✅ COMMIT COMPLETE signal before marking Done; fallback warning if signal absent)
+- AC#4 → Plan Steps 3-4 (pipeline order comment updated in Step 5 and Step 4d sections)
+- AC#5 → Plan Step 2 (task string passed to git-commit-manager references the script path including --dry-run capability)
+
+Error paths covered:
+- commit-complete signal absent → warning note + mark Done (non-blocking, mirrors documentation fallback pattern)
+- Only modifies Step 4d and Sub-Agent list; all other pipeline steps unaffected
+
+Key structural clarity: The git commit invocation is inserted BETWEEN the documentation signal detection block and the `backlog task edit <id> -s Done` command. This means:
+- Documentation completes (or times out with warning)
+- Git commit runs
+- Task marked Done
+Order is unambiguous.
+
+Constraints section update: Plan Step 6 updates constraint language to match the new two-step post-documentation flow (git commit then Done).
+
+Dependency confirmed: TASK-42 (agent file) and TASK-44 (squash script) must be complete before TASK-43 is implemented. This is correctly declared in task dependencies.
+
+No gaps found. No ambiguous steps.
+<!-- SECTION:NOTES:END -->
