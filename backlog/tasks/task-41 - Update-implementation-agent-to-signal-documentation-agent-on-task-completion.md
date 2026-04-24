@@ -62,4 +62,6 @@ Update the implementation agent system prompt so it knows the documentation agen
 
 <!-- SECTION:NOTES:BEGIN -->
 Self-review complete. Plan covers all 3 ACs. AC1→Step 6 (Constraint #3 updated: DON'T mark Done yourself), AC2→Step 4 (final-summary block notes it feeds the documentation agent), AC3→Step 5 (Sub-Agent Delegation section lists documentation). Key risk: removing Done-marking from implementation creates a pipeline dependency on Manager correctly marking Done after documentation — addressed by TASK-40 plan. Verified current implementation agent Step 7 is the only location marking -s Done. No ambiguous steps.
+
+Analysis complete. Plan ready. Depends on TASK-39 completing first. Coordinate with TASK-40 — both modify the pipeline handoff at the implementation boundary.
 <!-- SECTION:NOTES:END -->
