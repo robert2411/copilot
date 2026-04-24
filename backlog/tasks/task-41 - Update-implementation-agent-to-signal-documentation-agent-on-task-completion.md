@@ -1,7 +1,7 @@
 ---
 id: TASK-41
 title: Update implementation agent to signal documentation agent on task completion
-status: In Progress
+status: Done
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:14'
