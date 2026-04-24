@@ -92,6 +92,14 @@ test_create_milestone_duplicate() {
 # test_assign_task_patches_frontmatter (inserts milestone field)
 # ---------------------------------------------------------------------------
 test_assign_task_patches_frontmatter() {
+  # Create milestone fixture
+  cat > "$TEST_DIR/milestones/m-1 - sprint-1.md" <<'MILE'
+---
+id: m-1
+title: "Sprint 1"
+---
+MILE
+
   # Write a minimal task file with no milestone field
   cat > "$TEST_DIR/tasks/task-7 - my-task.md" <<'TASK'
 ---
@@ -105,20 +113,34 @@ TASK
   bash "$SCRIPT_UNDER_TEST" assign-task 7 "Sprint 1"
 
   assertTrue "milestone field should be in task file" \
-    "grep -q '^milestone: Sprint 1' '$TEST_DIR/tasks/task-7 - my-task.md'"
+    "grep -q '^milestone: m-1' '$TEST_DIR/tasks/task-7 - my-task.md'"
 }
 
 # ---------------------------------------------------------------------------
 # test_assign_task_replaces_existing_milestone
 # ---------------------------------------------------------------------------
 test_assign_task_replaces_existing_milestone() {
+  # Create milestone fixtures
+  cat > "$TEST_DIR/milestones/m-1 - sprint-1.md" <<'MILE'
+---
+id: m-1
+title: "Sprint 1"
+---
+MILE
+  cat > "$TEST_DIR/milestones/m-2 - sprint-2.md" <<'MILE'
+---
+id: m-2
+title: "Sprint 2"
+---
+MILE
+
   # Write a task file that already has a milestone field
   cat > "$TEST_DIR/tasks/task-8 - another-task.md" <<'TASK'
 ---
 id: TASK-8
 title: "Another Task"
 status: To Do
-milestone: Old Milestone
+milestone: m-1
 ---
 Task body here.
 TASK
@@ -126,10 +148,10 @@ TASK
   bash "$SCRIPT_UNDER_TEST" assign-task 8 "Sprint 2"
 
   assertTrue "milestone field should be updated" \
-    "grep -q '^milestone: Sprint 2' '$TEST_DIR/tasks/task-8 - another-task.md'"
-  # Should NOT contain the old milestone
+    "grep -q '^milestone: m-2' '$TEST_DIR/tasks/task-8 - another-task.md'"
+  # Should NOT contain the old milestone id
   assertFalse "Old milestone should be gone" \
-    "grep -q 'Old Milestone' '$TEST_DIR/tasks/task-8 - another-task.md'"
+    "grep -q 'milestone: m-1' '$TEST_DIR/tasks/task-8 - another-task.md'"
   # Should only have one milestone line
   local count
   count="$(grep -c '^milestone:' "$TEST_DIR/tasks/task-8 - another-task.md")"
@@ -140,6 +162,13 @@ TASK
 # test_assign_task_missing_file
 # ---------------------------------------------------------------------------
 test_assign_task_missing_file() {
+  # Create a milestone so the lookup succeeds but task file doesn't exist
+  cat > "$TEST_DIR/milestones/m-1 - sprint-1.md" <<'MILE'
+---
+id: m-1
+title: "Sprint 1"
+---
+MILE
   bash "$SCRIPT_UNDER_TEST" assign-task 999 "Sprint 1" 2>/dev/null
   assertNotEquals "Missing task file should fail" 0 $?
 }
@@ -162,17 +191,10 @@ status: To Do
 Task body here.
 TASK
 
-  bash "$SCRIPT_UNDER_TEST" assign-task 9 'Sprint 1\ninjected: evil'
+  bash "$SCRIPT_UNDER_TEST" assign-task 9 'Sprint 1\ninjected: evil' 2>/dev/null
 
-  local file="$TEST_DIR/tasks/task-9 - sec-task.md"
-
-  # Exactly one milestone: line must exist in the file
-  local count
-  count="$(grep -c '^milestone:' "$file")"
-  assertEquals "Only one milestone field should exist" 1 "$count"
-
-  # No injected: field should appear
-  assertFalse "Injected field must not exist" "grep -q '^injected:' '$file'"
+  # Unmatched milestone title should cause non-zero exit before any write
+  assertNotEquals 0 $?
 }
 
 # ---------------------------------------------------------------------------
@@ -187,6 +209,74 @@ test_assign_task_invalid_id() {
 
   bash "$SCRIPT_UNDER_TEST" assign-task "TASK-abc" "Sprint 1" 2>/dev/null
   assertNotEquals "TASK-abc task ID should fail" 0 $?
+}
+
+# ---------------------------------------------------------------------------
+# test_assign_task_milestone_not_found
+# ---------------------------------------------------------------------------
+test_assign_task_milestone_not_found() {
+  cat > "$TEST_DIR/tasks/task-10 - some-task.md" <<'TASK'
+---
+id: TASK-10
+title: "Some Task"
+status: To Do
+---
+TASK
+
+  bash "$SCRIPT_UNDER_TEST" assign-task 10 "Nonexistent Milestone" 2>/dev/null
+  assertNotEquals "Nonexistent milestone should fail" 0 $?
+}
+
+# ---------------------------------------------------------------------------
+# test_assign_task_by_milestone_id
+# ---------------------------------------------------------------------------
+test_assign_task_by_milestone_id() {
+  cat > "$TEST_DIR/milestones/m-1 - sprint-1.md" <<'MILE'
+---
+id: m-1
+title: "Sprint 1"
+---
+MILE
+
+  cat > "$TEST_DIR/tasks/task-11 - id-task.md" <<'TASK'
+---
+id: TASK-11
+title: "ID Task"
+status: To Do
+---
+TASK
+
+  bash "$SCRIPT_UNDER_TEST" assign-task 11 "m-1"
+
+  assertTrue "milestone field should use id" \
+    "grep -q '^milestone: m-1' '$TEST_DIR/tasks/task-11 - id-task.md'"
+}
+
+# ---------------------------------------------------------------------------
+# test_assign_task_milestone_missing_id_field
+# ---------------------------------------------------------------------------
+test_assign_task_milestone_missing_id_field() {
+  # Milestone file exists but has no id: field
+  cat > "$TEST_DIR/milestones/no-id - sprint-x.md" <<'MILE'
+---
+title: "Sprint X"
+---
+MILE
+
+  cat > "$TEST_DIR/tasks/task-12 - noid-task.md" <<'TASK'
+---
+id: TASK-12
+title: "No ID Task"
+status: To Do
+---
+TASK
+
+  bash "$SCRIPT_UNDER_TEST" assign-task 12 "Sprint X" 2>/dev/null
+  assertNotEquals "Missing id field in milestone should fail" 0 $?
+
+  # No milestone: line should have been written
+  assertFalse "No milestone field should be written" \
+    "grep -q '^milestone:' '$TEST_DIR/tasks/task-12 - noid-task.md'"
 }
 
 # ---------------------------------------------------------------------------
