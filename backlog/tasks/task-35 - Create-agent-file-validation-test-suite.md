@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-24 21:48'
-updated_date: '2026-04-24 22:01'
+updated_date: '2026-04-24 22:02'
 labels:
   - testing
   - agents
@@ -106,6 +106,13 @@ Fixed QA issues:
 - Scoped block scalar description check using awk to extract only indented lines under description: field
 - Replaced echo/$frontmatter string eval pattern with direct pipe | grep -q + $? pattern to avoid apostrophe fragility
 All 6 tests still passing. Ready for QA re-review.
+
+❌ QA REJECTED: description validation still allows empty values in one case.
+
+🔍 QA REVIEW FINDINGS:
+- Issue #1: [High] `test_agents_have_description_field` does not fail when description is present but empty inline (`description:` with no value). After key existence check passes, neither inline nor block branches execute, so no failing assertion is triggered (tests/agents/test-agents.sh:79-95). This violates AC #4 (tests must fail clearly when a field is missing or empty).
+
+Verdict: Fix required before approval.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
