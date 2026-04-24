@@ -89,6 +89,19 @@ All AC/DoD checked. Ready for QA.
 - Validation: bash tests/agents/test-agents.sh passes locally (6 tests, OK)
 <!-- SECTION:NOTES:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created .github/workflows/validate-agents.yml — GitHub Actions CI workflow that runs agent validation tests on push and PR to main.
+
+Changes:
+- .github/workflows/validate-agents.yml (new): workflow with push/pull_request triggers on main, ubuntu-latest job that checks out repo, installs shunit2 via apt-get, and runs bash tests/agents/test-agents.sh
+
+Tests:
+- Build fails automatically when tests/agents/test-agents.sh exits non-zero (shunit2 behaviour)
+- Depends on TASK-35 (tests/agents/test-agents.sh) which is implemented in the same PR
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 All code is committed to git
