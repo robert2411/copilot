@@ -88,6 +88,13 @@ Plan revised: fixed REPO_ROOT to use ../..
 - Steps verified: 13
 - AC mapped: 6
 - Fix confirmed: REPO_ROOT now uses "$(cd "$SCRIPT_DIR/../.." && pwd)" (2 levels up), correct for tests/agents/ depth.
+
+- Created tests/agents/test-agents.sh with 6 shunit2 test functions
+- Added get_frontmatter and get_body helper functions
+- Fixed create-copilot-agent.agent.md and manager.agent.md: added missing user-invocable field
+- All 6 tests pass: Ran 6 tests. OK
+
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
