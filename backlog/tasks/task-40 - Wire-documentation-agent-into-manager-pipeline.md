@@ -101,4 +101,6 @@ Plan revised: AC3 updated to allow non-blocking fallback; plan aligned.
 - Steps verified: 8 (Steps 1–5 manager.agent.md edits, Step 6 sub-agents list, Step 7 Constraint #6, Step 8 consistency check)
 - AC mapped: 5/5 (AC1→Step 4 run_subagent in Step 4d, AC2→Step 4a task ID + changed files + final summary, AC3→Steps 2–3 Step 4b updated, AC4→Step 5 pipeline order documented, AC5→Steps 4b–4d non-blocking fallback with warning log)
 - Previous concern resolved: AC5 revised to acknowledge non-blocking fallback; plan Step 4d aligned — warning note logged then task marked Done if signal absent.
+
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
