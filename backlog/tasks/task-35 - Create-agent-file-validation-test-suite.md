@@ -1,7 +1,7 @@
 ---
 id: TASK-35
 title: Create agent file validation test suite
-status: In Progress
+status: Done
 assignee:
   - '@implementation'
 created_date: '2026-04-24 21:48'
