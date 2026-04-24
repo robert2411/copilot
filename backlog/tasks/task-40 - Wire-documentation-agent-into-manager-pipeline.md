@@ -24,3 +24,10 @@ Update the manager agent to invoke the documentation agent after implementation 
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
+
+
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Manager invokes documentation agent via run_subagent after security approves each task
+<!-- AC:END -->
