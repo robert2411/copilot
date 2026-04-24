@@ -4,7 +4,7 @@ title: Create documentation agent file
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:31'
+updated_date: '2026-04-24 22:32'
 labels:
   - documentation
   - agent
@@ -86,4 +86,6 @@ Analysis complete. Plan ready. No blockers.
 - Concern #1 (Self-contradiction in FORBIDDEN boilerplate): Plan Step 4 instructs writing the standard FORBIDDEN boilerplate, which explicitly prohibits `insert_edit_into_file` and `replace_string_in_file` on any file within `./backlog`. However, Workflow Step 5 instructs the documentation agent to use exactly those tools to update existing docs in `backlog/docs/`. There is no `backlog doc edit` CLI command (verified: `backlog doc --help` lists only `create`, `list`, `view`), so direct file editing is the only viable mechanism. As written the agent file will contain directly contradictory instructions. The plan must specify that the FORBIDDEN boilerplate be modified or annotated for the documentation agent to explicitly carve out `insert_edit_into_file` / `replace_string_in_file` on existing `backlog/docs/` and `backlog/decisions/` files, making clear this is permitted because no CLI edit command exists for those resources.
 
 Verdict: Plan needs revision before implementation.
+
+Plan revised: FORBIDDEN boilerplate carve-out for backlog/docs and backlog/decisions edits specified.
 <!-- SECTION:NOTES:END -->
