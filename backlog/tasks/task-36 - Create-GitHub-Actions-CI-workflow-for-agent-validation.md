@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-24 21:48'
-updated_date: '2026-04-24 21:55'
+updated_date: '2026-04-24 21:59'
 labels:
   - ci
   - testing
@@ -23,10 +23,10 @@ Add a GitHub Actions workflow (.github/workflows/validate-agents.yml) that runs 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Workflow file exists at .github/workflows/validate-agents.yml
-- [ ] #2 Workflow triggers on push and pull_request to main branch
-- [ ] #3 Workflow installs shunit2 and runs tests/agents/test-agents.sh
-- [ ] #4 Workflow fails the build when any agent validation test fails
+- [x] #1 Workflow file exists at .github/workflows/validate-agents.yml
+- [x] #2 Workflow triggers on push and pull_request to main branch
+- [x] #3 Workflow installs shunit2 and runs tests/agents/test-agents.sh
+- [x] #4 Workflow fails the build when any agent validation test fails
 <!-- AC:END -->
 
 ## Implementation Plan
