@@ -4,7 +4,7 @@ title: Create git commit manager agent file
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:19'
-updated_date: '2026-04-24 23:06'
+updated_date: '2026-04-24 23:09'
 labels:
   - git
   - agent
@@ -44,7 +44,12 @@ If it makes sense for the context: multiple tasks can be in one commit (if the a
 <!-- SECTION:PLAN:BEGIN -->
 1. Create the file `.github/agents/git-commit-manager.agent.md`.
 2. Write YAML frontmatter with: `name: git-commit-manager`, a clear description explaining it stages changes, commits with canonical format, and squashes consecutive same-task commits, `color: "#E88C2A"`, `user-invocable: false`. No `model` key (inherit default, same as implementation/documentation agents).
-3. Write the agent system-prompt body with the following sections:
+3. Immediately after the frontmatter opening, write the standard 🚫 FORBIDDEN block that all agents carry:
+   - Prohibits writing directly to the `backlog/` folder (no create_file, insert_edit_into_file, replace_string_in_file, or shell writes like `echo > backlog/...`)
+   - Requires all backlog operations to go through the `backlog` CLI
+   - Add the git-specific carve-out: `run_in_terminal` is permitted ONLY for the following commands: `git add`, `git commit`, `git log`, `git status`, and `.github/skills/backlog-cli/scripts/squash-task-commits.sh`
+
+4. Write the agent system-prompt body with the following sections:
 
    **Role & Scope**
    - Receives: task ID and task title from Manager (via run_subagent task string)
@@ -56,16 +61,17 @@ If it makes sense for the context: multiple tasks can be in one commit (if the a
    - Run `git status --porcelain` via run_in_terminal to confirm there are changes OR it is clean (already committed); either is valid — proceed
    - If the tree is dirty (unexpected uncommitted changes from a prior crash), log a note and continue — `git add -A` will capture them
 
-   Step 2 — (Optional) Dry-run squash check
-   - Run `.github/skills/backlog-cli/scripts/squash-task-commits.sh --dry-run` to preview what squash operations would be performed after the new commit is added
-   - Log the dry-run output to task notes via `backlog task edit <id> --append-notes`
-
-   Step 3 — Stage all changes
+   Step 2 — Stage all changes
    - Run `git add -A` to stage every modified, deleted, and untracked file including `backlog/`, `docs/`, and source files
 
-   Step 4 — Commit
+   Step 3 — Commit
    - Run `git commit -m "task-<id>: <title>"` using the exact task ID (e.g. TASK-42) and title passed in by the Manager
    - If nothing to commit (working tree already clean), skip commit and proceed to squash step
+
+   Step 4 — (Optional) Dry-run squash check (POST-COMMIT)
+   - Run `.github/skills/backlog-cli/scripts/squash-task-commits.sh --dry-run` to preview what squash operations will be performed
+   - This runs AFTER the new commit is in history so it reflects the actual post-commit state the live squash will see
+   - Log the dry-run output to task notes via `backlog task edit <id> --append-notes`
 
    Step 5 — Squash consecutive same-task commits
    - Run `.github/skills/backlog-cli/scripts/squash-task-commits.sh` (without --dry-run)
@@ -75,18 +81,19 @@ If it makes sense for the context: multiple tasks can be in one commit (if the a
    Step 6 — Emit commit-complete signal
    - Run `backlog task edit <id> --append-notes "✅ COMMIT COMPLETE: task-<id>: <title>"` so the Manager can detect the signal
 
-4. Add **Tool Usage** section listing only approved tools: `run_in_terminal` (for git commands and backlog CLI), `run_subagent` NOT used.
-5. Add **Output** section: one note appended to task beginning with `✅ COMMIT COMPLETE`.
-6. Add **Constraints** section:
+5. Add **Tool Usage** section listing only approved tools: `run_in_terminal` (for git commands and backlog CLI — see FORBIDDEN block for permitted git commands), `run_subagent` NOT used.
+6. Add **Output** section: one note appended to task beginning with `✅ COMMIT COMPLETE`.
+7. Add **Constraints** section:
    - DON'T edit task files directly — DO use `backlog task edit`
    - DON'T run squash script on a dirty tree — the script itself exits non-zero on dirty tree, treat that as a blocker
    - DON'T skip git add -A — always stage everything including backlog/ directory
    - DON'T squash manually — always delegate squashing to squash-task-commits.sh
    - DON'T emit commit-complete if squash script fails
-7. Verify each AC is covered:
+   - DON'T run dry-run before committing — the dry-run must run AFTER the new commit is made (Step 4) so it reflects actual post-commit history
+8. Verify each AC is covered:
    - AC#1: file exists at correct path ✅ (Step 1)
-   - AC#2: git add -A ✅ (Step 3)
-   - AC#3: canonical commit format ✅ (Step 4)
+   - AC#2: git add -A ✅ (Step 2)
+   - AC#3: canonical commit format ✅ (Step 3)
    - AC#4: parses git log (delegated to squash script) ✅ (Step 5)
    - AC#5: squashes consecutive ✅ (Step 5)
    - AC#6: non-consecutive not squashed ✅ (script handles this)
