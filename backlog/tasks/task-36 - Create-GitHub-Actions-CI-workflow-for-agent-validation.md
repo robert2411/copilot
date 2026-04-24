@@ -1,10 +1,11 @@
 ---
 id: TASK-36
 title: Create GitHub Actions CI workflow for agent validation
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-24 21:48'
-updated_date: '2026-04-24 21:53'
+updated_date: '2026-04-24 21:55'
 labels:
   - ci
   - testing
