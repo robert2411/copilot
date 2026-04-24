@@ -35,4 +35,5 @@ Build the git commit manager agent responsible for guaranteeing clean git histor
 - [ ] #5 Agent squashes consecutive same-task commits into a single commit via git rebase -i or reset+commit
 - [ ] #6 Agent does NOT squash non-consecutive same-task commits (another task commit in between preserves the boundary)
 - [ ] #7 Squash example: [task1, task1, task3, task1] becomes [task1, task3, task1]
+- [ ] #8 Squash example: [task1, task1, task1, task3] becomes [task1, task3]
 <!-- AC:END -->
