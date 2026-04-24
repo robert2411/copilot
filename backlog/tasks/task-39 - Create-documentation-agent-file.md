@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:35'
+updated_date: '2026-04-24 22:36'
 labels:
   - documentation
   - agent
@@ -27,14 +27,14 @@ Build the documentation agent that runs after implementation completes. The agen
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Agent file exists at .github/agents/documentation.agent.md with correct frontmatter
-- [ ] #2 Agent reads completed task details via backlog task <id> --plain
-- [ ] #3 Agent lists existing docs via backlog doc list --plain and scans backlog/decisions/
-- [ ] #4 Agent updates an existing doc when the content is relevant to a completed task
-- [ ] #5 Agent creates a new backlog doc when no relevant doc exists
-- [ ] #6 Agent creates a new backlog decision record when the task involved an architectural or design choice
-- [ ] #7 Agent appends notes to the task indicating what was documented and where
-- [ ] #8 Agent frontmatter sets user-invocable to false
+- [x] #1 Agent file exists at .github/agents/documentation.agent.md with correct frontmatter
+- [x] #2 Agent reads completed task details via backlog task <id> --plain
+- [x] #3 Agent lists existing docs via backlog doc list --plain and scans backlog/decisions/
+- [x] #4 Agent updates an existing doc when the content is relevant to a completed task
+- [x] #5 Agent creates a new backlog doc when no relevant doc exists
+- [x] #6 Agent creates a new backlog decision record when the task involved an architectural or design choice
+- [x] #7 Agent appends notes to the task indicating what was documented and where
+- [x] #8 Agent frontmatter sets user-invocable to false
 <!-- AC:END -->
 
 ## Implementation Plan
