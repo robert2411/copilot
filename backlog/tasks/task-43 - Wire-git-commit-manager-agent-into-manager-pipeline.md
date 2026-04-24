@@ -4,7 +4,7 @@ title: Wire git commit manager agent into manager pipeline
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-24 23:07'
+updated_date: '2026-04-24 23:09'
 labels:
   - git
   - agent
@@ -42,16 +42,28 @@ Update the manager agent to invoke the git commit manager agent as the final ste
 1. Read the current manager.agent.md in full to understand exact sections to modify.
    File: `.github/agents/manager.agent.md`
 
-2. Update the **Step 4d: Documentation** section:
-   - After the block that detects `✅ DOCUMENTATION COMPLETE` (or falls back with a warning), BEFORE the line that calls `backlog task edit <id> -s Done`, insert a new sub-step:
-     → Invoke git-commit-manager agent via run_subagent:
+2. Restructure **Step 4d: Documentation** so that there is exactly ONE `backlog task edit <id> -s Done` call at the end of a single linear flow, replacing the current two-branch (success + fallback each with its own `-s Done`) structure. The new Step 4d flow must be:
+
+   (a) Detect documentation-complete signal:
+       - Read task notes: `backlog task <id> --plain`
+       - If `✅ DOCUMENTATION COMPLETE` found → continue
+       - If signal absent → append warning: `backlog task edit <id> --append-notes "⚠️ Documentation agent did not emit DOCUMENTATION COMPLETE signal; proceeding to git commit."` then continue (non-blocking)
+
+   (b) Invoke git-commit-manager agent via run_subagent:
        ```
        run_subagent with agentName: "git-commit-manager"
        task: "Commit all changes for task <id>: <title>.\nTask ID: <id>\nTask Title: <title>\nInstructions:\n1. Stage all changes with git add -A\n2. Commit with message: task-<id>: <title>\n3. Run .github/skills/backlog-cli/scripts/squash-task-commits.sh to squash consecutive same-task commits\n4. Emit ✅ COMMIT COMPLETE signal via backlog task edit <id> --append-notes"
        ```
-     → After subagent call, read task notes: `backlog task <id> --plain`
-     → If `✅ COMMIT COMPLETE` found → mark task Done: `backlog task edit <id> -s Done`
-     → If signal absent → log warning: `backlog task edit <id> --append-notes "⚠️ Git commit agent did not emit commit-complete signal; proceeding to mark Done."` then mark Done
+
+   (c) Detect commit-complete signal:
+       - Read task notes: `backlog task <id> --plain`
+       - If `✅ COMMIT COMPLETE` found → continue
+       - If signal absent → append warning: `backlog task edit <id> --append-notes "⚠️ Git commit agent did not emit COMMIT COMPLETE signal; proceeding to mark Done."` then continue (non-blocking)
+
+   (d) Mark task Done — exactly once, after both signal-detection blocks above:
+       `backlog task edit <id> -s Done`
+
+   This single-flow structure ensures git commit always runs regardless of which documentation branch was taken, and `-s Done` is called exactly once.
 
 3. Update pipeline order comment in **Step 4d** and **Step 5** to read:
    > Pipeline order: Implementation → QA → Security → Documentation → Git Commit → Done
@@ -68,11 +80,11 @@ Update the manager agent to invoke the git commit manager agent as the final ste
      "DON'T mark task Done after Documentation alone — DO also invoke git-commit-manager; if commit-complete signal is absent, log a warning and proceed to mark Done. Git commit is non-blocking for delivery."
 
 7. AC coverage verification:
-   - AC#1: Manager invokes git-commit-manager via run_subagent after documentation ✅ (Step 2)
-   - AC#2: Manager passes task ID and title as part of the task string ✅ (Step 2, task string content)
-   - AC#3: Manager marks Done only after commit-complete OR warning fallback ✅ (Step 2)
+   - AC#1: Manager invokes git-commit-manager via run_subagent after documentation ✅ (Step 2b)
+   - AC#2: Manager passes task ID and title as part of the task string ✅ (Step 2b, task string content)
+   - AC#3: Manager marks Done only after commit-complete OR warning fallback ✅ (Step 2c-d — single Done call at the very end)
    - AC#4: Pipeline order updated in Steps 4d, 5 ✅ (Steps 3, 4)
-   - AC#5: Manager includes reference to --dry-run in the task string comment so agent can do verification ✅ (Step 2 — task string mentions the script path and flags)
+   - AC#5: Manager includes reference to --dry-run via task string mentioning the script path ✅ (Step 2b)
 
 8. Do NOT change any other pipeline steps (Analyse, Plan Reviewer, Implementation, QA, Security flows remain unchanged).
 
