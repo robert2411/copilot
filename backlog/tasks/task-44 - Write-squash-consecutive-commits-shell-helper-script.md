@@ -4,15 +4,15 @@ title: Write squash-consecutive-commits shell helper script
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-24 22:21'
+updated_date: '2026-04-24 23:02'
 labels:
   - git
   - agent
   - scripts
+milestone: m-3
 dependencies:
   - TASK-42
 priority: high
-milestone: m-3
 ---
 
 ## Description
@@ -26,8 +26,6 @@ Write a shell script squash-task-commits.sh (alongside milestone-helper.sh) that
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
 
-
-
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [ ] #1 Script lives at .github/skills/backlog-cli/scripts/squash-task-commits.sh
@@ -38,3 +36,61 @@ Write a shell script squash-task-commits.sh (alongside milestone-helper.sh) that
 - [ ] #6 Script accepts optional --dry-run flag that prints planned squash operations without executing
 - [ ] #7 Script exits non-zero if working tree is dirty (uncommitted changes)
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Create the file `.github/skills/backlog-cli/scripts/squash-task-commits.sh` alongside milestone-helper.sh.
+2. Add shebang `#!/usr/bin/env bash` and `set -euo pipefail` at the top. Add a header comment block (matching milestone-helper.sh convention) describing purpose, usage, flags, and examples.
+3. Parse CLI arguments:
+   - Loop over "$@", if arg is `--dry-run` set DRY_RUN=true, else print usage and exit 1.
+4. Dirty working tree check (AC#7):
+   - Run `git status --porcelain`. If output is non-empty, print error "Working tree is dirty. Commit or stash changes before squashing." to stderr and exit 1.
+5. Read git log (AC#2):
+   - Capture output of: `git log --format="%H|%s"` (no depth limit — processes all commits; use -100 as a practical guard)
+   - Store as an array of lines, newest-first order (default git log order)
+6. Parse task-id from each commit subject (AC#2):
+   - For each line, extract hash and subject
+   - Apply regex `^task-([^: ]+):` to the subject (case-insensitive) to extract the task-id
+   - If no match, task-id = "" (non-task commit)
+7. Identify consecutive runs (AC#2, AC#4):
+   - Walk the array from index 0 (newest) to end
+   - Track current_task_id and run_start_index, run_hashes[]
+   - When task-id changes OR is empty → close the current run
+   - A "run" worthy of squashing: same non-empty task-id, length > 1
+   - Store each qualifying run as: (first_hash, last_hash, count, message)
+8. If no qualifying runs found → print "Nothing to squash." and exit 0 (idempotent — AC#5)
+9. Dry-run output (AC#6):
+   - If DRY_RUN=true, for each qualifying run print:
+     `[DRY-RUN] Would squash <count> commits for <task-id> into: <first_message>`
+   - Then exit 0 without modifying history
+10. Squash execution (AC#3, AC#5):
+    - Process runs from OLDEST to NEWEST (reverse order of discovery) so SHA invalidation from rebase does not affect already-processed runs
+    - For each run:
+      a. Determine how many commits from HEAD the run covers: compute N = index_of_last_commit_in_run + 1
+      b. Build a git-rebase-todo temp file:
+         - List ALL commits from HEAD~N to HEAD (oldest→newest via `git log --reverse --format="%H %s" HEAD~<N>`)
+         - For commits in the current run: first = `pick <hash> <subject>`, rest = `fixup <hash> <subject>`
+         - For commits NOT in the current run within the window: `pick <hash> <subject>`
+      c. Export `GIT_SEQUENCE_EDITOR="cp <todo-tempfile>"` and run `git rebase -i HEAD~<N>`
+      d. After rebase, re-read git log to refresh hashes for subsequent runs (since hashes change after rebase)
+    - Alternative simpler approach when run is at the very tip (newest commits): use `git reset --soft HEAD~<run_length>` then `git commit -m "<first_message>"` — this is valid only when the run starts at HEAD
+    - **Recommended approach for correctness**: use the GIT_SEQUENCE_EDITOR / rebase-todo approach for any run position
+11. After all squashes complete, print "Squash complete." and exit 0.
+12. Make the script executable: `chmod +x .github/skills/backlog-cli/scripts/squash-task-commits.sh`
+13. Idempotency (AC#5): if script is run again on already-squashed history, step 8 exits 0 because no runs of length > 1 are found.
+14. AC coverage verification:
+    - AC#1: file at correct path ✅ (Step 1)
+    - AC#2: git log parsed, grouped consecutively ✅ (Steps 5-7)
+    - AC#3: N consecutive commits → 1 commit, first message kept (fixup) ✅ (Step 10)
+    - AC#4: boundary commit breaks run ✅ (Step 7 — different task-id closes the run)
+    - AC#5: idempotent ✅ (Step 8 exits 0 when nothing to squash)
+    - AC#6: --dry-run flag ✅ (Steps 3, 9)
+    - AC#7: dirty working tree exits non-zero ✅ (Step 4)
+15. Test approach (for implementation agent to verify):
+    - Create a temp git repo, make commits: task-1, task-1, task-3, task-1 → run script → verify log shows task-1, task-3, task-1
+    - Create commits: task-1, task-1, task-1, task-3 → run script → verify log shows task-1, task-3
+    - Run script twice on the same history → verify second run makes no changes (idempotent)
+    - Dirty working tree test: touch a file without committing → run script → verify exit code 1
+    - --dry-run test: confirm no history changes occur
+<!-- SECTION:PLAN:END -->
