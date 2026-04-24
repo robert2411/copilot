@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:38'
+updated_date: '2026-04-24 22:39'
 labels:
   - documentation
   - agent
@@ -109,4 +109,6 @@ All AC/DoD checked. Ready for QA.
 - Issue #1: Medium The Security Fix Loop still says "Only then mark task Done" after `✅ SECURITY APPROVED`, which bypasses the new Documentation step and conflicts with Step 4d / Constraint #6 pipeline. Update Step 4c to route to Documentation before Done. (.github/agents/manager.agent.md:170-171)
 
 Verdict: Fix required before approval.
+
+Fixed Step 4c: updated 'Only then mark task Done' to route through Documentation (Step 4d) first. Resolves QA finding.
 <!-- SECTION:NOTES:END -->
