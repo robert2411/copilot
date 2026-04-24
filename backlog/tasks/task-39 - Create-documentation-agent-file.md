@@ -33,4 +33,5 @@ Build the documentation agent that runs after implementation completes. The agen
 - [ ] #4 Agent updates an existing doc when the content is relevant to a completed task
 - [ ] #5 Agent creates a new backlog doc when no relevant doc exists
 - [ ] #6 Agent creates a new backlog decision record when the task involved an architectural or design choice
+- [ ] #7 Agent appends notes to the task indicating what was documented and where
 <!-- AC:END -->
