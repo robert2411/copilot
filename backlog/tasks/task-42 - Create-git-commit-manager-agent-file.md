@@ -4,7 +4,7 @@ title: Create git commit manager agent file
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:19'
-updated_date: '2026-04-24 23:09'
+updated_date: '2026-04-24 23:10'
 labels:
   - git
   - agent
@@ -132,4 +132,6 @@ Analysis complete. Plan ready. No blockers. Implementation order: implement TASK
 - Concern #2 — Dry-run ordering is pre-commit (misleading): Workflow Step 2 runs `squash-task-commits.sh --dry-run` BEFORE the new commit is made (Step 4). At that point the new commit does not yet exist in history, so the dry-run preview reflects the pre-commit history state — not the state that will trigger squashing. A preview that does not include the commit being added is uninformative at best and misleading at worst. The dry-run should either be moved to AFTER Step 4 (post-commit) so it previews what the live squash run will actually see, or be removed from the workflow and left as an advisory note in the Constraints section.
 
 Verdict: Plan needs revision on these two points before implementation.
+
+Plan revised: FORBIDDEN block step added; dry-run moved to post-commit.
 <!-- SECTION:NOTES:END -->
