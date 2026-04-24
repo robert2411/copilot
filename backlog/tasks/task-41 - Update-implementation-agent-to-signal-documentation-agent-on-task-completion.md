@@ -90,3 +90,20 @@ All AC/DoD checked. Ready for QA.
 
 QA review: ✅ QA APPROVED — all tests passing, no regressions\n- AC/DoD: Complete\n- AC1: Constraint #3 updated to prevent Implementation from marking Done\n- AC2: Step 7 final-summary explicitly states Manager passes summary to Documentation agent\n- AC3: Sub-Agent Delegation includes documentation as Manager-invoked\n- Verification: No remaining 'backlog task edit <id> -s Done'; Role & Scope no longer says 'Mark tasks Done'; Step 8 milestone note updated\n- Code quality/security/spelling: No issues in updated agent prompt
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Updated implementation.agent.md to reflect the new pipeline where Done status is set by the Manager after Documentation, not by Implementation.
+
+Changes:
+- .github/agents/implementation.agent.md
+
+Key changes:
+- Role & Scope: removed "Mark tasks Done, then commit"; replaced with "Commit after QA approval; Done status is set by the Manager after the Documentation step completes"
+- Step 7: removed backlog task edit -s Done and "Order matters" warning; added note that Manager sets Done; added documentation agent note in final-summary block
+- Step 8: updated milestone-complete note to mention awaiting Manager routing
+- Sub-Agent Delegation: added documentation agent entry (manager-invoked)
+- Output: updated Done status reference
+- Constraint #3: updated to forbid Implementation from marking Done itself
+<!-- SECTION:FINAL_SUMMARY:END -->
