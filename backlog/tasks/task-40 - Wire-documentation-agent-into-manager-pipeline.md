@@ -1,10 +1,11 @@
 ---
 id: TASK-40
 title: Wire documentation agent into manager pipeline
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@myself'
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:34'
+updated_date: '2026-04-24 22:37'
 labels:
   - documentation
   - agent
