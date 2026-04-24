@@ -32,4 +32,5 @@ Build the git commit manager agent responsible for guaranteeing clean git histor
 - [ ] #2 Agent stages all changes (git add -A) before committing, including backlog/ and docs/
 - [ ] #3 Agent commits using canonical format: 'task-<id>: <title>'
 - [ ] #4 Agent parses recent git log to detect consecutive commits sharing the same task-id prefix
+- [ ] #5 Agent squashes consecutive same-task commits into a single commit via git rebase -i or reset+commit
 <!-- AC:END -->
