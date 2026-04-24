@@ -4,7 +4,7 @@ title: Create git commit manager agent file
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:19'
-updated_date: '2026-04-24 23:10'
+updated_date: '2026-04-24 23:13'
 labels:
   - git
   - agent
@@ -134,4 +134,16 @@ Analysis complete. Plan ready. No blockers. Implementation order: implement TASK
 Verdict: Plan needs revision on these two points before implementation.
 
 Plan revised: FORBIDDEN block step added; dry-run moved to post-commit.
+
+🔍 PLAN REVIEW CONCERNS (re-review round 2):
+
+- Concern #1 — FORBIDDEN carve-out "ONLY" wording excludes backlog CLI from permitted run_in_terminal commands:
+  Plan Step 3 states: "run_in_terminal is permitted ONLY for the following commands: git add, git commit, git log, git status, and squash-task-commits.sh". However, the agent workflow requires backlog task edit <id> --append-notes in at least three places:
+    • Step 4 — log dry-run output via backlog task edit
+    • Step 5 — append warning note on squash script failure via backlog task edit
+    • Step 6 — emit commit-complete signal via backlog task edit
+  The word "ONLY" means an implementation agent following the FORBIDDEN block strictly would omit all three backlog CLI calls, breaking the commit-complete signal mechanism and making the agent invisible to the Manager.
+  This directly contradicts the Tool Usage section (Step 5) which correctly lists "run_in_terminal (for git commands and backlog CLI)". The carve-out must be reworded to say: run_in_terminal is permitted for (a) the listed git commands + squash script, AND (b) backlog CLI commands (backlog task edit, etc.). Remove the word "ONLY" or expand the list to include backlog CLI explicitly.
+
+Verdict: Plan needs this one wording fix before implementation. Both previous concerns (#1 FORBIDDEN block and #2 dry-run ordering) are confirmed resolved.
 <!-- SECTION:NOTES:END -->
