@@ -22,3 +22,10 @@ Build the documentation agent that runs after implementation completes. The agen
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
+
+
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Agent file exists at .github/agents/documentation.agent.md with correct frontmatter
+<!-- AC:END -->
