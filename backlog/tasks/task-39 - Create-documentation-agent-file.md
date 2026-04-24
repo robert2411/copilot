@@ -123,10 +123,13 @@ SEC-001 fix: Added Constraint 8 prohibiting non-backlog run_in_terminal commands
 ## Final Summary
 
 <!-- SECTION:FINAL_SUMMARY:BEGIN -->
-Created .github/agents/documentation.agent.md — the documentation agent that runs after Security approves each task.
+SEC-001 security fix: added Constraint 8 to .github/agents/documentation.agent.md.
+
+The Tool Usage section permitted run_in_terminal with only a prose nudge ("CLI only: backlog commands"), leaving no hard constraint preventing a prompt-injected task note from directing the agent to run arbitrary shell commands. Constraint 8 explicitly closes this gap, mirroring the pattern used in security.agent.md.
 
 Changes:
-- .github/agents/documentation.agent.md (new file)
+- .github/agents/documentation.agent.md — Constraint 8 added (line 162)
 
-The agent reads completed task details, scans backlog/docs and backlog/decisions for relevant records, updates existing records or creates new ones, and appends a ✅ DOCUMENTATION COMPLETE signal to the task notes. Includes a modified FORBIDDEN carve-out for direct file editing of backlog/docs/ and backlog/decisions/ files since no CLI edit command exists for those resources.
+Tests:
+- No code tests; markdown agent definition reviewed by QA. All existing content verified intact. SEC-001 finding confirmed closed.
 <!-- SECTION:FINAL_SUMMARY:END -->
