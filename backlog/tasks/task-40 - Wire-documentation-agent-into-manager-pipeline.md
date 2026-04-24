@@ -78,4 +78,6 @@ Update the manager agent to invoke the documentation agent after implementation 
 
 <!-- SECTION:NOTES:BEGIN -->
 Self-review complete. Plan covers all 5 ACs. AC1→Step 4 (run_subagent call in new Step 4d), AC2→Step 4a (task ID + changed files + final summary in subagent task string), AC3→Steps 4b-4c (detect DOCUMENTATION COMPLETE signal then mark Done), AC4→Steps 2-4 (update Step 4b + add Step 4d), AC5→Step 5 (pipeline order documented). Dependency on TASK-39 noted (documentation agent must exist first). Non-blocking fallback for signal absence addressed in Step 4d. No ambiguous steps.
+
+Analysis complete. Plan ready. Depends on TASK-39 completing first (documentation.agent.md must exist before manager can invoke it).
 <!-- SECTION:NOTES:END -->
