@@ -34,4 +34,5 @@ Write a shell script squash-task-commits.sh (alongside milestone-helper.sh) that
 - [ ] #3 Consecutive run of N commits for same task-id is squashed into one commit keeping the first message
 - [ ] #4 A boundary commit from a different task-id breaks the run; resumes a new independent run after
 - [ ] #5 Script is idempotent: running twice on already-squashed history produces no change
+- [ ] #6 Script accepts optional --dry-run flag that prints planned squash operations without executing
 <!-- AC:END -->
