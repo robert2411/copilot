@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-24 21:48'
-updated_date: '2026-04-24 22:03'
+updated_date: '2026-04-24 22:04'
 labels:
   - testing
   - agents
@@ -124,6 +124,26 @@ Fixed: Added else branch to test_agents_have_description_field to explicitly fai
 - Re-review focus: `description:` empty-value edge case now correctly fails via explicit else+fail path in tests/agents/test-agents.sh:95-97
 - Verification: `bash tests/agents/test-agents.sh` → Ran 6 tests. OK
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created tests/agents/test-agents.sh — a shunit2 bash test suite that validates all .github/agents/*.agent.md files.
+
+Changes:
+- tests/agents/test-agents.sh (new): 6 test functions covering discovery, all required frontmatter fields (name, description, color, user-invocable), and non-empty body validation
+- .github/agents/create-copilot-agent.agent.md: added missing user-invocable: true field
+- .github/agents/manager.agent.md: added missing user-invocable: true field
+
+Tests:
+- test_agents_are_discovered: verifies glob finds at least 1 agent file
+- test_agents_have_name_field: validates name: is non-empty in frontmatter
+- test_agents_have_description_field: validates description: with inline, block scalar, and empty value edge cases
+- test_agents_have_color_field: validates color: is non-empty
+- test_agents_have_user_invocable_field: validates user-invocable: is true or false
+- test_agents_have_non_empty_body: validates prompt body after frontmatter is non-empty
+All 6 tests pass. shunit2 used consistently with existing test-milestone-helper.sh pattern.
+<!-- SECTION:FINAL_SUMMARY:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
