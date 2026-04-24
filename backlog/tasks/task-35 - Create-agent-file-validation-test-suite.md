@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-24 21:48'
-updated_date: '2026-04-24 21:55'
+updated_date: '2026-04-24 21:59'
 labels:
   - testing
   - agents
@@ -22,12 +22,12 @@ Build a shunit2 bash test suite under tests/agents/ that discovers every .github
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 All .github/agents/*.agent.md files are discovered and tested
-- [ ] #2 Each agent file is validated for required frontmatter fields: name, description, color, user-invocable
-- [ ] #3 Each agent file is validated to have a non-empty prompt body (content after frontmatter)
-- [ ] #4 Tests fail clearly when a field is missing or empty
-- [ ] #5 Test runner script exits non-zero when any test fails
-- [ ] #6 Tests use shunit2 consistent with existing test-milestone-helper.sh pattern
+- [x] #1 All .github/agents/*.agent.md files are discovered and tested
+- [x] #2 Each agent file is validated for required frontmatter fields: name, description, color, user-invocable
+- [x] #3 Each agent file is validated to have a non-empty prompt body (content after frontmatter)
+- [x] #4 Tests fail clearly when a field is missing or empty
+- [x] #5 Test runner script exits non-zero when any test fails
+- [x] #6 Tests use shunit2 consistent with existing test-milestone-helper.sh pattern
 <!-- AC:END -->
 
 ## Implementation Plan
