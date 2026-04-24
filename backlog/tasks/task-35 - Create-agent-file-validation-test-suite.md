@@ -4,7 +4,7 @@ title: Create agent file validation test suite
 status: To Do
 assignee: []
 created_date: '2026-04-24 21:48'
-updated_date: '2026-04-24 21:53'
+updated_date: '2026-04-24 21:54'
 labels:
   - testing
   - agents
@@ -80,6 +80,8 @@ Analysis complete. Plan ready. No blockers.
 - Concern #1 (Critical — REPO_ROOT wrong depth): Step 2 specifies `REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"`, copied from tests/skills/backlog-cli/test-milestone-helper.sh. However, that reference file lives 3 directories deep (tests/skills/backlog-cli/), making `../../..` correct for it. The new file lives only 2 directories deep (tests/agents/), so the correct expression is `../..` — using `../../..` navigates to the *parent of the repo root*, which makes AGENTS_DIR resolve to the wrong path and causes every test function (test_agents_are_discovered and all field tests) to find zero agent files and fail with misleading errors. Fix: use `REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"` in Step 2.
 
 Verdict: Plan needs revision before implementation.
+
+Plan revised: fixed REPO_ROOT to use ../..
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
