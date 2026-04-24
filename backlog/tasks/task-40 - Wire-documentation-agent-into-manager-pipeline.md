@@ -32,6 +32,7 @@ Update the manager agent to invoke the documentation agent after implementation 
 - [ ] #2 Documentation agent receives task ID, changed files, and final summary in the subagent call
 - [ ] #3 Manager step 4b (after security) updated in agent file to include documentation step
 - [ ] #4 Pipeline order documented: Implementation -> QA -> Security -> Documentation -> Done
+- [ ] #5 Manager waits for documentation agent to emit doc-complete signal; if signal absent after agent completes, manager logs a warning in task notes and proceeds to mark Done
 <!-- AC:END -->
 
 ## Implementation Plan
