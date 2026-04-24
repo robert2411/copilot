@@ -4,13 +4,21 @@ title: Update implementation agent to signal documentation agent on task complet
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:14'
+updated_date: '2026-04-24 22:15'
 labels:
   - documentation
   - agent
   - implementation
-dependencies: []
+dependencies:
+  - TASK-39
 priority: medium
 ---
+
+## Description
+
+<!-- SECTION:DESCRIPTION:BEGIN -->
+Update the implementation agent system prompt so it knows the documentation agent runs after security approval. The implementation agent should pass the task ID, list of changed files, and final summary to the manager for routing to documentation.
+<!-- SECTION:DESCRIPTION:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
