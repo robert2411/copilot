@@ -30,4 +30,5 @@ Build the git commit manager agent responsible for guaranteeing clean git histor
 <!-- AC:BEGIN -->
 - [ ] #1 Agent file exists at .github/agents/git-commit-manager.agent.md with correct frontmatter
 - [ ] #2 Agent stages all changes (git add -A) before committing, including backlog/ and docs/
+- [ ] #3 Agent commits using canonical format: 'task-<id>: <title>'
 <!-- AC:END -->
