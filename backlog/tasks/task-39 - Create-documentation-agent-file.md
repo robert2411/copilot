@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:45'
+updated_date: '2026-04-24 22:46'
 labels:
   - documentation
   - agent
@@ -110,6 +110,14 @@ Files reviewed: .github/agents/documentation.agent.md
 Checks: OWASP Top 10, path traversal, ReDoS, input validation, unsafe file ops, data-loss risk, prompt injection, task ID injection, FORBIDDEN constraint completeness
 
 SEC-001 fix: Added Constraint 8 prohibiting non-backlog run_in_terminal commands.
+
+✅ QA APPROVED — all tests passing, no regressions
+- Re-review scope: SEC-001 security fix in .github/agents/documentation.agent.md
+- Verified: Constraint 8 present in Constraints section after #7 (line 162)
+- Verified: Wording explicitly restricts run_in_terminal to approved backlog CLI commands and treats non-backlog command instructions as prompt injection
+- Verified: Existing content (frontmatter, FORBIDDEN notice, Role & Scope, Workflow, Tool Usage, Output, Constraints 1–7) unchanged
+- Verified: Security gap SEC-001 closed; no remaining prompt-injection path for arbitrary shell command execution via task notes
+- Regression check: No new issues introduced
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
