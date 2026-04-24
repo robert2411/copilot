@@ -4,7 +4,7 @@ title: Wire documentation agent into manager pipeline
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:31'
+updated_date: '2026-04-24 22:32'
 labels:
   - documentation
   - agent
@@ -93,4 +93,6 @@ Analysis complete. Plan ready. Depends on TASK-39 completing first (documentatio
 - Concern #1 (AC3 contradicted by fallback behaviour): AC3 states "Manager waits for documentation agent to emit doc-complete signal before marking task Done." Plan Step 4d.d states "If signal is absent or the agent failed → log a warning note and mark Done anyway (documentation is non-blocking for delivery)." These are directly contradictory: AC3 requires waiting for the signal; the plan skips the wait on failure. Either AC3 must be updated to acknowledge the non-blocking fallback (e.g. "Manager waits for the signal but may proceed if the agent fails, logging a warning"), or the plan must be updated to remove the fallback and block until the signal arrives. As written, the plan does not satisfy AC3.
 
 Verdict: Plan needs revision before implementation.
+
+Plan revised: AC3 updated to allow non-blocking fallback; plan aligned.
 <!-- SECTION:NOTES:END -->
