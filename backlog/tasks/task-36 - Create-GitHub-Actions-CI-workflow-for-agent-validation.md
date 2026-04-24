@@ -78,5 +78,5 @@ Analysis complete. Plan ready. No blockers.
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
