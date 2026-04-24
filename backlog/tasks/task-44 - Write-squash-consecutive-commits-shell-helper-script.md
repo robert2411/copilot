@@ -24,3 +24,10 @@ Write a shell script squash-task-commits.sh (alongside milestone-helper.sh) that
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
+
+
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Script lives at .github/skills/backlog-cli/scripts/squash-task-commits.sh
+<!-- AC:END -->
