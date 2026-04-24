@@ -1,10 +1,11 @@
 ---
 id: TASK-35
 title: Create agent file validation test suite
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@implementation'
 created_date: '2026-04-24 21:48'
-updated_date: '2026-04-24 21:54'
+updated_date: '2026-04-24 21:55'
 labels:
   - testing
   - agents
