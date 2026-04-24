@@ -82,6 +82,11 @@ Analysis complete. Plan ready. No blockers.
 Verdict: Plan needs revision before implementation.
 
 Plan revised: fixed REPO_ROOT to use ../..
+
+✅ PLAN APPROVED — plan is complete, all AC covered, no ambiguity
+- Steps verified: 13
+- AC mapped: 6
+- Fix confirmed: REPO_ROOT now uses "$(cd "$SCRIPT_DIR/../.." && pwd)" (2 levels up), correct for tests/agents/ depth.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
