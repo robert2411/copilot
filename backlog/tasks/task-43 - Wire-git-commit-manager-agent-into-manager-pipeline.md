@@ -34,4 +34,5 @@ Update the manager agent to invoke the git commit manager agent as the final ste
 - [ ] #2 Git commit manager agent receives task ID and task title to form the commit message
 - [ ] #3 Manager marks task Done only after git commit manager emits commit-complete signal
 - [ ] #4 Pipeline order in manager agent file updated: Implementation -> QA -> Security -> Documentation -> Git Commit -> Done
+- [ ] #5 Manager passes --dry-run capability reference so agent can verify before writing history
 <!-- AC:END -->
