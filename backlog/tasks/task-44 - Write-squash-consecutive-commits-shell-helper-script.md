@@ -136,4 +136,6 @@ Analysis complete. Plan ready. No blockers. Note portability risk with mapfile/b
 - Concern #3 — Step 5 depth limit is ambiguous: Step 5 says "no depth limit — processes all commits" and then "(use -100 as a practical guard)" in the same sentence. These two intentions contradict each other. A repo with thousands of commits would expose a performance and correctness risk if no limit is used (pattern matching on all commit messages). The plan must commit to one explicit decision: either always use `-100` (state the flag explicitly in the git log command), or document why unbounded depth is intentional and acceptable.
 
 Verdict: Plan needs revision on these three points before implementation.
+
+Plan revised: git log range fixed; case-sensitivity annotation removed; depth limit resolved to -100 with explicit command.
 <!-- SECTION:NOTES:END -->
