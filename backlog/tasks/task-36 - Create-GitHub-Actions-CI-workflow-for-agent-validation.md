@@ -4,10 +4,12 @@ title: Create GitHub Actions CI workflow for agent validation
 status: To Do
 assignee: []
 created_date: '2026-04-24 21:48'
+updated_date: '2026-04-24 21:50'
 labels:
   - ci
   - testing
   - agents
+milestone: Agent Validation Tests
 dependencies: []
 priority: high
 ---
@@ -25,6 +27,25 @@ Add a GitHub Actions workflow (.github/workflows/validate-agents.yml) that runs 
 - [ ] #3 Workflow installs shunit2 and runs tests/agents/test-agents.sh
 - [ ] #4 Workflow fails the build when any agent validation test fails
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Create the directory .github/workflows/ (it does not exist yet in this repo).
+2. Create .github/workflows/validate-agents.yml with the following structure:
+   a. Workflow name: "Validate Agent Files"
+   b. Triggers (on:):
+      - push: branches: [main]
+      - pull_request: branches: [main]
+   c. A single job named validate-agents running on ubuntu-latest.
+   d. Steps:
+      i.  Checkout step: uses actions/checkout@v4 (standard)
+      ii. Install shunit2 step: run: sudo apt-get install -y shunit2
+      iii. Run tests step: run: bash tests/agents/test-agents.sh
+           The job inherits the non-zero exit code from the test runner, which causes the workflow to fail (covers AC#4).
+3. Confirm the workflow file is valid YAML with correct indentation.
+4. Note dependency on TASK-35: the workflow runs tests/agents/test-agents.sh which must already exist. TASK-35 should be completed and merged before or alongside TASK-36.
+<!-- SECTION:PLAN:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
