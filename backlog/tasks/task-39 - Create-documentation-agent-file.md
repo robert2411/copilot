@@ -103,3 +103,14 @@ QA review: ✅ QA APPROVED — all tests passing, no regressions
 - Security: No issues
 - Spelling: Clean
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created .github/agents/documentation.agent.md — the documentation agent that runs after Security approves each task.
+
+Changes:
+- .github/agents/documentation.agent.md (new file)
+
+The agent reads completed task details, scans backlog/docs and backlog/decisions for relevant records, updates existing records or creates new ones, and appends a ✅ DOCUMENTATION COMPLETE signal to the task notes. Includes a modified FORBIDDEN carve-out for direct file editing of backlog/docs/ and backlog/decisions/ files since no CLI edit command exists for those resources.
+<!-- SECTION:FINAL_SUMMARY:END -->
