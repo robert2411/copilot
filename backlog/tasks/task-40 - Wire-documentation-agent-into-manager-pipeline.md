@@ -103,4 +103,10 @@ Plan revised: AC3 updated to allow non-blocking fallback; plan aligned.
 - Previous concern resolved: AC5 revised to acknowledge non-blocking fallback; plan Step 4d aligned — warning note logged then task marked Done if signal absent.
 
 All AC/DoD checked. Ready for QA.
+
+❌ QA REJECTED: workflow inconsistency in security fix loop.
+🔍 QA REVIEW FINDINGS:
+- Issue #1: Medium The Security Fix Loop still says "Only then mark task Done" after `✅ SECURITY APPROVED`, which bypasses the new Documentation step and conflicts with Step 4d / Constraint #6 pipeline. Update Step 4c to route to Documentation before Done. (.github/agents/manager.agent.md:170-171)
+
+Verdict: Fix required before approval.
 <!-- SECTION:NOTES:END -->
