@@ -4,7 +4,7 @@ title: Create GitHub Actions CI workflow for agent validation
 status: To Do
 assignee: []
 created_date: '2026-04-24 21:48'
-updated_date: '2026-04-24 21:50'
+updated_date: '2026-04-24 21:51'
 labels:
   - ci
   - testing
@@ -46,6 +46,29 @@ Add a GitHub Actions workflow (.github/workflows/validate-agents.yml) that runs 
 3. Confirm the workflow file is valid YAML with correct indentation.
 4. Note dependency on TASK-35: the workflow runs tests/agents/test-agents.sh which must already exist. TASK-35 should be completed and merged before or alongside TASK-36.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Self-review complete.
+
+AC coverage:
+- AC#1 (workflow at .github/workflows/validate-agents.yml): covered by step 1–2.
+- AC#2 (triggers on push and pull_request to main): covered by step 2b.
+- AC#3 (installs shunit2 and runs tests/agents/test-agents.sh): covered by steps 2d-ii and 2d-iii.
+- AC#4 (fails build when tests fail): bash exits non-zero → workflow step fails → job fails; no extra config needed.
+
+Verified assumptions:
+- ubuntu-latest has apt-get and shunit2 is available in Ubuntu apt repos — confirmed (shunit2 is in the standard Ubuntu universe repo).
+- actions/checkout@v4 is the current stable version — safe assumption for a new workflow.
+- .github/workflows/ directory does not yet exist — confirmed by ls check.
+
+Dependency noted: TASK-36 depends on TASK-35 (tests/agents/test-agents.sh must exist). Both should be implemented in the same PR or TASK-35 first.
+
+No ambiguous steps. No missing error paths. No blockers.
+
+Analysis complete. Plan ready. No blockers.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
