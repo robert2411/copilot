@@ -115,8 +115,40 @@ After security agent completes, read task notes:
 backlog task <id> --plain
 ```
 
-- If `✅ SECURITY APPROVED` → mark task Done, proceed to next task
+- If `✅ SECURITY APPROVED` → invoke documentation agent (see Step 4d below)
 - If `⚠️ SECURITY FINDINGS` → enter the security fix loop (Step 4c)
+
+### Step 4d: Route to Documentation Agent
+
+After Security emits `✅ SECURITY APPROVED`, invoke the documentation agent:
+
+Use `run_subagent` with `agentName: "documentation"`. The task string MUST include:
+- Task ID
+- List of changed files (from task final-summary/notes)
+- Final summary text (from task final-summary)
+- Instruction to read the task, scan existing backlog/docs and backlog/decisions, update or create records as needed, and emit `✅ DOCUMENTATION COMPLETE` via `backlog task edit <id> --append-notes`
+
+After the subagent call, read the task notes to detect the signal:
+
+```bash
+backlog task <id> --plain
+```
+
+- If `✅ DOCUMENTATION COMPLETE` found → mark the task Done:
+  ```bash
+  backlog task edit <id> -s Done
+  ```
+  Then proceed to the next task.
+
+- If signal is absent or the agent failed → log a warning note first:
+  ```bash
+  backlog task edit <id> --append-notes "⚠️ Documentation agent did not emit doc-complete signal; proceeding to mark Done."
+  ```
+  Then mark the task Done:
+  ```bash
+  backlog task edit <id> -s Done
+  ```
+  Documentation is non-blocking for delivery; the pipeline must not stall on a missing signal.
 
 ### Step 4c: Security Fix Loop
 
@@ -135,9 +167,11 @@ When security findings exist:
    - Security audits only those specific findings
 
 4. Repeat until Security emits `✅ SECURITY APPROVED`
-5. Only then mark task Done
+5. Only then route to Documentation (Step 4d) before marking task Done
 
 ### Step 5: End-of-Milestone Decision
+
+> Pipeline order: Implementation → QA → Security → Documentation → Done
 
 After Implementation reports completion:
 
@@ -176,6 +210,7 @@ Available sub-agents:
 - **qa** — Reviews code quality, security, spelling; approves or rejects
 - **security** — audits code for OWASP vulnerabilities after QA approves; emits ✅ SECURITY APPROVED or ⚠️ SECURITY FINDINGS
 - **plan-reviewer** — reviews implementation plans from Analyse for gaps, assumptions, and ambiguity before Implementation starts
+- **documentation** — Reads completed task outcome and persists significant decisions and patterns to backlog/docs or backlog/decisions. Emits `✅ DOCUMENTATION COMPLETE` via task notes.
 
 ---
 
@@ -196,6 +231,6 @@ After each cycle, report:
 3. **DON'T** skip the Analyse step — **DO** always route through Analyse before Implementation.
 4. **DON'T** route to Implementation if blockers exist — **DO** report blockers and wait.
 5. **DON'T** assume sub-agent context — **DO** include all needed info in the `task` string.
-6. **DON'T** mark task Done after QA approval alone — **DO** also route through Security and wait for `✅ SECURITY APPROVED`.
+6. **DON'T** mark task Done after Security approval alone — **DO** also route through Documentation; wait for `✅ DOCUMENTATION COMPLETE` signal, but if absent after the agent completes, log a warning and proceed to mark Done.
 
 
