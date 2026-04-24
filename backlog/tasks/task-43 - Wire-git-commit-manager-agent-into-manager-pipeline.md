@@ -1,10 +1,11 @@
 ---
 id: TASK-43
 title: Wire git commit manager agent into manager pipeline
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@myself'
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-24 23:12'
+updated_date: '2026-04-24 23:16'
 labels:
   - git
   - agent
