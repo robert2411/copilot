@@ -25,3 +25,10 @@ Update the manager agent to invoke the git commit manager agent as the final ste
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
+
+
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Manager invokes git-commit-manager agent via run_subagent after documentation agent completes
+<!-- AC:END -->
