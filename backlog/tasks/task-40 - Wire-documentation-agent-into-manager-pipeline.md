@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:37'
+updated_date: '2026-04-24 22:38'
 labels:
   - documentation
   - agent
@@ -29,11 +29,11 @@ Update the manager agent to invoke the documentation agent after implementation 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Manager invokes documentation agent via run_subagent after security approves each task
-- [ ] #2 Documentation agent receives task ID, changed files, and final summary in the subagent call
-- [ ] #3 Manager step 4b (after security) updated in agent file to include documentation step
-- [ ] #4 Pipeline order documented: Implementation -> QA -> Security -> Documentation -> Done
-- [ ] #5 Manager waits for documentation agent to emit doc-complete signal; if signal absent after agent completes, manager logs a warning in task notes and proceeds to mark Done
+- [x] #1 Manager invokes documentation agent via run_subagent after security approves each task
+- [x] #2 Documentation agent receives task ID, changed files, and final summary in the subagent call
+- [x] #3 Manager step 4b (after security) updated in agent file to include documentation step
+- [x] #4 Pipeline order documented: Implementation -> QA -> Security -> Documentation -> Done
+- [x] #5 Manager waits for documentation agent to emit doc-complete signal; if signal absent after agent completes, manager logs a warning in task notes and proceeds to mark Done
 <!-- AC:END -->
 
 ## Implementation Plan
