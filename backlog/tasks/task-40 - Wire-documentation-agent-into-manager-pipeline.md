@@ -117,3 +117,20 @@ Fixed Step 4c: updated 'Only then mark task Done' to route through Documentation
 - Verified updates in .github/agents/manager.agent.md: Step 4b routes SECURITY APPROVED to Step 4d, Step 4d includes documentation run_subagent with task ID + changed files + final summary, Step 5 pipeline order includes Documentation, Step 4d includes non-blocking warning fallback, and Step 4c now routes through Step 4d before Done.
 - Code quality/security/spelling: No issues found in reviewed change.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Updated manager.agent.md to wire documentation agent into the pipeline after Security approval.
+
+Changes:
+- .github/agents/manager.agent.md
+
+Key changes:
+- Step 4b: SECURITY APPROVED now routes to new Step 4d instead of directly marking Done
+- Step 4d (new): invokes documentation agent via run_subagent, passes task ID + changed files + final summary, waits for DOCUMENTATION COMPLETE signal, marks Done or logs warning as non-blocking fallback
+- Step 4c: security fix loop now routes through Documentation (Step 4d) before marking Done
+- Step 5: pipeline order preamble added (Implementation → QA → Security → Documentation → Done)
+- Sub-agents list: documentation agent entry added
+- Constraint #6: updated to mention Documentation step before marking Done
+<!-- SECTION:FINAL_SUMMARY:END -->
