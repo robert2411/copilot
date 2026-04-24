@@ -32,4 +32,5 @@ Update the manager agent to invoke the git commit manager agent as the final ste
 <!-- AC:BEGIN -->
 - [ ] #1 Manager invokes git-commit-manager agent via run_subagent after documentation agent completes
 - [ ] #2 Git commit manager agent receives task ID and task title to form the commit message
+- [ ] #3 Manager marks task Done only after git commit manager emits commit-complete signal
 <!-- AC:END -->
