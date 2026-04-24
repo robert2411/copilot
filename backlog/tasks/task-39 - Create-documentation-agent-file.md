@@ -4,7 +4,7 @@ title: Create documentation agent file
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:24'
+updated_date: '2026-04-24 22:25'
 labels:
   - documentation
   - agent
@@ -73,3 +73,9 @@ Build the documentation agent that runs after implementation completes. The agen
    - DON'T omit the ✅ DOCUMENTATION COMPLETE signal — DO always append the note even if nothing needed documenting (note "no documentation changes required").
    - DON'T edit task files directly — DO use `backlog task edit` CLI commands.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Self-review complete. Plan covers all 8 ACs. AC1→Steps 1-2 (file+frontmatter), AC2→Workflow Step 1, AC3→Workflow Steps 2-3, AC4→Workflow Steps 4-5, AC5→Workflow Step 6, AC6→Workflow Step 7, AC7→Workflow Step 8, AC8→Step 2. CLI commands (backlog doc view, backlog decision create --status) verified available. Fallback note for no-documentation-needed case included. No gaps or unverified assumptions.
+<!-- SECTION:NOTES:END -->
