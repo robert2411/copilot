@@ -4,7 +4,7 @@ title: Create git commit manager agent file
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:19'
-updated_date: '2026-04-24 23:03'
+updated_date: '2026-04-24 23:06'
 labels:
   - git
   - agent
@@ -117,4 +117,12 @@ Assumption called out: squash script (TASK-44) must exist at the path referenced
 No ambiguous steps. No gaps found.
 
 Analysis complete. Plan ready. No blockers. Implementation order: implement TASK-42 first (no dependencies), but note the agent references squash-task-commits.sh which is created by TASK-44 — both should be delivered together.
+
+🔍 PLAN REVIEW CONCERNS:
+
+- Concern #1 — Missing FORBIDDEN notice block: The plan specifies Constraints and Tool Usage sections but does not mention adding the standard "🚫 FORBIDDEN" notice block at the top of the agent body (below the frontmatter opening). Every other agent (manager, documentation) has this block. Without it the implementation agent may omit it, making the agent inconsistent with the pattern and missing the explicit guardrail against direct backlog/ writes.
+
+- Concern #2 — Dry-run ordering is pre-commit (misleading): Workflow Step 2 runs `squash-task-commits.sh --dry-run` BEFORE the new commit is made (Step 4). At that point the new commit does not yet exist in history, so the dry-run preview reflects the pre-commit history state — not the state that will trigger squashing. A preview that does not include the commit being added is uninformative at best and misleading at worst. The dry-run should either be moved to AFTER Step 4 (post-commit) so it previews what the live squash run will actually see, or be removed from the workflow and left as an advisory note in the Constraints section.
+
+Verdict: Plan needs revision on these two points before implementation.
 <!-- SECTION:NOTES:END -->
