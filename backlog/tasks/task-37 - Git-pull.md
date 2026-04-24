@@ -4,8 +4,10 @@ title: Git pull
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:00'
+updated_date: '2026-04-24 22:00'
 labels: []
 dependencies: []
+priority: high
 ---
 
 ## Description
