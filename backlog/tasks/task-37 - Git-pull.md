@@ -18,7 +18,7 @@ Do a git pull and fix merge issues
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
 
 ## Final Summary
