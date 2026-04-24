@@ -4,7 +4,7 @@ title: Create documentation agent file
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:25'
+updated_date: '2026-04-24 22:29'
 labels:
   - documentation
   - agent
@@ -80,4 +80,9 @@ Build the documentation agent that runs after implementation completes. The agen
 Self-review complete. Plan covers all 8 ACs. AC1→Steps 1-2 (file+frontmatter), AC2→Workflow Step 1, AC3→Workflow Steps 2-3, AC4→Workflow Steps 4-5, AC5→Workflow Step 6, AC6→Workflow Step 7, AC7→Workflow Step 8, AC8→Step 2. CLI commands (backlog doc view, backlog decision create --status) verified available. Fallback note for no-documentation-needed case included. No gaps or unverified assumptions.
 
 Analysis complete. Plan ready. No blockers.
+
+🔍 PLAN REVIEW CONCERNS:
+- Concern #1 (Self-contradiction in FORBIDDEN boilerplate): Plan Step 4 instructs writing the standard FORBIDDEN boilerplate, which explicitly prohibits `insert_edit_into_file` and `replace_string_in_file` on any file within `./backlog`. However, Workflow Step 5 instructs the documentation agent to use exactly those tools to update existing docs in `backlog/docs/`. There is no `backlog doc edit` CLI command (verified: `backlog doc --help` lists only `create`, `list`, `view`), so direct file editing is the only viable mechanism. As written the agent file will contain directly contradictory instructions. The plan must specify that the FORBIDDEN boilerplate be modified or annotated for the documentation agent to explicitly carve out `insert_edit_into_file` / `replace_string_in_file` on existing `backlog/docs/` and `backlog/decisions/` files, making clear this is permitted because no CLI edit command exists for those resources.
+
+Verdict: Plan needs revision before implementation.
 <!-- SECTION:NOTES:END -->
