@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-24 21:48'
-updated_date: '2026-04-24 21:59'
+updated_date: '2026-04-24 22:00'
 labels:
   - testing
   - agents
@@ -95,6 +95,12 @@ Plan revised: fixed REPO_ROOT to use ../..
 - All 6 tests pass: Ran 6 tests. OK
 
 All AC/DoD checked. Ready for QA.
+
+❌ QA REJECTED: validation logic has edge-case false positives/fragility.
+
+🔍 QA REVIEW FINDINGS:
+- Issue #1: [Medium] `test_agents_have_description_field` can pass an empty block-scalar description if any other indented line exists elsewhere in frontmatter, because it checks `^  .+` globally instead of tying content to the `description: |`/`>` block (tests/agents/test-agents.sh:89-93).
+- Issue #2: [Low] Inline description assertion embeds full frontmatter inside a single-quoted command string (`echo '$frontmatter' ...`), which is fragile if frontmatter contains a single quote and can cause parsing errors/false failures (tests/agents/test-agents.sh:87-88).\n\nVerdict: Fix required before approval.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
