@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@implementation'
 created_date: '2026-04-24 21:48'
-updated_date: '2026-04-24 22:02'
+updated_date: '2026-04-24 22:03'
 labels:
   - testing
   - agents
@@ -113,6 +113,8 @@ All 6 tests still passing. Ready for QA re-review.
 - Issue #1: [High] `test_agents_have_description_field` does not fail when description is present but empty inline (`description:` with no value). After key existence check passes, neither inline nor block branches execute, so no failing assertion is triggered (tests/agents/test-agents.sh:79-95). This violates AC #4 (tests must fail clearly when a field is missing or empty).
 
 Verdict: Fix required before approval.
+
+Fixed: Added else branch to test_agents_have_description_field to explicitly fail when description: has an empty value (no inline value, not a block scalar). All 6 tests still pass. Ready for QA re-review.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
