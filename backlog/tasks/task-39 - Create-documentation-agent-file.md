@@ -108,6 +108,8 @@ QA review: ✅ QA APPROVED — all tests passing, no regressions
 
 Files reviewed: .github/agents/documentation.agent.md
 Checks: OWASP Top 10, path traversal, ReDoS, input validation, unsafe file ops, data-loss risk, prompt injection, task ID injection, FORBIDDEN constraint completeness
+
+SEC-001 fix: Added Constraint 8 prohibiting non-backlog run_in_terminal commands.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
