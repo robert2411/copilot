@@ -4,7 +4,7 @@ title: Write squash-consecutive-commits shell helper script
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-24 23:02'
+updated_date: '2026-04-24 23:03'
 labels:
   - git
   - agent
@@ -94,3 +94,31 @@ Write a shell script squash-task-commits.sh (alongside milestone-helper.sh) that
     - Dirty working tree test: touch a file without committing → run script → verify exit code 1
     - --dry-run test: confirm no history changes occur
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Self-review complete.
+
+AC coverage:
+- AC#1 → Plan Step 1 (file at correct path)
+- AC#2 → Plan Steps 5-7 (git log parsed, consecutive grouping logic detailed)
+- AC#3 → Plan Step 10 (fixup instruction keeps first message, N→1)
+- AC#4 → Plan Step 7 (different task-id closes and breaks the run)
+- AC#5 → Plan Steps 8 and 13 (no qualifying runs → exit 0 is idempotent)
+- AC#6 → Plan Steps 3 and 9 (--dry-run flag parsed, prints plan, exits 0)
+- AC#7 → Plan Step 4 (git status --porcelain exits non-zero if dirty)
+
+Error paths covered:
+- Dirty working tree → exit 1 with clear error message (Step 4)
+- No task-format commits in history → Step 8 exits 0 gracefully
+- Run of exactly 1 commit (already squashed) → not a qualifying run, exits 0
+
+Risk flagged for implementation agent: `mapfile` requires bash 4+. macOS ships bash 3.2. Implementation agent should either: (a) use `while IFS= read -r line; do ... done < <(git log ...)` instead, or (b) use `readarray` and verify environment. Recommend using `while read` loop for portability.
+
+Second risk: GIT_SEQUENCE_EDITOR approach requires git 1.7.8+. This is safe for all modern environments.
+
+Third risk: rebasing rewrites SHAs — script must re-read git log after each rebase to refresh hashes for subsequent run processing (already in plan Step 10d).
+
+Test approach included in plan (Step 15). No ambiguous steps.
+<!-- SECTION:NOTES:END -->
