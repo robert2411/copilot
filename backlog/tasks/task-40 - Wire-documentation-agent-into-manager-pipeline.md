@@ -24,7 +24,7 @@ Update the manager agent to invoke the documentation agent after implementation 
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 All code is committed to git
+- [x] #1 All code is committed to git
 <!-- DOD:END -->
 
 ## Acceptance Criteria
