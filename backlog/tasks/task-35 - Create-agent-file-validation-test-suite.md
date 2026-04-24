@@ -33,7 +33,7 @@ Build a shunit2 bash test suite under tests/agents/ that discovers every .github
 
 <!-- SECTION:PLAN:BEGIN -->
 1. Create tests/agents/test-agents.sh (does not exist yet; tests/agents/ directory already exists but is empty).
-2. At the top of the file, establish SCRIPT_DIR, REPO_ROOT (../../..), and AGENTS_DIR="$REPO_ROOT/.github/agents" path variables (same pattern as test-milestone-helper.sh).
+2. At the top of the file, establish SCRIPT_DIR, REPO_ROOT (using `"$(cd "$SCRIPT_DIR/../.." && pwd)"`— only 2 levels up, since the file lives at tests/agents/, not 3 levels deep like test-milestone-helper.sh), and AGENTS_DIR="$REPO_ROOT/.github/agents" path variables.
 3. Add two pure-bash helper functions used by every test:
    a. get_frontmatter <file> — prints the lines between the first and second YAML "---" delimiters using awk: `awk "/^---$/{n++; next} n==1" "$file"`
    b. get_body <file> — prints all lines after the second "---" delimiter using: `awk "/^---$/{n++; next} n>=2" "$file"`
