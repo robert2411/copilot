@@ -4,7 +4,7 @@ title: Create documentation agent file
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:29'
+updated_date: '2026-04-24 22:31'
 labels:
   - documentation
   - agent
@@ -46,7 +46,8 @@ Build the documentation agent that runs after implementation completes. The agen
    - `color: "#6366F1"` (indigo — distinct from existing agents: blue=#0078D4, green=#2EA043, orange=#FF6B35, purple=#7B5EA7)
    - `user-invocable: false`
 3. Write the system-prompt heading: `# Documentation Agent — System Prompt`
-4. Write the FORBIDDEN / CLI-only notice (same boilerplate used by all agents).
+4. Write the FORBIDDEN / CLI-only notice — but MODIFIED for the documentation agent. The standard boilerplate prohibits `insert_edit_into_file` and `replace_string_in_file` on any `./backlog` path. For the documentation agent this blanket prohibition must be explicitly carved out for existing `backlog/docs/<filename>` and `backlog/decisions/<filename>` files. Rationale: no `backlog doc edit` or `backlog decision edit` CLI command exists (verified: `backlog doc --help` lists only `create`, `list`, `view`), so direct file editing is the only viable mechanism for updating existing records. The notice must read something like:
+   > **🚫 FORBIDDEN (modified for this agent):** Writing directly to the `./backlog` folder is prohibited **EXCEPT** when updating existing `backlog/docs/` or `backlog/decisions/` files — those MUST be edited directly via `insert_edit_into_file` or `replace_string_in_file` because no CLI edit command exists for these resources. All *create* operations (new docs, new decision records, task note appends) MUST still go through the backlog CLI.
 5. Write **Role & Scope** section:
    - Receives task ID, changed files list, and final summary from the Manager.
    - Inspects completed task details and matches them against existing docs/decisions.
@@ -58,7 +59,7 @@ Build the documentation agent that runs after implementation completes. The agen
    - Step 2: List existing docs — `backlog doc list --plain` — collect all doc IDs and titles. Also run `list_dir` on `backlog/decisions/` to collect decision filenames.
    - Step 3: Read candidates — for each doc/decision whose title is thematically related to the task, run `backlog doc view <docId>` (for docs) or `read_file` (for decisions) to read full content.
    - Step 4: Match — decide for each candidate whether the task outcome is relevant enough to warrant an update. Criteria: same subsystem, same pattern, same agent, or same architectural area.
-   - Step 5: Update existing doc — if a relevant doc exists, use `insert_edit_into_file` or `replace_string_in_file` to append a new dated section or update stale content. Do NOT use `backlog doc create` for updates — edit the existing file at `backlog/docs/<filename>`.
+   - Step 5: Update existing doc — if a relevant doc exists, use `insert_edit_into_file` or `replace_string_in_file` to append a new dated section or update stale content. Do NOT use `backlog doc create` for updates — edit the existing file at `backlog/docs/<filename>`. (This is the carve-out to the FORBIDDEN notice — permitted because no CLI edit command exists.)
    - Step 6: Create new doc — if no relevant doc exists and the task produced reusable reference material, run `backlog doc create "<Descriptive Title>"` then use `insert_edit_into_file` to write the content into the newly created file (path returned by the CLI or found via `list_dir`).
    - Step 7: Create decision record — if the task involved an architectural or design decision (e.g. new agent added to pipeline, new naming convention chosen, new tool pattern adopted), run `backlog decision create "<Decision Title>" --status "Accepted"` then use `insert_edit_into_file` to write context, options considered, and rationale into the new file under `backlog/decisions/`.
    - Step 8: Append completion notes — write a summary note to the task using `backlog task edit <id> --append-notes` listing exactly which docs/decisions were created or updated and their IDs/paths. Format the note to begin with `✅ DOCUMENTATION COMPLETE` so the Manager can detect the signal.
@@ -69,7 +70,7 @@ Build the documentation agent that runs after implementation completes. The agen
    - DON'T create a new doc if an existing one covers the topic — DO update the existing doc.
    - DON'T skip listing existing docs first — DO always scan before creating.
    - DON'T create a decision unless an architectural/design choice was made — DO check task notes for evidence.
-   - DON'T write directly to ./backlog folder — DO use the backlog CLI for create operations.
+   - DON'T use `insert_edit_into_file` or `replace_string_in_file` on `./backlog` files except for existing `backlog/docs/` and `backlog/decisions/` files — DO use the backlog CLI for all create operations (doc create, decision create, task note appends).
    - DON'T omit the ✅ DOCUMENTATION COMPLETE signal — DO always append the note even if nothing needed documenting (note "no documentation changes required").
    - DON'T edit task files directly — DO use `backlog task edit` CLI commands.
 <!-- SECTION:PLAN:END -->
