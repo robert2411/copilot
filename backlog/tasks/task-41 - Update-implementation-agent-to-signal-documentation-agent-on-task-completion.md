@@ -4,7 +4,7 @@ title: Update implementation agent to signal documentation agent on task complet
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:25'
+updated_date: '2026-04-24 22:26'
 labels:
   - documentation
   - agent
@@ -57,3 +57,9 @@ Update the implementation agent system prompt so it knows the documentation agen
    - The final-summary step clearly documents that it feeds the documentation pipeline.
    - Sub-Agent Delegation section lists: qa, analyse, documentation (manager-invoked).
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Self-review complete. Plan covers all 3 ACs. AC1→Step 6 (Constraint #3 updated: DON'T mark Done yourself), AC2→Step 4 (final-summary block notes it feeds the documentation agent), AC3→Step 5 (Sub-Agent Delegation section lists documentation). Key risk: removing Done-marking from implementation creates a pipeline dependency on Manager correctly marking Done after documentation — addressed by TASK-40 plan. Verified current implementation agent Step 7 is the only location marking -s Done. No ambiguous steps.
+<!-- SECTION:NOTES:END -->
