@@ -32,4 +32,5 @@ Update the manager agent to invoke the documentation agent after implementation 
 - [ ] #1 Manager invokes documentation agent via run_subagent after security approves each task
 - [ ] #2 Documentation agent receives task ID, changed files, and final summary in the subagent call
 - [ ] #3 Manager waits for documentation agent to emit doc-complete signal before marking task Done
+- [ ] #4 Manager step 4b (after security) updated in agent file to include documentation step
 <!-- AC:END -->
