@@ -64,13 +64,21 @@ Update the manager agent to invoke the documentation agent after implementation 
       backlog task edit <id> -s Done
       ```
       Then proceed to the next task.
-   d. If signal is absent or the agent failed → log a warning note and mark Done anyway (documentation is non-blocking for delivery).
+   d. If signal is absent or the agent failed → log a warning note first:
+      ```bash
+      backlog task edit <id> --append-notes "⚠️ Documentation agent did not emit doc-complete signal; proceeding to mark Done."
+      ```
+      Then mark the task Done:
+      ```bash
+      backlog task edit <id> -s Done
+      ```
+      Documentation is non-blocking for delivery; the pipeline must not stall on a missing signal. This aligns with AC3 which explicitly permits the non-blocking fallback.
 5. Update the pipeline description in the **Step 5: End-of-Milestone Decision** section header or preamble to read:
    > Pipeline order: Implementation → QA → Security → Documentation → Done
 6. In the **Sub-Agent Delegation** "Available sub-agents" list at the bottom of the file, add:
    - **documentation** — Reads completed task outcome and persists significant decisions and patterns to backlog/docs or backlog/decisions. Emits `✅ DOCUMENTATION COMPLETE` via task notes.
 7. Update **Constraint #6** (currently "DON'T mark task Done after QA approval alone — DO also route through Security") to read:
-   > DON'T mark task Done after Security approval alone — DO also route through Documentation and wait for `✅ DOCUMENTATION COMPLETE` signal.
+   > DON'T mark task Done after Security approval alone — DO also route through Documentation; wait for `✅ DOCUMENTATION COMPLETE` signal, but if absent after the agent completes, log a warning and proceed to mark Done.
 8. Verify the full pipeline flow reads consistently: Implementation → QA → Security → Documentation → Done across all sections of the file.
 <!-- SECTION:PLAN:END -->
 
