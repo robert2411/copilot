@@ -23,3 +23,10 @@ Build the git commit manager agent responsible for guaranteeing clean git histor
 <!-- DOD:BEGIN -->
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
+
+
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Agent file exists at .github/agents/git-commit-manager.agent.md with correct frontmatter
+<!-- AC:END -->
