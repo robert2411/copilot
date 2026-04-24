@@ -4,10 +4,11 @@ title: Create documentation agent file
 status: To Do
 assignee: []
 created_date: '2026-04-24 22:14'
-updated_date: '2026-04-24 22:14'
+updated_date: '2026-04-24 22:24'
 labels:
   - documentation
   - agent
+milestone: m-2
 dependencies: []
 priority: high
 ---
@@ -23,8 +24,6 @@ Build the documentation agent that runs after implementation completes. The agen
 - [ ] #1 All code is committed to git
 <!-- DOD:END -->
 
-
-
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [ ] #1 Agent file exists at .github/agents/documentation.agent.md with correct frontmatter
@@ -36,3 +35,41 @@ Build the documentation agent that runs after implementation completes. The agen
 - [ ] #7 Agent appends notes to the task indicating what was documented and where
 - [ ] #8 Agent frontmatter sets user-invocable to false
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Create the file `.github/agents/documentation.agent.md` using the `create_file` tool.
+2. Add YAML frontmatter at the top of the file:
+   - `name: documentation`
+   - `description`: concise multi-line description explaining the agent audits completed tasks and persists outcomes to backlog/docs and backlog/decisions; include a "Use this agent when:" line for discoverability.
+   - `color: "#6366F1"` (indigo — distinct from existing agents: blue=#0078D4, green=#2EA043, orange=#FF6B35, purple=#7B5EA7)
+   - `user-invocable: false`
+3. Write the system-prompt heading: `# Documentation Agent — System Prompt`
+4. Write the FORBIDDEN / CLI-only notice (same boilerplate used by all agents).
+5. Write **Role & Scope** section:
+   - Receives task ID, changed files list, and final summary from the Manager.
+   - Inspects completed task details and matches them against existing docs/decisions.
+   - Updates existing docs or creates new ones; creates decision records for architectural choices.
+   - Appends a documentation-complete signal to the task notes.
+   - Does NOT implement code, modify source files, or communicate with any agent other than the Manager.
+6. Write **Workflow** as numbered steps:
+   - Step 1: Read task — `backlog task <id> --plain` — extract description, implementation notes, final-summary, and changed-files list.
+   - Step 2: List existing docs — `backlog doc list --plain` — collect all doc IDs and titles. Also run `list_dir` on `backlog/decisions/` to collect decision filenames.
+   - Step 3: Read candidates — for each doc/decision whose title is thematically related to the task, run `backlog doc view <docId>` (for docs) or `read_file` (for decisions) to read full content.
+   - Step 4: Match — decide for each candidate whether the task outcome is relevant enough to warrant an update. Criteria: same subsystem, same pattern, same agent, or same architectural area.
+   - Step 5: Update existing doc — if a relevant doc exists, use `insert_edit_into_file` or `replace_string_in_file` to append a new dated section or update stale content. Do NOT use `backlog doc create` for updates — edit the existing file at `backlog/docs/<filename>`.
+   - Step 6: Create new doc — if no relevant doc exists and the task produced reusable reference material, run `backlog doc create "<Descriptive Title>"` then use `insert_edit_into_file` to write the content into the newly created file (path returned by the CLI or found via `list_dir`).
+   - Step 7: Create decision record — if the task involved an architectural or design decision (e.g. new agent added to pipeline, new naming convention chosen, new tool pattern adopted), run `backlog decision create "<Decision Title>" --status "Accepted"` then use `insert_edit_into_file` to write context, options considered, and rationale into the new file under `backlog/decisions/`.
+   - Step 8: Append completion notes — write a summary note to the task using `backlog task edit <id> --append-notes` listing exactly which docs/decisions were created or updated and their IDs/paths. Format the note to begin with `✅ DOCUMENTATION COMPLETE` so the Manager can detect the signal.
+7. Write **Tool Usage** section listing allowed tools: `read_file`, `list_dir`, `insert_edit_into_file`, `replace_string_in_file`, `run_in_terminal` (CLI only — backlog commands). Explicitly mark `run_subagent` as NOT used.
+8. Write **Output** section: per-task note appended via `--append-notes` beginning with `✅ DOCUMENTATION COMPLETE`, listing each doc/decision touched.
+9. Write **Constraints** section (7 rules, mirroring other agents):
+   - DON'T edit source/test/config files — DO only touch backlog/docs and backlog/decisions.
+   - DON'T create a new doc if an existing one covers the topic — DO update the existing doc.
+   - DON'T skip listing existing docs first — DO always scan before creating.
+   - DON'T create a decision unless an architectural/design choice was made — DO check task notes for evidence.
+   - DON'T write directly to ./backlog folder — DO use the backlog CLI for create operations.
+   - DON'T omit the ✅ DOCUMENTATION COMPLETE signal — DO always append the note even if nothing needed documenting (note "no documentation changes required").
+   - DON'T edit task files directly — DO use `backlog task edit` CLI commands.
+<!-- SECTION:PLAN:END -->
