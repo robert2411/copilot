@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:19'
-updated_date: '2026-04-26 19:53'
+updated_date: '2026-04-26 20:18'
 labels:
   - git
   - agent
@@ -164,6 +164,13 @@ All AC/DoD checked. Ready for QA.
 - Files reviewed: .github/agents/git-commit-manager.agent.md
 - Checks performed: OWASP Top 10, prompt injection scope, FORBIDDEN carve-out permissiveness, credential exposure, sensitive data exposure
 - user-invocable: false confirmed; FORBIDDEN block correctly restricts run_in_terminal to git add/commit/log/status/rebase, squash script, and backlog task edit only; no hardcoded secrets or credentials; workflow sequencing correct (dry-run post-commit, not pre-commit); squash failure blocks COMMIT COMPLETE signal — correct error containment; task title received from Manager is internal/team-controlled data, not external user input
+
+✅ DOCUMENTATION COMPLETE
+- Updated: backlog/docs/doc-6 - Agent-Workflow-Orchestration-System.md (added git-commit-manager as Agent 7, updated pipeline order to m-3, added Phase 7)
+- Updated: backlog/docs/doc-15 - Security-Agent-Integration-and-Agent-Pipeline-Improvements.md (updated pipeline flow string, added Role G git-commit-manager section, added TASK-42 and TASK-44 to implementation tasks)
+- Updated: backlog/docs/doc-16 - Documentation-Agent-—-Integration-and-Pipeline-Flow.md (updated pipeline position to include git-commit-manager after documentation)
+- Created: backlog/docs/doc-17 - Git-Commit-Manager-Agent-—-Workflow-and-Squash-Strategy.md (new reference doc for agent workflow, squash strategy, FORBIDDEN carve-out, signal formats, constraints)
+- Created: backlog/decisions/decision-2 - Git-Commit-Manager-—-Post-Commit-Dry-Run-and-Non-Blocking-Squash-Failure.md (decision record for two architectural choices: post-commit dry-run ordering and non-blocking squash failure pattern)
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
