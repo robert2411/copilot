@@ -143,4 +143,6 @@ Plan revised: Step 4d restructured to collapse both doc branches into single flo
 - Updated pipeline order comment in Step 5: added Git Commit
 - Added git-commit-manager to sub-agents list
 - Updated Constraint #6 to mention git commit step
+
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
