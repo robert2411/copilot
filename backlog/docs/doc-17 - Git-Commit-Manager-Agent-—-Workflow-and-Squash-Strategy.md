@@ -149,6 +149,79 @@ The agent does NOT implement squash logic itself — it always delegates to `squ
 
 ---
 
+## squash-task-commits.sh — Implementation Reference
+
+**Script path:** `.github/skills/backlog-cli/scripts/squash-task-commits.sh`
+**Delivered in:** TASK-44
+**Compatibility:** bash 3.2+ (macOS) — no `mapfile`/`readarray` used
+
+### Usage
+
+```bash
+# Preview without modifying history
+.github/skills/backlog-cli/scripts/squash-task-commits.sh --dry-run
+
+# Execute squash
+.github/skills/backlog-cli/scripts/squash-task-commits.sh
+```
+
+### Flags
+
+| Flag | Behaviour |
+|------|-----------|
+| *(none)* | Execute squash on current history |
+| `--dry-run` | Print planned operations, exit 0, no history changes |
+
+### Exit Codes
+
+| Code | Meaning |
+|------|---------|
+| `0` | Success, nothing to squash, or dry-run complete |
+| `1` | Dirty working tree, unrecognised flag, or script error |
+
+### Algorithm (Detailed)
+
+1. **Dirty-tree guard** — `git status --porcelain`; exits 1 with message if non-empty.
+2. **Read log** — `git log --format="%H|%s" -100` (last 100 commits, newest-first). Uses `while IFS='|' read -r hash subject` for bash 3.2 compatibility.
+3. **Extract task-id** — bash regex `^(task-[^:]+):` applied to each subject. Non-matching commits get an empty task-id.
+4. **Find consecutive runs** — walks newest-first; tracks `current_tid` and span indices. A run of ≥ 2 consecutive commits with the same non-empty task-id is recorded. A commit with a different task-id (or no task-id) closes the current run.
+5. **Idempotent exit** — if zero qualifying runs found, prints `"Nothing to squash."` and exits 0.
+6. **Dry-run output** — if `--dry-run`, prints one line per run: `[DRY-RUN] Would squash <N> commits for <task-id> into one commit`, then exits 0.
+7. **Oldest-first processing** — runs are sorted by `end_idx` descending (oldest run first) using a bubble sort on a processing-order array. This prevents SHA invalidation: rebasing older history does not affect the SHAs of newer (closer to HEAD) runs that have not yet been processed.
+8. **Per-run rebase** — for each qualifying run:
+   - Computes window size `N = end_idx + 1` (commits from HEAD to cover).
+   - Re-reads `git log --format="%H|%s" --reverse "HEAD~${N}..HEAD"` for current SHAs (post any prior rebase).
+   - Locates the first consecutive block of `task_id` commits in the window (oldest-first).
+   - Builds a `mktemp` rebase-todo file: first run commit → `pick`, remaining → `fixup`, all others → `pick`.
+   - Runs `GIT_SEQUENCE_EDITOR="cp <todo_file>" git rebase -i "HEAD~${N}"` non-interactively.
+   - Deletes temp file; re-reads git log to refresh in-memory SHAs for the next iteration.
+9. **Completion** — prints `"Squash complete."` and exits 0.
+
+### Key Design Choices
+
+| Choice | Rationale |
+|--------|-----------|
+| Depth cap at `-100` | Bounded blast radius; consecutive same-task commits always occur in recent history |
+| Oldest-first processing | Rebasing old commits does not invalidate SHAs of newer un-processed commits |
+| `GIT_SEQUENCE_EDITOR` + `mktemp` | Non-interactive rebase with full control over the todo file; no user prompt |
+| Re-read log after each rebase | SHAs change after rebase; stale in-memory hashes would fail subsequent rebases |
+| `while IFS= read -r` instead of `mapfile` | `mapfile`/`readarray` requires bash 4+; macOS ships bash 3.2 |
+| Case-sensitive task-id regex | Canonical commit format is always lowercase `task-<id>:`; no `shopt -s nocasematch` needed |
+
+### Verified Test Cases (TASK-44)
+
+| Scenario | Result |
+|----------|--------|
+| Dirty working tree | Exits 1 with error message ✅ |
+| No consecutive runs | "Nothing to squash." exits 0 ✅ |
+| `[task-1, task-1, task-3, task-1]` | `[task-1, task-3, task-1]` ✅ |
+| `[task-1, task-1, task-1, task-3]` | `[task-1, task-3]` ✅ |
+| Two non-adjacent runs simultaneously | Both squashed in one invocation ✅ |
+| Run twice on already-squashed history | "Nothing to squash." (idempotent) ✅ |
+| `--dry-run` | Prints plan, no history changes ✅ |
+
+---
+
 ## FORBIDDEN Block Carve-Out
 
 All agents in this system follow the rule: **🚫 FORBIDDEN — never write directly to `./backlog/`**.
