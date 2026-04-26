@@ -50,7 +50,7 @@ backlog task <id> --plain
 ```
 
 - If `✅ COMMIT COMPLETE` found → mark task Done
-- If signal absent (squash failure or error) → log warning, assess whether to retry or mark Done
+- If signal absent → log warning, mark task Done (non-blocking fallback — mirrors documentation agent pattern)
 
 ---
 

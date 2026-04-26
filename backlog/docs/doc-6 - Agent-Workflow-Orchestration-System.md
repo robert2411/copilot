@@ -84,7 +84,7 @@ All agents interact with the Backlog system exclusively through **CLI commands**
 #### 6. **Documentation Agent** (Knowledge Recorder)
 - **Role**: Persists significant task outcomes to backlog knowledge base
 - **Responsibilities**:
-  - Run after security approves each task (final step before Done)
+  - Run after security approves each task (penultimate step — git-commit-manager runs after)
   - Read completed task details, implementation notes, and final summary
   - Scan existing `backlog/docs/` and `backlog/decisions/` for relevant records
   - Update existing docs/decisions when task outcome is relevant

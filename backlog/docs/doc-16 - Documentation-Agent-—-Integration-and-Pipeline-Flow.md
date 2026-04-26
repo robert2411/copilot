@@ -53,8 +53,11 @@ After the subagent completes, the manager reads the task notes:
 backlog task <id> --plain
 ```
 
-- If `✅ DOCUMENTATION COMPLETE` found → mark task Done
-- If signal absent → log warning, mark task Done (non-blocking fallback)
+- If `✅ DOCUMENTATION COMPLETE` found → invoke git-commit-manager agent (next pipeline step)
+- If signal absent → log warning, invoke git-commit-manager agent (non-blocking fallback — git commit still runs)
+
+> **Note:** The manager does NOT mark the task Done after documentation. Done is marked only after the git-commit-manager
+> emits `✅ COMMIT COMPLETE` (or after its own non-blocking fallback). See doc-17 for the git-commit-manager flow.
 
 ---
 
