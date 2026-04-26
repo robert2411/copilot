@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-24 23:16'
+updated_date: '2026-04-26 19:46'
 labels:
   - git
   - agent
@@ -138,4 +138,9 @@ Plan revised: Step 4d restructured to collapse both doc branches into single flo
 - Steps verified: 9
 - AC mapped: 5
 - Previous concern resolved: Step 4d restructured into a single linear flow — (a) doc signal detect, (b) git-commit-manager invocation, (c) commit-complete signal detect, (d) single -s Done call — eliminating the two-branch ambiguity.
+
+- Updated Step 4d in manager.agent.md to linear flow: (a) doc signal detect, (b) git-commit-manager invocation, (c) commit-complete detect, (d) single -s Done call
+- Updated pipeline order comment in Step 5: added Git Commit
+- Added git-commit-manager to sub-agents list
+- Updated Constraint #6 to mention git commit step
 <!-- SECTION:NOTES:END -->
