@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-26 19:48'
+updated_date: '2026-04-26 19:49'
 labels:
   - git
   - agent
@@ -168,3 +168,29 @@ All AC/DoD checked. Ready for QA.
 - Validation: bash syntax check passed (bash -n), dirty-tree guard, --dry-run behavior, consecutive-run detection, boundary preservation, oldest-first processing, idempotent no-op path all implemented
 - Code quality/security/spelling: No issues found
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created squash-task-commits.sh at .github/skills/backlog-cli/scripts/squash-task-commits.sh.
+
+What changed and why:
+- Shell helper script that the git-commit-manager agent calls to collapse consecutive same-task commits
+- Reads git log (last 100), extracts task-id prefix via bash regex, groups consecutive runs
+- Squashes via git rebase -i with pre-built todo file (pick/fixup), processed oldest-first to avoid SHA invalidation
+- Re-reads git log after each rebase for fresh SHAs
+- --dry-run flag for preview without modifying history
+- Idempotent: exits 0 with "Nothing to squash." when no qualifying runs
+- bash 3.2 compatible (macOS): uses while IFS= read -r instead of mapfile
+
+Changes:
+- .github/skills/backlog-cli/scripts/squash-task-commits.sh (new file, chmod +x)
+
+Tests:
+- Dirty tree → exit 1 ✅
+- Idempotent ✅
+- [task-1, task-1, task-3, task-1] → [task-1, task-3, task-1] ✅
+- [task-1, task-1, task-1, task-3] → [task-1, task-3] ✅
+- Two non-adjacent runs simultaneously processed ✅
+- --dry-run prints plan without touching history ✅
+<!-- SECTION:FINAL_SUMMARY:END -->
