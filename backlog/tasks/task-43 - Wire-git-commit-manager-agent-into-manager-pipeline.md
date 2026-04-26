@@ -1,7 +1,7 @@
 ---
 id: TASK-43
 title: Wire git commit manager agent into manager pipeline
-status: In Progress
+status: Done
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:20'
