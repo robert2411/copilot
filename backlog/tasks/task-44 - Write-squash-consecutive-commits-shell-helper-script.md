@@ -179,6 +179,8 @@ All AC/DoD checked. Ready for QA.
 
 Squash dry-run output:
 Nothing to squash.
+
+✅ COMMIT COMPLETE: TASK-44: Write squash-consecutive-commits shell helper script
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
