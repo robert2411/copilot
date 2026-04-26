@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:19'
-updated_date: '2026-04-26 19:48'
+updated_date: '2026-04-26 19:49'
 labels:
   - git
   - agent
@@ -158,3 +158,23 @@ All AC/DoD checked. Ready for QA.
 - Validation: frontmatter, FORBIDDEN policy carve-out, 6-step workflow, canonical commit format, post-commit dry-run, squash failure handling, COMMIT COMPLETE signal all match requirements
 - Code quality/security/spelling: No issues found
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created the git-commit-manager agent file at .github/agents/git-commit-manager.agent.md.
+
+What changed and why:
+- New agent added to the pipeline to handle canonical git history per task
+- Implements a 6-step workflow: verify working state, git add -A, commit with task-<id>: <title>, dry-run squash check (post-commit), actual squash via script, emit COMMIT COMPLETE signal
+- Error path: if squash script exits non-zero, agent appends warning and does NOT emit signal
+- FORBIDDEN block carve-out: run_in_terminal permitted only for git commands, squash script, and backlog task edit
+
+Changes:
+- .github/agents/git-commit-manager.agent.md (new file)
+
+Architectural decisions:
+- Agent is non-blocking in the sense that it is invoked by Manager; squash script failure is a warning not a pipeline halt
+- Dry-run runs POST-commit to accurately reflect what the live squash will see
+- No model key (inherits default, same pattern as documentation/implementation agents)
+<!-- SECTION:FINAL_SUMMARY:END -->
