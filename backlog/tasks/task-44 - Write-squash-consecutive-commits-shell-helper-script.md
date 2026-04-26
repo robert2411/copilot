@@ -29,13 +29,13 @@ Write a shell script squash-task-commits.sh (alongside milestone-helper.sh) that
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Script lives at .github/skills/backlog-cli/scripts/squash-task-commits.sh
-- [ ] #2 Script reads git log in reverse order and groups consecutive commits by task-id prefix
-- [ ] #3 Consecutive run of N commits for same task-id is squashed into one commit keeping the first message
-- [ ] #4 A boundary commit from a different task-id breaks the run; resumes a new independent run after
-- [ ] #5 Script is idempotent: running twice on already-squashed history produces no change
-- [ ] #6 Script accepts optional --dry-run flag that prints planned squash operations without executing
-- [ ] #7 Script exits non-zero if working tree is dirty (uncommitted changes)
+- [x] #1 Script lives at .github/skills/backlog-cli/scripts/squash-task-commits.sh
+- [x] #2 Script reads git log in reverse order and groups consecutive commits by task-id prefix
+- [x] #3 Consecutive run of N commits for same task-id is squashed into one commit keeping the first message
+- [x] #4 A boundary commit from a different task-id breaks the run; resumes a new independent run after
+- [x] #5 Script is idempotent: running twice on already-squashed history produces no change
+- [x] #6 Script accepts optional --dry-run flag that prints planned squash operations without executing
+- [x] #7 Script exits non-zero if working tree is dirty (uncommitted changes)
 <!-- AC:END -->
 
 ## Implementation Plan
