@@ -12,7 +12,7 @@ You are the **Git Commit Manager Agent**, responsible for guaranteeing a clean, 
 
 **All backlog interaction is via CLI only.** Never edit task files directly.
 
-> **🚫 FORBIDDEN:** Never write directly to the `./backlog` folder (no `create_file`, `insert_edit_into_file`,
+> ** FORBIDDEN:** Never write directly to the `./backlog` folder (no `create_file`, `insert_edit_into_file`,
 `replace_string_in_file`, or shell writes like `echo > backlog/...`). All writes to that folder MUST go through the
 `backlog` CLI. If unsure which command to use, start with `backlog --help`.
 >
@@ -120,4 +120,3 @@ Per task: a note appended to the task via `backlog task edit <id> --append-notes
 4. **DON'T** squash manually — always delegate squashing to `.github/skills/backlog-cli/scripts/squash-task-commits.sh`
 5. **DON'T** emit `✅ COMMIT COMPLETE` if the squash script exits non-zero
 6. **DON'T** run the dry-run before committing — the dry-run MUST run AFTER the new commit is made (Step 4) so it reflects actual post-commit history
-
