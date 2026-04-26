@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-26 19:47'
+updated_date: '2026-04-26 19:48'
 labels:
   - git
   - agent
@@ -161,4 +161,10 @@ Plan revised: git log range fixed; case-sensitivity annotation removed; depth li
 - Tests: AC#7 (dirty), AC#5 (idempotent), scenario [t1,t1,t3,t1]→[t1,t3,t1], scenarios [t1,t1,t1,t3]→[t1,t3], two-run scenario all pass
 
 All AC/DoD checked. Ready for QA.
+
+✅ QA APPROVED — all tests passing, no regressions
+- AC/DoD: Complete (all checklist items checked)
+- File reviewed: .github/skills/backlog-cli/scripts/squash-task-commits.sh
+- Validation: bash syntax check passed (bash -n), dirty-tree guard, --dry-run behavior, consecutive-run detection, boundary preservation, oldest-first processing, idempotent no-op path all implemented
+- Code quality/security/spelling: No issues found
 <!-- SECTION:NOTES:END -->
