@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:19'
-updated_date: '2026-04-24 23:15'
+updated_date: '2026-04-26 19:46'
 labels:
   - git
   - agent
@@ -142,4 +142,11 @@ Plan revised: FORBIDDEN carve-out expanded to include backlog CLI commands along
 - AC mapped: 8/8
 - FORBIDDEN carve-out confirmed expanded to include backlog CLI commands (backlog task edit) alongside git commands and squash script — previous concern fully resolved
 - No new issues introduced by the change
+
+- Created .github/agents/git-commit-manager.agent.md
+- Added frontmatter with user-invocable: false, name, color
+- Added FORBIDDEN block with git + backlog CLI carve-out
+- Added 6-step workflow (verify, stage, commit, dry-run, squash, emit signal)
+- Added error path: squash script failure → no COMMIT COMPLETE signal
+- Coverage: all AC verified
 <!-- SECTION:NOTES:END -->
