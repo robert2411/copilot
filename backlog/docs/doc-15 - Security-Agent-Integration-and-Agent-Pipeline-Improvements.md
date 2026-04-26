@@ -218,6 +218,7 @@ manager
   → security (OWASP audit; emits approved/findings)
   → [if findings] → implementation → qa → security (re-audit scoped)
   → documentation (audit completed task; update/create backlog/docs and backlog/decisions; emits ✅ DOCUMENTATION COMPLETE)
+  → git-commit-manager (stage all, commit canonical format, squash consecutive same-task commits; emits ✅ COMMIT COMPLETE)
   → Done
 ```
 
@@ -280,7 +281,64 @@ documentation) is the blocking quality gate.
 
 ---
 
-## Implementation Tasks
+## Role G: Git Commit Manager Agent
+
+### Purpose
+
+Final pipeline gate that guarantees a canonical, clean git history per task. Runs AFTER documentation emits
+`✅ DOCUMENTATION COMPLETE`. Stages all changes (including backlog/ and docs/), commits with the standard format, then
+squashes consecutive same-task commits to keep history tidy.
+
+### Trigger
+
+Manager routes to git-commit-manager when documentation emits `✅ DOCUMENTATION COMPLETE`.
+
+### 6-Step Workflow
+
+1. **Verify working state** — run `git status --porcelain`; proceed regardless (clean or dirty)
+2. **Stage all changes** — run `git add -A` (captures source, backlog/, docs/, everything)
+3. **Commit** — run `git commit -m "task-<id>: <title>"` using canonical format; skip if nothing to commit
+4. **Dry-run squash** (POST-commit) — run `squash-task-commits.sh --dry-run`; log output to task notes
+5. **Live squash** — run `squash-task-commits.sh`; if exit non-zero → append warning, stop (no signal emitted)
+6. **Emit signal** — run `backlog task edit <id> --append-notes "✅ COMMIT COMPLETE: task-<id>: <title>"`
+
+### Squash Logic
+
+The squash script (`squash-task-commits.sh`) inspects recent git log for consecutive commits sharing the same
+`task-<id>` prefix and squashes them into one. Non-consecutive same-task commits (another task's commit sits between
+them) are NOT squashed — the boundary is preserved.
+
+Examples:
+- `[task-1, task-1, task-3, task-1]` → `[task-1, task-3, task-1]`
+- `[task-1, task-1, task-1, task-3]` → `[task-1, task-3]`
+
+### Signal Format
+
+```
+✅ COMMIT COMPLETE: task-<id>: <title>
+```
+
+### Key Constraint: FORBIDDEN Carve-Out
+
+`run_in_terminal` is permitted for: `git add`, `git commit`, `git log`, `git status`, `git rebase`, the squash script,
+and approved backlog CLI commands (`backlog task edit`). All other `run_in_terminal` usage is FORBIDDEN.
+
+### Error Path
+
+If the squash script exits non-zero:
+- Agent appends a warning note to the task
+- Agent does NOT emit `✅ COMMIT COMPLETE`
+- Manager logs a warning and may retry or proceed depending on configuration
+- Squash failure is a **warning, not a pipeline halt**
+
+### What the Git Commit Manager Does NOT Do
+
+- Does NOT analyse or review code
+- Does NOT implement features or write tests
+- Does NOT squash non-consecutive same-task commits
+- Does NOT run the squash script manually — always delegates to `squash-task-commits.sh`
+
+---
 
 See milestone: **Security Agent & Agent Pipeline Improvements**
 
@@ -300,4 +358,12 @@ Tasks:
 7. Create documentation agent file (`.github/agents/documentation.agent.md`) — TASK-39
 8. Wire documentation agent into manager pipeline after security approval — TASK-40
 9. Update implementation agent to be aware of documentation step — TASK-41
+
+See milestone: **Git Commit Manager** (m-3)
+
+Tasks:
+
+10. Create git-commit-manager agent file (`.github/agents/git-commit-manager.agent.md`) — TASK-42
+11. Create squash-task-commits.sh script — TASK-44
+
 

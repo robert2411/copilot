@@ -968,11 +968,12 @@ This document describes the system at maturity. Implementation phases:
 4. **Phase 4**: Automated handoff & decision making
 5. **Phase 5**: Security agent gate + fix loop (✅ complete)
 6. **Phase 6**: Documentation agent gate (✅ complete — m-2)
-7. **Phase 7**: Reporting & optimization
+7. **Phase 7**: Git commit manager agent gate (✅ complete — m-3)
+8. **Phase 8**: Reporting & optimization
 
-**Current pipeline order (as of m-2):**
+**Current pipeline order (as of m-3):**
 ```
-Implementation → QA → Security → Documentation → Done
+Implementation → QA → Security → Documentation → Git Commit Manager → Done
 ```
 
 Each phase builds on previous, maintaining stable interfaces between agents.
