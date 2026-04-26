@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-26 21:05'
+updated_date: '2026-04-26 21:07'
 labels:
   - git
   - agent
@@ -176,6 +176,9 @@ All AC/DoD checked. Ready for QA.
 ✅ DOCUMENTATION COMPLETE
 - Updated: backlog/docs/doc-17 - Git-Commit-Manager-Agent-—-Workflow-and-Squash-Strategy.md — added "squash-task-commits.sh — Implementation Reference" section with full algorithm walkthrough, flag/exit-code table, key design choices table, and verified test-case table
 - Updated: .github/skills/backlog-cli/SKILL.md — added squash-task-commits.sh row to Scripts table and a reference link in the References section
+
+Squash dry-run output:
+Nothing to squash.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
