@@ -149,4 +149,6 @@ Plan revised: FORBIDDEN carve-out expanded to include backlog CLI commands along
 - Added 6-step workflow (verify, stage, commit, dry-run, squash, emit signal)
 - Added error path: squash script failure → no COMMIT COMPLETE signal
 - Coverage: all AC verified
+
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
