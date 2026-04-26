@@ -30,14 +30,14 @@ If it makes sense for the context: multiple tasks can be in one commit (if the a
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Agent file exists at .github/agents/git-commit-manager.agent.md with correct frontmatter
-- [ ] #2 Agent stages all changes (git add -A) before committing, including backlog/ and docs/
-- [ ] #3 Agent commits using canonical format: 'task-<id>: <title>'
-- [ ] #4 Agent parses recent git log to detect consecutive commits sharing the same task-id prefix
-- [ ] #5 Agent squashes consecutive same-task commits into a single commit via git rebase -i or reset+commit
-- [ ] #6 Agent does NOT squash non-consecutive same-task commits (another task commit in between preserves the boundary)
-- [ ] #7 Squash example: [task1, task1, task3, task1] becomes [task1, task3, task1]
-- [ ] #8 Squash example: [task1, task1, task1, task3] becomes [task1, task3]
+- [x] #1 Agent file exists at .github/agents/git-commit-manager.agent.md with correct frontmatter
+- [x] #2 Agent stages all changes (git add -A) before committing, including backlog/ and docs/
+- [x] #3 Agent commits using canonical format: 'task-<id>: <title>'
+- [x] #4 Agent parses recent git log to detect consecutive commits sharing the same task-id prefix
+- [x] #5 Agent squashes consecutive same-task commits into a single commit via git rebase -i or reset+commit
+- [x] #6 Agent does NOT squash non-consecutive same-task commits (another task commit in between preserves the boundary)
+- [x] #7 Squash example: [task1, task1, task3, task1] becomes [task1, task3, task1]
+- [x] #8 Squash example: [task1, task1, task1, task3] becomes [task1, task3]
 <!-- AC:END -->
 
 ## Implementation Plan
