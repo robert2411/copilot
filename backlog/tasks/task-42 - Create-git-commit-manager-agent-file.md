@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:19'
-updated_date: '2026-04-26 20:18'
+updated_date: '2026-04-26 20:22'
 labels:
   - git
   - agent
@@ -171,6 +171,9 @@ All AC/DoD checked. Ready for QA.
 - Updated: backlog/docs/doc-16 - Documentation-Agent-—-Integration-and-Pipeline-Flow.md (updated pipeline position to include git-commit-manager after documentation)
 - Created: backlog/docs/doc-17 - Git-Commit-Manager-Agent-—-Workflow-and-Squash-Strategy.md (new reference doc for agent workflow, squash strategy, FORBIDDEN carve-out, signal formats, constraints)
 - Created: backlog/decisions/decision-2 - Git-Commit-Manager-—-Post-Commit-Dry-Run-and-Non-Blocking-Squash-Failure.md (decision record for two architectural choices: post-commit dry-run ordering and non-blocking squash failure pattern)
+
+Squash dry-run output:
+Nothing to squash.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
