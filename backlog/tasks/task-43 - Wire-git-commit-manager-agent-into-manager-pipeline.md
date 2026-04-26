@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-26 19:48'
+updated_date: '2026-04-26 19:49'
 labels:
   - git
   - agent
@@ -152,3 +152,23 @@ All AC/DoD checked. Ready for QA.
 - Validation: Step 4d linearized correctly (doc signal -> git-commit-manager invocation -> commit signal -> single Done), task string includes task ID/title and squash script with --dry-run reference, pipeline order comment updated, sub-agent list and constraints updated
 - Code quality/security/spelling: No issues found
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Updated manager.agent.md to wire git-commit-manager into the post-documentation pipeline step.
+
+What changed and why:
+- Step 4d restructured from two separate branches (each with their own -s Done) into a single linear flow: (a) doc signal detect → (b) git-commit-manager invocation → (c) commit-complete signal detect → (d) single -s Done
+- Eliminates ambiguity where documentation failure path could skip git commit entirely
+- Pipeline order comment in Step 5 updated to include Git Commit step
+- git-commit-manager added to sub-agents list with description
+- Constraint #6 updated: both documentation and git commit are non-blocking for delivery
+
+Changes:
+- .github/agents/manager.agent.md (modified)
+
+Architectural decisions:
+- Git commit is positioned after documentation (not before) so backlog writes from documentation agent are captured in the commit
+- Both doc-complete and commit-complete signals are non-blocking: missing signal → warning note → continue to mark Done
+<!-- SECTION:FINAL_SUMMARY:END -->
