@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-26 19:53'
+updated_date: '2026-04-26 21:05'
 labels:
   - git
   - agent
@@ -172,6 +172,10 @@ All AC/DoD checked. Ready for QA.
 - Files reviewed: .github/skills/backlog-cli/scripts/squash-task-commits.sh
 - Checks performed: OWASP Top 10, path traversal, ReDoS, input validation, command injection, unquoted variable expansion, history rewrite scope
 - set -euo pipefail present; dirty-tree guard exits non-zero; GIT_SEQUENCE_EDITOR uses mktemp-generated path (not user-controlled, no space/metachar risk); commit subject written to rebase-todo via echo does not re-evaluate shell substitutions; [^:]+ regex has no catastrophic backtracking; oldest-first processing prevents SHA invalidation; run_found guard correctly blocks non-consecutive commits; -100 depth cap bounds history rewrite blast radius; idempotent exit-0 path confirmed
+
+✅ DOCUMENTATION COMPLETE
+- Updated: backlog/docs/doc-17 - Git-Commit-Manager-Agent-—-Workflow-and-Squash-Strategy.md — added "squash-task-commits.sh — Implementation Reference" section with full algorithm walkthrough, flag/exit-code table, key design choices table, and verified test-case table
+- Updated: .github/skills/backlog-cli/SKILL.md — added squash-task-commits.sh row to Scripts table and a reference link in the References section
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
