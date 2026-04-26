@@ -159,4 +159,6 @@ Plan revised: git log range fixed; case-sensitivity annotation removed; depth li
 - --dry-run flag prints plan without modifying history
 - Idempotent: no qualifying runs → exit 0
 - Tests: AC#7 (dirty), AC#5 (idempotent), scenario [t1,t1,t3,t1]→[t1,t3,t1], scenarios [t1,t1,t1,t3]→[t1,t3], two-run scenario all pass
+
+All AC/DoD checked. Ready for QA.
 <!-- SECTION:NOTES:END -->
