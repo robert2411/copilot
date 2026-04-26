@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-04-24 22:20'
-updated_date: '2026-04-24 23:16'
+updated_date: '2026-04-26 19:46'
 labels:
   - git
   - agent
@@ -147,4 +147,16 @@ Plan revised: git log range fixed; case-sensitivity annotation removed; depth li
   #1 git log range corrected to HEAD~<N>..HEAD with explicit explanation of why bare HEAD~<N> is wrong
   #2 Case-sensitivity annotation removed; Step 6 now specifies standard case-sensitive matching
   #3 Depth limit committed to -100 with explicit git log command shown
+
+- Created .github/skills/backlog-cli/scripts/squash-task-commits.sh
+- bash 3.2 (macOS) compatible: no mapfile/readarray
+- Dirty tree check exits non-zero with message
+- git log -100 with %H|%s, IFS pipe splitting
+- Consecutive run detection in newest-first order
+- Squash via git rebase -i with GIT_SEQUENCE_EDITOR + pre-built todo
+- Processes oldest runs first (highest end_idx) to avoid SHA invalidation
+- Re-reads git log after each rebase for fresh SHAs
+- --dry-run flag prints plan without modifying history
+- Idempotent: no qualifying runs → exit 0
+- Tests: AC#7 (dirty), AC#5 (idempotent), scenario [t1,t1,t3,t1]→[t1,t3,t1], scenarios [t1,t1,t1,t3]→[t1,t3], two-run scenario all pass
 <!-- SECTION:NOTES:END -->
